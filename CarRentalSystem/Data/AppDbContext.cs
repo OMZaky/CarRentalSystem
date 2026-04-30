@@ -1,6 +1,9 @@
-﻿using CarRentalSystem.Models;
+﻿using System;
+using System.IO;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration; // Critical for appsettings
+using CarRentalSystem.Models; // Replace with your actual Models namespace if different
 
 namespace CarRentalSystem.Data
 {
@@ -19,13 +22,21 @@ namespace CarRentalSystem.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                // Build the configuration reader
+                // This ensures the tool looks in the actual project directory
+                var basePath = AppContext.BaseDirectory;
+
                 IConfigurationRoot configuration = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings.json")
+                    .SetBasePath(basePath)
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                     .Build();
 
                 string connectionString = configuration.GetConnectionString("AzureDbConnection");
+
+                // Safety check to give you a clear error message if the string is missing
+                if (string.IsNullOrEmpty(connectionString))
+                {
+                    throw new Exception("Could not find 'AzureDbConnection' in appsettings.json. Check the file name and 'Copy to Output' property.");
+                }
 
                 optionsBuilder.UseSqlServer(connectionString, sqlServerOptionsAction: sqlOptions =>
                 {
