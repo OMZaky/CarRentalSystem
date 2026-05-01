@@ -17,7 +17,7 @@ namespace CarRentalSystem.Models
 
         [Required]
         [MaxLength(20)]
-        public string Status { get; set; } // E.g., "Active", "Cancelled", "Completed"
+        public ReservationStatus Status { get; set; } // E.g., "Active", "Cancelled", "Completed"
 
         [ForeignKey("Customer")]
         public int CustomerId { get; set; }

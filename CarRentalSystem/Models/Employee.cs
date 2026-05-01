@@ -36,7 +36,7 @@ namespace CarRentalSystem.Models
 
         [Required]
         [MaxLength(50)]
-        public string Role { get; set; }
+        public EmployeeRole Role { get; set; }
 
         [Required]
         [MaxLength(50)]

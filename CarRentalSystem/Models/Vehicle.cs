@@ -19,7 +19,7 @@ namespace CarRentalSystem.Models
 
         [Required]
         [MaxLength(20)]
-        public string Status { get; set; }
+        public VehicleStatus Status { get; set; }
 
         [Required]
         public int Year { get; set; }

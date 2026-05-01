@@ -39,10 +39,10 @@ namespace CarRentalSystem.Data
             // 3. Seed Employees (SECURE HASHING APPLIED)
             var employees = new List<Employee>
             {
-                new Employee { FirstName = "Zaky", LastName = "Admin", Ssn = "29912345678901", Email = "zaky@tripzyrentals.com", Role = "System Admin", Salary = 15000m, HireDate = DateTime.Now.AddYears(-2), Username = "admin_zaky", PasswordHash = PasswordHasher.HashPassword("AdminPass123!"), BranchId = branches[1].Id },
-                new Employee { FirstName = "Esraa", LastName = "Mahmoud", Ssn = "29898765432109", Email = "esraa@tripzyrentals.com", Role = "Branch Manager", Salary = 12000m, HireDate = DateTime.Now.AddYears(-1), Username = "mgr_esraa", PasswordHash = PasswordHasher.HashPassword("ManagerPass123!"), BranchId = branches[0].Id },
-                new Employee { FirstName = "Omar", LastName = "Tariq", Ssn = "30011223344556", Email = "omar@tripzyrentals.com", Role = "Rental Agent", Salary = 7000m, HireDate = DateTime.Now.AddMonths(-6), Username = "agent_omar", PasswordHash = PasswordHasher.HashPassword("AgentPass123!"), BranchId = branches[0].Id },
-                new Employee { FirstName = "Shahd", LastName = "Ali", Ssn = "29955443322110", Email = "shahd@tripzyrentals.com", Role = "Rental Agent", Salary = 7000m, HireDate = DateTime.Now.AddMonths(-3), Username = "agent_shahd", PasswordHash = PasswordHasher.HashPassword("AgentPass123!"), BranchId = branches[2].Id }
+                new Employee { FirstName = "Zaky", LastName = "Admin", Ssn = "29912345678901", Email = "zaky@tripzyrentals.com", Role = EmployeeRole.SystemAdmin, Salary = 15000m, HireDate = DateTime.Now.AddYears(-2), Username = "admin_zaky", PasswordHash = PasswordHasher.HashPassword("AdminPass123!"), BranchId = branches[1].Id },
+                new Employee { FirstName = "Esraa", LastName = "Mahmoud", Ssn = "29898765432109", Email = "esraa@tripzyrentals.com", Role = EmployeeRole.BranchManager, Salary = 12000m, HireDate = DateTime.Now.AddYears(-1), Username = "mgr_esraa", PasswordHash = PasswordHasher.HashPassword("ManagerPass123!"), BranchId = branches[0].Id },
+                new Employee { FirstName = "Omar", LastName = "Tariq", Ssn = "30011223344556", Email = "omar@tripzyrentals.com", Role = EmployeeRole.RentalAgent, Salary = 7000m, HireDate = DateTime.Now.AddMonths(-6), Username = "agent_omar", PasswordHash = PasswordHasher.HashPassword("AgentPass123!"), BranchId = branches[0].Id },
+                new Employee { FirstName = "Shahd", LastName = "Ali", Ssn = "29955443322110", Email = "shahd@tripzyrentals.com", Role = EmployeeRole.RentalAgent, Salary = 7000m, HireDate = DateTime.Now.AddMonths(-3), Username = "agent_shahd", PasswordHash = PasswordHasher.HashPassword("AgentPass123!"), BranchId = branches[2].Id }
             };
             context.Employees.AddRange(employees);
             context.SaveChanges();
@@ -50,16 +50,16 @@ namespace CarRentalSystem.Data
             // 4. Seed Vehicles 
             var vehicles = new List<Vehicle>
             {
-                new Vehicle { Model = "Toyota Corolla", Year = 2024, Color = "Silver", PlateNum = "ABC-123", Status = "Available", PurchaseDate = DateTime.Now.AddMonths(-10), BranchId = branches[0].Id, CategoryId = categories[1].Id },
-                new Vehicle { Model = "Nissan Sunny", Year = 2023, Color = "White", PlateNum = "XYZ-987", Status = "Rented", PurchaseDate = DateTime.Now.AddMonths(-15), BranchId = branches[0].Id, CategoryId = categories[0].Id },
-                new Vehicle { Model = "Kia Sportage", Year = 2024, Color = "Black", PlateNum = "KSA-555", Status = "Available", PurchaseDate = DateTime.Now.AddMonths(-5), BranchId = branches[1].Id, CategoryId = categories[2].Id },
-                new Vehicle { Model = "Mercedes C180", Year = 2025, Color = "Navy Blue", PlateNum = "VIP-1", Status = "Available", PurchaseDate = DateTime.Now.AddMonths(-1), BranchId = branches[0].Id, CategoryId = categories[3].Id },
-                new Vehicle { Model = "Hyundai Elantra", Year = 2023, Color = "Red", PlateNum = "LMN-456", Status = "Maintenance", PurchaseDate = DateTime.Now.AddMonths(-20), BranchId = branches[2].Id, CategoryId = categories[1].Id },
-                new Vehicle { Model = "MG 5", Year = 2024, Color = "White", PlateNum = "DEF-789", Status = "Available", PurchaseDate = DateTime.Now.AddMonths(-8), BranchId = branches[2].Id, CategoryId = categories[0].Id },
-                new Vehicle { Model = "Jeep Grand Cherokee", Year = 2023, Color = "Black", PlateNum = "JEP-007", Status = "Rented", PurchaseDate = DateTime.Now.AddMonths(-18), BranchId = branches[1].Id, CategoryId = categories[2].Id },
-                new Vehicle { Model = "Skoda Octavia", Year = 2024, Color = "Grey", PlateNum = "SKD-321", Status = "Available", PurchaseDate = DateTime.Now.AddMonths(-6), BranchId = branches[1].Id, CategoryId = categories[1].Id },
-                new Vehicle { Model = "BMW 520i", Year = 2024, Color = "White", PlateNum = "BMW-999", Status = "Rented", PurchaseDate = DateTime.Now.AddMonths(-4), BranchId = branches[0].Id, CategoryId = categories[3].Id },
-                new Vehicle { Model = "Renault Logan", Year = 2022, Color = "Blue", PlateNum = "RNT-111", Status = "Available", PurchaseDate = DateTime.Now.AddMonths(-30), BranchId = branches[2].Id, CategoryId = categories[0].Id }
+                new Vehicle { Model = "Toyota Corolla", Year = 2024, Color = "Silver", PlateNum = "ABC-123", Status = VehicleStatus.Available, PurchaseDate = DateTime.Now.AddMonths(-10), BranchId = branches[0].Id, CategoryId = categories[1].Id },
+                new Vehicle { Model = "Nissan Sunny", Year = 2023, Color = "White", PlateNum = "XYZ-987", Status = VehicleStatus.Rented, PurchaseDate = DateTime.Now.AddMonths(-15), BranchId = branches[0].Id, CategoryId = categories[0].Id },
+                new Vehicle { Model = "Kia Sportage", Year = 2024, Color = "Black", PlateNum = "KSA-555", Status = VehicleStatus.Available, PurchaseDate = DateTime.Now.AddMonths(-5), BranchId = branches[1].Id, CategoryId = categories[2].Id },
+                new Vehicle { Model = "Mercedes C180", Year = 2025, Color = "Navy Blue", PlateNum = "VIP-1", Status = VehicleStatus.Available, PurchaseDate = DateTime.Now.AddMonths(-1), BranchId = branches[0].Id, CategoryId = categories[3].Id },
+                new Vehicle { Model = "Hyundai Elantra", Year = 2023, Color = "Red", PlateNum = "LMN-456", Status = VehicleStatus.Maintenance, PurchaseDate = DateTime.Now.AddMonths(-20), BranchId = branches[2].Id, CategoryId = categories[1].Id },
+                new Vehicle { Model = "MG 5", Year = 2024, Color = "White", PlateNum = "DEF-789", Status = VehicleStatus.Available, PurchaseDate = DateTime.Now.AddMonths(-8), BranchId = branches[2].Id, CategoryId = categories[0].Id },
+                new Vehicle { Model = "Jeep Grand Cherokee", Year = 2023, Color = "Black", PlateNum = "JEP-007", Status = VehicleStatus.Rented, PurchaseDate = DateTime.Now.AddMonths(-18), BranchId = branches[1].Id, CategoryId = categories[2].Id },
+                new Vehicle { Model = "Skoda Octavia", Year = 2024, Color = "Grey", PlateNum = "SKD-321", Status = VehicleStatus.Maintenance, PurchaseDate = DateTime.Now.AddMonths(-6), BranchId = branches[1].Id, CategoryId = categories[1].Id },
+                new Vehicle { Model = "BMW 520i", Year = 2024, Color = "White", PlateNum = "BMW-999", Status = VehicleStatus.Rented, PurchaseDate = DateTime.Now.AddMonths(-4), BranchId = branches[0].Id, CategoryId = categories[3].Id },
+                new Vehicle { Model = "Renault Logan", Year = 2022, Color = "Blue", PlateNum = "RNT-111", Status = VehicleStatus.Available, PurchaseDate = DateTime.Now.AddMonths(-30), BranchId = branches[2].Id, CategoryId = categories[0].Id }
             };
             context.Vehicles.AddRange(vehicles);
             context.SaveChanges();
@@ -77,9 +77,9 @@ namespace CarRentalSystem.Data
             // 6. Seed Active & Completed Rentals
             var rentals = new List<Rental>
             {
-                new Rental { Tier = "Standard", PlannedStart = DateTime.Now.AddDays(-10), PlannedReturn = DateTime.Now.AddDays(-7), ActualReturnDate = DateTime.Now.AddDays(-7), PaymentStatus = "Paid", BaseCost = 1350.00m, ExtraFees = 0.00m, CustomerId = customers[0].Id, VehicleId = vehicles[0].Id, BranchId = branches[0].Id },
-                new Rental { Tier = "Premium", PlannedStart = DateTime.Now.AddDays(-2), PlannedReturn = DateTime.Now.AddDays(3), ActualReturnDate = null, PaymentStatus = "Pending", BaseCost = 6000.00m, ExtraFees = 0.00m, CustomerId = customers[1].Id, VehicleId = vehicles[6].Id, BranchId = branches[1].Id },
-                new Rental { Tier = "VIP", PlannedStart = DateTime.Now.AddDays(-1), PlannedReturn = DateTime.Now.AddDays(1), ActualReturnDate = null, PaymentStatus = "Paid", BaseCost = 5000.00m, ExtraFees = 0.00m, CustomerId = customers[2].Id, VehicleId = vehicles[8].Id, BranchId = branches[0].Id }
+                new Rental { Tier = "Standard", PlannedStart = DateTime.Now.AddDays(-10), PlannedReturn = DateTime.Now.AddDays(-7), ActualReturnDate = DateTime.Now.AddDays(-7), PaymentStatus = PaymentStatus.Paid, BaseCost = 1350.00m, ExtraFees = 0.00m, CustomerId = customers[0].Id, VehicleId = vehicles[0].Id, BranchId = branches[0].Id },
+                new Rental { Tier = "Premium", PlannedStart = DateTime.Now.AddDays(-2), PlannedReturn = DateTime.Now.AddDays(3), ActualReturnDate = null, PaymentStatus = PaymentStatus.Pending, BaseCost = 6000.00m, ExtraFees = 0.00m, CustomerId = customers[1].Id, VehicleId = vehicles[6].Id, BranchId = branches[1].Id },
+                new Rental { Tier = "VIP", PlannedStart = DateTime.Now.AddDays(-1), PlannedReturn = DateTime.Now.AddDays(1), ActualReturnDate = null, PaymentStatus = PaymentStatus.Refunded, BaseCost = 5000.00m, ExtraFees = 0.00m, CustomerId = customers[2].Id, VehicleId = vehicles[8].Id, BranchId = branches[0].Id }
             };
             context.Rentals.AddRange(rentals);
             context.SaveChanges();

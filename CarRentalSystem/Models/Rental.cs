@@ -24,7 +24,7 @@ namespace CarRentalSystem.Models
 
         [Required]
         [MaxLength(20)]
-        public string PaymentStatus { get; set; }
+        public PaymentStatus PaymentStatus { get; set; }
 
         [Required]
         [Column(TypeName = "decimal(18,2)")]
@@ -50,5 +50,8 @@ namespace CarRentalSystem.Models
         public virtual Branch Branch { get; set; }
 
         public virtual ICollection<Inspection> Inspections { get; set; }
+
+
+        public RentalStatus Status { get; set; }
     }
 }
