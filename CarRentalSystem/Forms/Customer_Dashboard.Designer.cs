@@ -1,7 +1,7 @@
 ﻿
-namespace car_rental_system
+namespace car_rental_system.Forms
 {
-    partial class Employee_Dashboard
+    partial class Customer_Dashboard
     {
         /// <summary>
         ///  Required designer variable.

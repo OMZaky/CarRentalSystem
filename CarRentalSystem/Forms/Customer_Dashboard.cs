@@ -6,11 +6,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace car_rental_system
+namespace car_rental_system.Forms
 {
-    public partial class Employee_Dashboard : Form
+    public partial class Customer_Dashboard : Form
     {
-        public Employee_Dashboard()
+        public Customer_Dashboard()
         {
             InitializeComponent();
         }
