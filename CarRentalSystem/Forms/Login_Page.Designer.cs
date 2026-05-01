@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem
+﻿namespace CarRentalSystem.Forms
 {
     partial class Login_Page
     {
@@ -236,6 +236,7 @@
             // 
             // Login_Page
             // 
+            AcceptButton = btnLogin;
             AutoScaleDimensions = new SizeF(16F, 33F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;

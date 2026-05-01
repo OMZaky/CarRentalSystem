@@ -1,4 +1,4 @@
-namespace CarRentalSystem
+namespace CarRentalSystem.Forms
 {
     public partial class Login_Page_V1 : Form
     {

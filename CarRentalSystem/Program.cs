@@ -1,7 +1,9 @@
 using CarRentalSystem.Data;
+using CarRentalSystem.Forms;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Windows.Forms;
+
 
 namespace CarRentalSystem
 {
@@ -15,6 +17,8 @@ namespace CarRentalSystem
             // Trigger the Database Seeder
             using (var context = new AppDbContext())
             {
+
+
 
                 context.Database.Migrate();
                 // This will safely check if data exists, and if not, inject all our dummy data

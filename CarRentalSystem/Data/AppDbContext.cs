@@ -42,7 +42,7 @@ namespace CarRentalSystem.Data
                 {
                     sqlOptions.EnableRetryOnFailure(
                         maxRetryCount: 5, // It will try 5 times before failing completely
-                        maxRetryDelay: TimeSpan.FromSeconds(30), // It will wait up to 30 seconds between tries
+                        maxRetryDelay: TimeSpan.FromSeconds(200), // It will wait up to 30 seconds between tries
                         errorNumbersToAdd: null);
                 });
             }

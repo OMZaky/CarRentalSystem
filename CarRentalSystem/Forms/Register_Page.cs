@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace CarRentalSystem
+namespace CarRentalSystem.Forms
 {
     public partial class Register_Page : Form
     {

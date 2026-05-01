@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CarRentalSystem.Core; // Required for the PasswordHasher
 using CarRentalSystem.Models;
 
 namespace CarRentalSystem.Data
@@ -12,7 +13,7 @@ namespace CarRentalSystem.Data
             // If we already have Branches, the database is already seeded. Exit immediately.
             if (context.Branches.Any()) return;
 
-            Console.WriteLine("Seeding business-level database...");
+            Console.WriteLine("Seeding business-level database with secure hashes...");
 
             // 1. Seed Branches
             var branches = new List<Branch>
@@ -22,7 +23,7 @@ namespace CarRentalSystem.Data
                 new Branch { Name = "Alexandria Sporting", City = "Alexandria", StreetName = "Abu Qir St", PhoneNumber = "01255556666", OperatingHours = "08:00 AM - 11:00 PM" }
             };
             context.Branches.AddRange(branches);
-            context.SaveChanges(); // Save to generate IDs for the next steps
+            context.SaveChanges();
 
             // 2. Seed Vehicle Categories
             var categories = new List<VehicleCategory>
@@ -35,19 +36,18 @@ namespace CarRentalSystem.Data
             context.VehicleCategories.AddRange(categories);
             context.SaveChanges();
 
-            // 3. Seed Employees (Including you and Esraa)
-            // Note: In production, passwords must be securely hashed. For this seed, we use a simple string representation.
+            // 3. Seed Employees (SECURE HASHING APPLIED)
             var employees = new List<Employee>
             {
-                new Employee { FirstName = "Zaky", LastName = "Admin", Ssn = "29912345678901", Email = "zaky@tripzyrentals.com", Role = "System Admin", Salary = 15000m, HireDate = DateTime.Now.AddYears(-2), Username = "admin_zaky", PasswordHash = "AdminPass123!", BranchId = branches[1].Id },
-                new Employee { FirstName = "Esraa", LastName = "Mahmoud", Ssn = "29898765432109", Email = "esraa@tripzyrentals.com", Role = "Branch Manager", Salary = 12000m, HireDate = DateTime.Now.AddYears(-1), Username = "mgr_esraa", PasswordHash = "ManagerPass123!", BranchId = branches[0].Id },
-                new Employee { FirstName = "Omar", LastName = "Tariq", Ssn = "30011223344556", Email = "omar@tripzyrentals.com", Role = "Rental Agent", Salary = 7000m, HireDate = DateTime.Now.AddMonths(-6), Username = "agent_omar", PasswordHash = "AgentPass123!", BranchId = branches[0].Id },
-                new Employee { FirstName = "Shahd", LastName = "Ali", Ssn = "29955443322110", Email = "shahd@tripzyrentals.com", Role = "Rental Agent", Salary = 7000m, HireDate = DateTime.Now.AddMonths(-3), Username = "agent_shahd", PasswordHash = "AgentPass123!", BranchId = branches[2].Id }
+                new Employee { FirstName = "Zaky", LastName = "Admin", Ssn = "29912345678901", Email = "zaky@tripzyrentals.com", Role = "System Admin", Salary = 15000m, HireDate = DateTime.Now.AddYears(-2), Username = "admin_zaky", PasswordHash = PasswordHasher.HashPassword("AdminPass123!"), BranchId = branches[1].Id },
+                new Employee { FirstName = "Esraa", LastName = "Mahmoud", Ssn = "29898765432109", Email = "esraa@tripzyrentals.com", Role = "Branch Manager", Salary = 12000m, HireDate = DateTime.Now.AddYears(-1), Username = "mgr_esraa", PasswordHash = PasswordHasher.HashPassword("ManagerPass123!"), BranchId = branches[0].Id },
+                new Employee { FirstName = "Omar", LastName = "Tariq", Ssn = "30011223344556", Email = "omar@tripzyrentals.com", Role = "Rental Agent", Salary = 7000m, HireDate = DateTime.Now.AddMonths(-6), Username = "agent_omar", PasswordHash = PasswordHasher.HashPassword("AgentPass123!"), BranchId = branches[0].Id },
+                new Employee { FirstName = "Shahd", LastName = "Ali", Ssn = "29955443322110", Email = "shahd@tripzyrentals.com", Role = "Rental Agent", Salary = 7000m, HireDate = DateTime.Now.AddMonths(-3), Username = "agent_shahd", PasswordHash = PasswordHasher.HashPassword("AgentPass123!"), BranchId = branches[2].Id }
             };
             context.Employees.AddRange(employees);
             context.SaveChanges();
 
-            // 4. Seed Vehicles (10 realistic cars across branches)
+            // 4. Seed Vehicles 
             var vehicles = new List<Vehicle>
             {
                 new Vehicle { Model = "Toyota Corolla", Year = 2024, Color = "Silver", PlateNum = "ABC-123", Status = "Available", PurchaseDate = DateTime.Now.AddMonths(-10), BranchId = branches[0].Id, CategoryId = categories[1].Id },
@@ -64,12 +64,12 @@ namespace CarRentalSystem.Data
             context.Vehicles.AddRange(vehicles);
             context.SaveChanges();
 
-            // 5. Seed Customers
+            // 5. Seed Customers (SECURE HASHING APPLIED)
             var customers = new List<Customer>
             {
-                new Customer { FirstName = "Karim", LastName = "Hassan", Email = "karim.h@gmail.com", PhoneNumber = "01099998888", Ssn = "29501011234567", LicenseNum = "LIC-1001", ExpirationDate = DateTime.Now.AddYears(3), Username = "karim_h", PasswordHash = "CustPass123!" },
-                new Customer { FirstName = "Nour", LastName = "Ibrahim", Email = "nour.ib@yahoo.com", PhoneNumber = "01122223333", Ssn = "29705057654321", LicenseNum = "LIC-1002", ExpirationDate = DateTime.Now.AddYears(1), Username = "nouribrahim", PasswordHash = "CustPass123!" },
-                new Customer { FirstName = "Youssef", LastName = "Kamal", Email = "ykamal@outlook.com", PhoneNumber = "01244445555", Ssn = "29012129876543", LicenseNum = "LIC-1003", ExpirationDate = DateTime.Now.AddYears(5), Username = "youssef_k", PasswordHash = "CustPass123!" }
+                new Customer { FirstName = "Karim", LastName = "Hassan", Email = "karim.h@gmail.com", PhoneNumber = "01099998888", Ssn = "29501011234567", LicenseNum = "LIC-1001", ExpirationDate = DateTime.Now.AddYears(3), Username = "karim_h", PasswordHash = PasswordHasher.HashPassword("CustPass123!") },
+                new Customer { FirstName = "Nour", LastName = "Ibrahim", Email = "nour.ib@yahoo.com", PhoneNumber = "01122223333", Ssn = "29705057654321", LicenseNum = "LIC-1002", ExpirationDate = DateTime.Now.AddYears(1), Username = "nouribrahim", PasswordHash = PasswordHasher.HashPassword("CustPass123!") },
+                new Customer { FirstName = "Youssef", LastName = "Kamal", Email = "ykamal@outlook.com", PhoneNumber = "01244445555", Ssn = "29012129876543", LicenseNum = "LIC-1003", ExpirationDate = DateTime.Now.AddYears(5), Username = "youssef_k", PasswordHash = PasswordHasher.HashPassword("CustPass123!") }
             };
             context.Customers.AddRange(customers);
             context.SaveChanges();
@@ -77,11 +77,8 @@ namespace CarRentalSystem.Data
             // 6. Seed Active & Completed Rentals
             var rentals = new List<Rental>
             {
-                // A completed rental
                 new Rental { Tier = "Standard", PlannedStart = DateTime.Now.AddDays(-10), PlannedReturn = DateTime.Now.AddDays(-7), ActualReturnDate = DateTime.Now.AddDays(-7), PaymentStatus = "Paid", BaseCost = 1350.00m, ExtraFees = 0.00m, CustomerId = customers[0].Id, VehicleId = vehicles[0].Id, BranchId = branches[0].Id },
-                // An active ongoing rental
                 new Rental { Tier = "Premium", PlannedStart = DateTime.Now.AddDays(-2), PlannedReturn = DateTime.Now.AddDays(3), ActualReturnDate = null, PaymentStatus = "Pending", BaseCost = 6000.00m, ExtraFees = 0.00m, CustomerId = customers[1].Id, VehicleId = vehicles[6].Id, BranchId = branches[1].Id },
-                // Another active rental
                 new Rental { Tier = "VIP", PlannedStart = DateTime.Now.AddDays(-1), PlannedReturn = DateTime.Now.AddDays(1), ActualReturnDate = null, PaymentStatus = "Paid", BaseCost = 5000.00m, ExtraFees = 0.00m, CustomerId = customers[2].Id, VehicleId = vehicles[8].Id, BranchId = branches[0].Id }
             };
             context.Rentals.AddRange(rentals);

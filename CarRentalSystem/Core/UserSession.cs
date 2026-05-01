@@ -1,6 +1,6 @@
 ﻿using CarRentalSystem.Models;
 
-namespace CarRentalSystem
+namespace CarRentalSystem.Core
 {
     public static class UserSession
     {
