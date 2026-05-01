@@ -63,9 +63,39 @@ namespace CarRentalSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Login_Line_Divider {
+        internal static System.Drawing.Bitmap Car_Icon {
             get {
-                object obj = ResourceManager.GetObject("Login_Line_Divider", resourceCulture);
+                object obj = ResourceManager.GetObject("Car_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Car_View_Car_Left {
+            get {
+                object obj = ResourceManager.GetObject("Car_View_Car_Left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Car_View_Car_Right {
+            get {
+                object obj = ResourceManager.GetObject("Car_View_Car_Right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Line_Divider {
+            get {
+                object obj = ResourceManager.GetObject("Line_Divider", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -76,6 +106,36 @@ namespace CarRentalSystem.Properties {
         internal static System.Drawing.Bitmap Login_Logo {
             get {
                 object obj = ResourceManager.GetObject("Login_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap orders_Icon {
+            get {
+                object obj = ResourceManager.GetObject("orders_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Profile_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Profile_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Profile_Icon_2 {
+            get {
+                object obj = ResourceManager.GetObject("Profile_Icon_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace car_rental_system
 {
-    public partial class employee_dash : Form
+    public partial class Employee_Dashboard : Form
     {
-        public employee_dash()
+        public Employee_Dashboard()
         {
             InitializeComponent();
         }

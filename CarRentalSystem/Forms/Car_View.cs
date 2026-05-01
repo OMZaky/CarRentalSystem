@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace CarRentalSystem
 {
-    public partial class car_view : Form
+    public partial class Car_View : Form
     {
-        public car_view()
+        public Car_View()
         {
             InitializeComponent();
         }
