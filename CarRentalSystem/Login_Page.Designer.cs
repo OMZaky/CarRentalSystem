@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login_Page));
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             label1 = new Label();
@@ -52,8 +53,8 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Login_Logo;
-            pictureBox1.Location = new Point(85, 147);
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(40, 128);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(550, 250);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -63,7 +64,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.Login_Line_Divider;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(596, -110);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(195, 966);
@@ -78,7 +79,7 @@
             label1.Font = new Font("Bahnschrift Light", 13.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(802, 92);
             label1.Name = "label1";
-            label1.Size = new Size(190, 45);
+            label1.Size = new Size(145, 34);
             label1.TabIndex = 3;
             label1.Text = "Welcome! ";
             label1.Click += label1_Click_2;
@@ -89,7 +90,7 @@
             label2.Font = new Font("Bahnschrift Light", 13.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.Location = new Point(804, 137);
             label2.Name = "label2";
-            label2.Size = new Size(390, 45);
+            label2.Size = new Size(297, 34);
             label2.TabIndex = 4;
             label2.Text = "Sign into your account";
             label2.Click += label2_Click;
@@ -177,7 +178,7 @@
             label5.ForeColor = Color.FromArgb(255, 142, 2);
             label5.Location = new Point(275, 411);
             label5.Name = "label5";
-            label5.Size = new Size(178, 71);
+            label5.Size = new Size(136, 54);
             label5.TabIndex = 8;
             label5.Text = "No Car?";
             label5.Click += label5_Click;
@@ -189,7 +190,7 @@
             label6.ForeColor = Color.FromArgb(255, 142, 2);
             label6.Location = new Point(137, 553);
             label6.Name = "label6";
-            label6.Size = new Size(453, 71);
+            label6.Size = new Size(348, 54);
             label6.TabIndex = 9;
             label6.Text = "Rent it, Ride it, Love it";
             label6.Click += label6_Click;
@@ -201,7 +202,7 @@
             label7.ForeColor = Color.FromArgb(255, 142, 2);
             label7.Location = new Point(236, 482);
             label7.Name = "label7";
-            label7.Size = new Size(252, 71);
+            label7.Size = new Size(193, 54);
             label7.TabIndex = 10;
             label7.Text = "No Problem";
             // 
@@ -213,7 +214,7 @@
             linkLabel2.LinkColor = Color.FromArgb(255, 142, 2);
             linkLabel2.Location = new Point(966, 603);
             linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(149, 33);
+            linkLabel2.Size = new Size(114, 24);
             linkLabel2.TabIndex = 12;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "Click Here";
@@ -225,13 +226,13 @@
             label8.ForeColor = SystemColors.ControlDarkDark;
             label8.Location = new Point(825, 603);
             label8.Name = "label8";
-            label8.Size = new Size(135, 33);
+            label8.Size = new Size(101, 24);
             label8.TabIndex = 13;
             label8.Text = "Register?";
             // 
             // Login_Page
             // 
-            AutoScaleDimensions = new SizeF(16F, 33F);
+            AutoScaleDimensions = new SizeF(12F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1574, 829);
