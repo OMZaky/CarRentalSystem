@@ -3,6 +3,7 @@ using System.Linq;
 using CarRentalSystem.Data;
 using CarRentalSystem.Models;
 using CarRentalSystem.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarRentalSystem.Services
 {
@@ -20,6 +21,7 @@ namespace CarRentalSystem.Services
                 {
                     // 1. Find the user by Username
                     var user = context.Employees
+                                      .Include(emp => emp.Branch)
                                       .FirstOrDefault(emp => emp.Username == username);
 
                     // 2. Verify the password hash
