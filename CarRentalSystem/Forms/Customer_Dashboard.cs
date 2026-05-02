@@ -37,7 +37,7 @@ namespace CarRentalSystem.Forms
         // My Account Button
         private void button4_Click(object sender, EventArgs e)
         {
-            var accountForm = new account_information();
+            var accountForm = new Account_Information();
             accountForm.Location = this.Location;
             accountForm.StartPosition = FormStartPosition.Manual;
             accountForm.Show();

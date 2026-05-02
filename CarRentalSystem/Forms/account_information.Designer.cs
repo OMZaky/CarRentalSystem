@@ -1,6 +1,6 @@
 ﻿namespace CarRentalSystem.Forms
 {
-    partial class account_information
+    partial class Account_Information
     {
         /// <summary>
         /// Required designer variable.
@@ -670,7 +670,7 @@
             lblPersonalSection.TabIndex = 0;
             lblPersonalSection.Text = "PERSONAL INFORMATION";
             // 
-            // account_information
+            // Account_Information
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -685,7 +685,7 @@
             Controls.Add(panel4);
             Controls.Add(btnEditPassword);
             Margin = new Padding(4, 4, 4, 4);
-            Name = "account_information";
+            Name = "Account_Information";
             Text = "My Account — Car Rental System";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
