@@ -57,10 +57,7 @@ namespace CarRentalSystem.Forms
 
         private void LoadVehicleDetails()
         {
-            if (!_vehicleId.HasValue)
-            {
-                return;
-            }
+            if (!_vehicleId.HasValue) return;
 
             try
             {
@@ -79,15 +76,21 @@ namespace CarRentalSystem.Forms
                         return;
                     }
 
+                    // TextBoxes
                     txtFirstName.Text = vehicle.Model;
-                    txtLastName.Text = vehicle.Year.ToString();
+                    txtSsn.Text = vehicle.Year.ToString();
                     txtEmail.Text = vehicle.PlateNum;
-                    txtPhone.Text = vehicle.Branch != null ? vehicle.Branch.City : "";
-                    txtSsn.Text = vehicle.Color;
-                    txtUsername.Text = vehicle.Status.ToString();
-                    lblLastNameTitle.Text = "Year";
-                    lblEmailTitle.Text = "Plate Number";
-                    lblPhoneTitle.Text = "Branch";
+                    textBox1.Text = vehicle.Color;
+
+                    // DatePicker (Added to match your Vehicle.PurchaseDate model)
+                    dtpPickup.Value = vehicle.PurchaseDate;
+
+                    // Dropdowns (ComboBoxes)
+                    // THE FIX: Use .VehicleType instead of .Name to match VehicleCategory.cs
+                    cmbCategory.Text = vehicle.Category != null ? vehicle.Category.VehicleType : "";
+
+                    comboBox1.Text = vehicle.Branch != null ? vehicle.Branch.City : "";
+                    comboBox2.Text = vehicle.Status.ToString();
                 }
             }
             catch (Exception ex)
@@ -96,28 +99,31 @@ namespace CarRentalSystem.Forms
                 Close();
             }
         }
-
         private void SetFieldsReadOnly(bool readOnly)
         {
             txtFirstName.ReadOnly = readOnly;
-            txtLastName.ReadOnly = readOnly;
-            txtEmail.ReadOnly = readOnly;
-            txtPhone.ReadOnly = readOnly;
             txtSsn.ReadOnly = readOnly;
-            txtUsername.ReadOnly = readOnly;
+            txtEmail.ReadOnly = readOnly;
+            textBox1.ReadOnly = readOnly;
+
+            cmbCategory.Enabled = !readOnly;
+            comboBox1.Enabled = !readOnly;
+            comboBox2.Enabled = !readOnly;
+            dtpPickup.Enabled = !readOnly;
         }
 
         private void ClearFields()
         {
             txtFirstName.Clear();
-            txtLastName.Clear();
-            txtEmail.Clear();
-            txtPhone.Clear();
             txtSsn.Clear();
-            txtUsername.Clear();
-            lblLastNameTitle.Text = "Year";
-            lblEmailTitle.Text = "Plate Number";
-            lblPhoneTitle.Text = "Branch";
+            txtEmail.Clear();
+            textBox1.Clear();
+
+            cmbCategory.SelectedIndex = -1;
+            comboBox1.SelectedIndex = -1;
+            comboBox2.SelectedIndex = -1;
+
+            dtpPickup.Value = DateTime.Now;
         }
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
