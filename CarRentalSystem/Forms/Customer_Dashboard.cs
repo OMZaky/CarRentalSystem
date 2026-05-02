@@ -68,9 +68,12 @@ namespace car_rental_system.Forms
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-            Customer_Car_Search carsearch = new Customer_Car_Search();
-            carsearch.ShowDialog();
+        { 
+            var frm = new Customer_Car_Search();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.Show();
+            this.Hide();
 
         }
 
