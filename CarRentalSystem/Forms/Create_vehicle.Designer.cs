@@ -37,18 +37,22 @@
             lblFirstNameTitle = new Label();
             txtFirstName = new TextBox();
             lblLastNameTitle = new Label();
-            txtLastName = new TextBox();
             lblEmailTitle = new Label();
             txtEmail = new TextBox();
             lblPhoneTitle = new Label();
-            txtPhone = new TextBox();
             lblSsnTitle = new Label();
             txtSsn = new TextBox();
             lblUsernameTitle = new Label();
-            txtUsername = new TextBox();
             btnEditDetails = new Button();
             pictureBox1 = new PictureBox();
             label4 = new Label();
+            cmbCategory = new ComboBox();
+            comboBox1 = new ComboBox();
+            comboBox2 = new ComboBox();
+            dtpPickup = new DateTimePicker();
+            label5 = new Label();
+            label3 = new Label();
+            textBox1 = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel5.SuspendLayout();
@@ -102,23 +106,27 @@
             // 
             panel5.BackColor = Color.White;
             panel5.BorderStyle = BorderStyle.FixedSingle;
+            panel5.Controls.Add(label3);
+            panel5.Controls.Add(textBox1);
+            panel5.Controls.Add(dtpPickup);
+            panel5.Controls.Add(txtSsn);
+            panel5.Controls.Add(lblSsnTitle);
+            panel5.Controls.Add(label5);
+            panel5.Controls.Add(comboBox2);
+            panel5.Controls.Add(comboBox1);
+            panel5.Controls.Add(cmbCategory);
             panel5.Controls.Add(lblPersonalSection);
             panel5.Controls.Add(lblFirstNameTitle);
             panel5.Controls.Add(txtFirstName);
             panel5.Controls.Add(lblLastNameTitle);
-            panel5.Controls.Add(txtLastName);
             panel5.Controls.Add(lblEmailTitle);
             panel5.Controls.Add(txtEmail);
             panel5.Controls.Add(lblPhoneTitle);
-            panel5.Controls.Add(txtPhone);
-            panel5.Controls.Add(lblSsnTitle);
-            panel5.Controls.Add(txtSsn);
             panel5.Controls.Add(lblUsernameTitle);
-            panel5.Controls.Add(txtUsername);
             panel5.Controls.Add(btnEditDetails);
             panel5.Location = new Point(1, 203);
             panel5.Name = "panel5";
-            panel5.Size = new Size(992, 305);
+            panel5.Size = new Size(934, 429);
             panel5.TabIndex = 31;
             // 
             // lblPersonalSection
@@ -128,9 +136,9 @@
             lblPersonalSection.ForeColor = Color.FromArgb(187, 187, 187);
             lblPersonalSection.Location = new Point(14, 12);
             lblPersonalSection.Name = "lblPersonalSection";
-            lblPersonalSection.Size = new Size(208, 21);
+            lblPersonalSection.Size = new Size(157, 21);
             lblPersonalSection.TabIndex = 0;
-            lblPersonalSection.Text = "PERSONAL INFORMATION";
+            lblPersonalSection.Text = "CAR INFORMATION";
             // 
             // lblFirstNameTitle
             // 
@@ -164,33 +172,20 @@
             lblLastNameTitle.ForeColor = Color.FromArgb(187, 187, 187);
             lblLastNameTitle.Location = new Point(485, 49);
             lblLastNameTitle.Name = "lblLastNameTitle";
-            lblLastNameTitle.Size = new Size(99, 21);
+            lblLastNameTitle.Size = new Size(80, 21);
             lblLastNameTitle.TabIndex = 3;
-            lblLastNameTitle.Text = "LAST NAME";
-            // 
-            // txtLastName
-            // 
-            txtLastName.BackColor = Color.FromArgb(250, 250, 250);
-            txtLastName.BorderStyle = BorderStyle.FixedSingle;
-            txtLastName.Font = new Font("Segoe UI", 10F);
-            txtLastName.ForeColor = Color.FromArgb(34, 34, 34);
-            txtLastName.Location = new Point(485, 81);
-            txtLastName.Name = "txtLastName";
-            txtLastName.ReadOnly = true;
-            txtLastName.Size = new Size(401, 34);
-            txtLastName.TabIndex = 4;
-            txtLastName.Text = "Ayman";
+            lblLastNameTitle.Text = "Category";
             // 
             // lblEmailTitle
             // 
             lblEmailTitle.AutoSize = true;
             lblEmailTitle.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             lblEmailTitle.ForeColor = Color.FromArgb(187, 187, 187);
-            lblEmailTitle.Location = new Point(24, 135);
+            lblEmailTitle.Location = new Point(24, 217);
             lblEmailTitle.Name = "lblEmailTitle";
-            lblEmailTitle.Size = new Size(58, 21);
+            lblEmailTitle.Size = new Size(76, 21);
             lblEmailTitle.TabIndex = 5;
-            lblEmailTitle.Text = "EMAIL";
+            lblEmailTitle.Text = "PlateNo.";
             // 
             // txtEmail
             // 
@@ -198,12 +193,12 @@
             txtEmail.BorderStyle = BorderStyle.FixedSingle;
             txtEmail.Font = new Font("Segoe UI", 10F);
             txtEmail.ForeColor = Color.FromArgb(34, 34, 34);
-            txtEmail.Location = new Point(24, 171);
+            txtEmail.Location = new Point(24, 253);
             txtEmail.Name = "txtEmail";
             txtEmail.ReadOnly = true;
             txtEmail.Size = new Size(366, 34);
             txtEmail.TabIndex = 6;
-            txtEmail.Text = "omar.ayman@gmail.com";
+            txtEmail.Text = "XXX/XXX";
             // 
             // lblPhoneTitle
             // 
@@ -212,33 +207,20 @@
             lblPhoneTitle.ForeColor = Color.FromArgb(187, 187, 187);
             lblPhoneTitle.Location = new Point(485, 135);
             lblPhoneTitle.Name = "lblPhoneTitle";
-            lblPhoneTitle.Size = new Size(66, 21);
+            lblPhoneTitle.Size = new Size(63, 21);
             lblPhoneTitle.TabIndex = 7;
-            lblPhoneTitle.Text = "PHONE";
-            // 
-            // txtPhone
-            // 
-            txtPhone.BackColor = Color.FromArgb(250, 250, 250);
-            txtPhone.BorderStyle = BorderStyle.FixedSingle;
-            txtPhone.Font = new Font("Segoe UI", 10F);
-            txtPhone.ForeColor = Color.FromArgb(34, 34, 34);
-            txtPhone.Location = new Point(485, 171);
-            txtPhone.Name = "txtPhone";
-            txtPhone.ReadOnly = true;
-            txtPhone.Size = new Size(401, 34);
-            txtPhone.TabIndex = 8;
-            txtPhone.Text = "+20 101 234 5678";
+            lblPhoneTitle.Text = "Branch";
             // 
             // lblSsnTitle
             // 
             lblSsnTitle.AutoSize = true;
             lblSsnTitle.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             lblSsnTitle.ForeColor = Color.FromArgb(187, 187, 187);
-            lblSsnTitle.Location = new Point(24, 223);
+            lblSsnTitle.Location = new Point(24, 141);
             lblSsnTitle.Name = "lblSsnTitle";
-            lblSsnTitle.Size = new Size(51, 21);
+            lblSsnTitle.Size = new Size(43, 21);
             lblSsnTitle.TabIndex = 9;
-            lblSsnTitle.Text = "Color";
+            lblSsnTitle.Text = "Year";
             // 
             // txtSsn
             // 
@@ -246,7 +228,7 @@
             txtSsn.BorderStyle = BorderStyle.FixedSingle;
             txtSsn.Font = new Font("Courier New", 10F);
             txtSsn.ForeColor = Color.FromArgb(34, 34, 34);
-            txtSsn.Location = new Point(24, 258);
+            txtSsn.Location = new Point(24, 171);
             txtSsn.Name = "txtSsn";
             txtSsn.ReadOnly = true;
             txtSsn.Size = new Size(366, 30);
@@ -264,19 +246,6 @@
             lblUsernameTitle.TabIndex = 11;
             lblUsernameTitle.Text = "Status";
             // 
-            // txtUsername
-            // 
-            txtUsername.BackColor = Color.FromArgb(250, 250, 250);
-            txtUsername.BorderStyle = BorderStyle.FixedSingle;
-            txtUsername.Font = new Font("Courier New", 10F);
-            txtUsername.ForeColor = Color.FromArgb(34, 34, 34);
-            txtUsername.Location = new Point(485, 258);
-            txtUsername.Name = "txtUsername";
-            txtUsername.ReadOnly = true;
-            txtUsername.Size = new Size(260, 30);
-            txtUsername.TabIndex = 12;
-            txtUsername.Text = "omar.ayman";
-            // 
             // btnEditDetails
             // 
             btnEditDetails.BackColor = Color.FromArgb(34, 34, 34);
@@ -284,17 +253,17 @@
             btnEditDetails.FlatStyle = FlatStyle.Flat;
             btnEditDetails.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnEditDetails.ForeColor = Color.White;
-            btnEditDetails.Location = new Point(811, 246);
+            btnEditDetails.Location = new Point(735, 330);
             btnEditDetails.Name = "btnEditDetails";
             btnEditDetails.Size = new Size(151, 46);
             btnEditDetails.TabIndex = 13;
-            btnEditDetails.Text = "Edit Details";
+            btnEditDetails.Text = "Variable";
             btnEditDetails.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.icons8_home_50;
-            pictureBox1.Location = new Point(943, 21);
+            pictureBox1.Location = new Point(875, 15);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(49, 63);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -311,11 +280,92 @@
             label4.TabIndex = 8;
             label4.Text = "Variable lbl";
             // 
+            // cmbCategory
+            // 
+            cmbCategory.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbCategory.Font = new Font("Segoe UI", 10F);
+            cmbCategory.FormattingEnabled = true;
+            cmbCategory.Items.AddRange(new object[] { "All Categories", "Sedan", "SUV", "Luxury" });
+            cmbCategory.Location = new Point(485, 79);
+            cmbCategory.Margin = new Padding(4);
+            cmbCategory.Name = "cmbCategory";
+            cmbCategory.Size = new Size(401, 36);
+            cmbCategory.TabIndex = 32;
+            cmbCategory.SelectedIndexChanged += cmbCategory_SelectedIndexChanged;
+            // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.Font = new Font("Segoe UI", 10F);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "All Categories", "Sedan", "SUV", "Luxury" });
+            comboBox1.Location = new Point(485, 171);
+            comboBox1.Margin = new Padding(4);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(401, 36);
+            comboBox1.TabIndex = 33;
+            // 
+            // comboBox2
+            // 
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.Font = new Font("Segoe UI", 10F);
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "All Categories", "Sedan", "SUV", "Luxury" });
+            comboBox2.Location = new Point(485, 253);
+            comboBox2.Margin = new Padding(4);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(179, 36);
+            comboBox2.TabIndex = 34;
+            // 
+            // dtpPickup
+            // 
+            dtpPickup.Location = new Point(24, 345);
+            dtpPickup.Margin = new Padding(4);
+            dtpPickup.Name = "dtpPickup";
+            dtpPickup.Size = new Size(209, 31);
+            dtpPickup.TabIndex = 36;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
+            label5.ForeColor = Color.DarkGray;
+            label5.Location = new Point(24, 308);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(123, 23);
+            label5.TabIndex = 35;
+            label5.Text = "Purchase Date";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            label3.ForeColor = Color.FromArgb(187, 187, 187);
+            label3.Location = new Point(298, 312);
+            label3.Name = "label3";
+            label3.Size = new Size(51, 21);
+            label3.TabIndex = 37;
+            label3.Text = "Color";
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.FromArgb(250, 250, 250);
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Font = new Font("Courier New", 10F);
+            textBox1.ForeColor = Color.FromArgb(34, 34, 34);
+            textBox1.Location = new Point(298, 342);
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            textBox1.Size = new Size(366, 30);
+            textBox1.TabIndex = 38;
+            textBox1.Text = "29901011234567";
+            // 
             // Create_vehicle
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(994, 499);
+            ClientSize = new Size(933, 631);
             Controls.Add(label4);
             Controls.Add(panel5);
             Controls.Add(panel1);
@@ -341,17 +391,21 @@
         private Label lblFirstNameTitle;
         private TextBox txtFirstName;
         private Label lblLastNameTitle;
-        private TextBox txtLastName;
         private Label lblEmailTitle;
         private TextBox txtEmail;
         private Label lblPhoneTitle;
-        private TextBox txtPhone;
         private Label lblSsnTitle;
         private TextBox txtSsn;
         private Label lblUsernameTitle;
-        private TextBox txtUsername;
         private Button btnEditDetails;
         private PictureBox pictureBox1;
         private Label label4;
+        private ComboBox comboBox1;
+        private ComboBox cmbCategory;
+        private ComboBox comboBox2;
+        private DateTimePicker dtpPickup;
+        private Label label5;
+        private Label label3;
+        private TextBox textBox1;
     }
 }

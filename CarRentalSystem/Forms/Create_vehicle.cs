@@ -24,5 +24,10 @@ namespace CarRentalSystem.Forms
         {
 
         }
+
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
