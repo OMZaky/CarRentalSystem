@@ -67,12 +67,12 @@ namespace CarRentalSystem
         // Car Search Button
         private void button1_Click(object sender, EventArgs e)
         {
-            //we need here to do make a check, if manager or admin, make him go to sepearte form where he can CRUD cars
-
-
-            // var carSearchForm = new CarSearchForm();
-            // carSearchForm.ShowDialog();
-            MessageBox.Show("Opening Car Search module...", "Navigation");
+            this.Hide();
+            using (var carSearchForm = new employeeCarSearch())
+            {
+                carSearchForm.ShowDialog();
+            }
+            this.Show();
         }
 
         // Orders/Rentals Button
