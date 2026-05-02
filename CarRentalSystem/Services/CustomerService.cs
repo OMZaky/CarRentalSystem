@@ -52,5 +52,18 @@ namespace CarRentalSystem.Services
                 return true;
             }
         }
+
+        public bool UpdatePassword(int customerId, string newPasswordHash)
+        {
+            using (var context = new AppDbContext())
+            {
+                var customer = context.Customers.Find(customerId);
+                if (customer == null) return false;
+
+                customer.PasswordHash = newPasswordHash;
+                context.SaveChanges();
+                return true;
+            }
+        }
     }
 }

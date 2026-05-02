@@ -81,7 +81,7 @@ namespace CarRentalSystem
         // Employee Management Button
         private void button3_Click(object sender, EventArgs e)
         {
-            if (UserSession.CurrentUser?.Role == UserRole.Admin)
+            if (UserSession.CurrentUser?.Role == UserRole.SystemAdmin)
             {
                 // var empMgmtForm = new EmployeeManagementForm();
                 // empMgmtForm.ShowDialog();

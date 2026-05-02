@@ -148,8 +148,8 @@ namespace CarRentalSystem.Forms
 
         private void btnEditPassword_Click(object sender, EventArgs e)
         {
-            var changePasswordForm = new change_password();
-            changePasswordForm.ShowDialog(); // Use Dialog so they can't click away!
+            //var changePasswordForm = new Change_Password();
+            //changePasswordForm.ShowDialog(); // Use Dialog so they can't click away!
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
