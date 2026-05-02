@@ -1,82 +1,97 @@
-﻿namespace CarRentalSystem.Forms;
+﻿using System;
+using System.Windows.Forms;
+using CarRentalSystem.Core;
+using CarRentalSystem.Services;
 
-using System.Collections.Generic;
-
-public partial class Customer_Car_Search : Form
+namespace CarRentalSystem.Forms
 {
-    public Customer_Car_Search()
+    public partial class Customer_Car_Search : Form
     {
-        InitializeComponent();
-    }
+        private VehicleService _vehicleService;
 
-    private void lblFilterTitle_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void label1_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void textBox1_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void button2_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void pnlResults_Paint(object sender, PaintEventArgs e)
-    {
-
-    }
-
-    private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
-    {
-
-    }
-
-    private void flowCars_Paint(object sender, PaintEventArgs e)
-    {
-
-    }
-
-    private void btnSearch_Click(object sender, EventArgs e)
-    {
-        flowCars.Controls.Clear();
-
-        int days = (dtpReturn.Value.Date - dtpPickup.Value.Date).Days;
-
-        if (days <= 0)
+        public Customer_Car_Search()
         {
-            MessageBox.Show("Return date must be after pickup date.");
-            return;
+            InitializeComponent();
+            _vehicleService = new VehicleService();
+            SetupDashboard();
         }
 
-        var cars = new List<CarCardControl>()
-{
-    new CarCardControl("Toyota Camry 2023", "Sedan", "5 seats", "Automatic", "Cairo - Nasr City", 650, days, "images/toyota.jpg"),
-    new CarCardControl("Hyundai Tucson 2022", "SUV", "5 seats", "Automatic", "Cairo - Maadi", 900, days, "images/hyundai tucson.jpg"),
-    new CarCardControl("Mercedes C-Class 2023", "Luxury", "5 seats", "Automatic", "Giza", 1800, days, "images/mercedes.jpg"),
-    new CarCardControl("Kia Sportage 2024", "SUV", "5 seats", "Manual", "Cairo - Nasr City", 850, days, "images/kia.jpg")
-};
-        foreach (var car in cars)
+        private void SetupDashboard()
         {
-            car.Margin = new Padding(10);
-            flowCars.Controls.Add(car);
+            if (UserSession.CurrentUser != null)
+            {
+                string firstName = UserSession.CurrentUser.FullName.Split(' ')[0];
+                lblWelcome.Text = $"Welcome, {firstName}!";
+            }
+
+            dtpPickup.MinDate = DateTime.Today;
+            dtpReturn.MinDate = DateTime.Today.AddDays(1);
+
+            lblResultsCount.Text = "Enter your dates and hit search.";
+            lblDateSummary.Text = "";
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            int days = (dtpReturn.Value.Date - dtpPickup.Value.Date).Days;
+
+            if (days <= 0)
+            {
+                MessageBox.Show("Return date must be at least 1 day after pickup date.", "Invalid Dates", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Update Dynamic Labels
+            lblDateSummary.Text = $"{dtpPickup.Value:MMM dd} — {dtpReturn.Value:MMM dd} · {days} days";
+
+            // Call the Service Layer
+            var availableCars = _vehicleService.SearchAvailableCars();
+
+            // Update Count Label
+            lblResultsCount.Text = $"{availableCars.Count} cars available for your dates";
+
+            // Render Results safely
+            PopulateResults(availableCars, days);
+        }
+
+        private void PopulateResults(System.Collections.Generic.List<DTOs.CarSearchDTO> cars, int totalDays)
+        {
+            // CRITICAL FOR PERFORMANCE: Stops the UI from freezing/flickering while loading 50 cards
+            flowCars.SuspendLayout();
+            flowCars.Controls.Clear();
+
+            foreach (var carDto in cars)
+            {
+                var card = new CarCardControl(carDto, totalDays);
+                card.Margin = new Padding(10);
+
+                // UNCOMMENT THIS LINE: "Hey Card, when your Rent button is clicked, trigger my method!"
+                card.RentButtonClicked += Card_RentButtonClicked;
+
+                flowCars.Controls.Add(card);
+            }
+
+            flowCars.ResumeLayout();
+        }
+
+        private void Card_RentButtonClicked(object sender, int clickedVehicleId)
+        {
+            MessageBox.Show($"Preparing checkout for Vehicle ID: {clickedVehicleId}!", "Rent Now", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // LATER, Someone WILL DO THIS:
+            // int days = (dtpReturn.Value.Date - dtpPickup.Value.Date).Days;
+            // var checkoutForm = new Customer_Checkout(clickedVehicleId, days, dtpPickup.Value, dtpReturn.Value);
+            // checkoutForm.ShowDialog();
+        }
+
+        private void lblFilterTitle_Click(object sender, EventArgs e) { }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void label1_Click(object sender, EventArgs e) { }
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
+        private void button2_Click(object sender, EventArgs e) { } // Reset Button
+        private void pnlResults_Paint(object sender, PaintEventArgs e) { }
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e) { }
+        private void flowCars_Paint(object sender, PaintEventArgs e) { }
     }
 }

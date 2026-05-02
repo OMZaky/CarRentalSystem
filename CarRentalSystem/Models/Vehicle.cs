@@ -28,6 +28,9 @@ namespace CarRentalSystem.Models
         [MaxLength(100)]
         public string Model { get; set; }
 
+        [MaxLength(255)]
+        public string ImagePath { get; set; }
+
         [Required]
         [MaxLength(20)]
         public string PlateNum { get; set; }
