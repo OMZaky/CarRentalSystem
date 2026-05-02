@@ -50,6 +50,8 @@
             label15 = new Label();
             label16 = new Label();
             label17 = new Label();
+            label18 = new Label();
+            label19 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -179,7 +181,6 @@
             label4.TabIndex = 24;
             label4.Text = "Model_Name";
             label4.TextAlign = ContentAlignment.TopCenter;
-            
             // 
             // label5
             // 
@@ -207,7 +208,6 @@
             label7.TabIndex = 26;
             label7.Text = "Cate_name";
             label7.TextAlign = ContentAlignment.TopCenter;
-            
             // 
             // label8
             // 
@@ -340,11 +340,39 @@
             label17.Text = "99999999";
             label17.TextAlign = ContentAlignment.TopCenter;
             // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.BackColor = Color.Transparent;
+            label18.Enabled = false;
+            label18.Font = new Font("Arial Rounded MT Bold", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label18.Location = new Point(468, 375);
+            label18.Name = "label18";
+            label18.Size = new Size(186, 32);
+            label18.TabIndex = 37;
+            label18.Text = "Amount_due";
+            label18.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.BackColor = Color.Transparent;
+            label19.Enabled = false;
+            label19.Font = new Font("Arial Rounded MT Bold", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label19.Location = new Point(700, 375);
+            label19.Name = "label19";
+            label19.Size = new Size(150, 32);
+            label19.TabIndex = 38;
+            label19.Text = "99999999";
+            label19.TextAlign = ContentAlignment.TopCenter;
+            // 
             // Car_View
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 544);
+            Controls.Add(label19);
+            Controls.Add(label18);
             Controls.Add(label17);
             Controls.Add(label16);
             Controls.Add(label15);
@@ -397,5 +425,7 @@
         private Label label15;
         private Label label16;
         private Label label17;
+        private Label label18;
+        private Label label19;
     }
 }

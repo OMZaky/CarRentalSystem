@@ -31,14 +31,15 @@ namespace CarRentalSystem.Forms
 
             decimal depositAmount = _totalPrice * 0.25m;
 
-            label6.Text = _vehicleId.ToString();
+            label6.Text = $"Car_ID:{_vehicleId}";
             label4.Text = model;
             label7.Text = category;
 
             label14.Text = _dateFrom.ToString("MMM dd, yyyy");
             label16.Text = _dateTo.ToString("MMM dd, yyyy");
 
-            label13.Text = $"Total: {_totalPrice:N0} EGP\nDue Now: {depositAmount:N0} EGP";
+            label17.Text = $"{_totalPrice:N0} EGP";
+            label19.Text = $"{depositAmount:F2} EGP";
         }
 
         // --- PROCEED TO PAYMENT BUTTON ---
