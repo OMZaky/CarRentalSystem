@@ -1,12 +1,19 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using CarRentalSystem.Data;
 using CarRentalSystem.DTOs;
+using CarRentalSystem.Models; // Required to recognize the 'Customer' table
 using Microsoft.EntityFrameworkCore;
+using CarRentalSystem.Core; // Added to access PasswordHasher
 
 namespace CarRentalSystem.Services
 {
     public class CustomerService
     {
+        // ==========================================
+        // PROFILE & ACCOUNT MANAGEMENT
+        // ==========================================
+
         public CustomerProfileDTO GetProfile(int customerId)
         {
             using (var context = new AppDbContext())
@@ -65,6 +72,59 @@ namespace CarRentalSystem.Services
                 customer.PasswordHash = newPasswordHash;
                 context.SaveChanges();
                 return true;
+            }
+        }
+
+        // ==========================================
+        // REGISTRATION METHODS
+        // ==========================================
+
+        public bool IsUsernameTaken(string username)
+        {
+            using (var context = new AppDbContext())
+            {
+                return context.Customers.Any(c => c.Username.ToLower() == username.ToLower());
+            }
+        }
+
+        public bool IsEmailTaken(string email)
+        {
+            using (var context = new AppDbContext())
+            {
+                return context.Customers.Any(c => c.Email.ToLower() == email.ToLower());
+            }
+        }
+
+        public bool RegisterCustomer(RegistrationDTO baseData, string phone, string ssn, string licenseNum, DateTime expiryDate)
+        {
+            try
+            {
+                using (var context = new AppDbContext())
+                {
+                    var newCustomer = new Customer
+                    {
+                        FirstName = baseData.FirstName,
+                        LastName = baseData.LastName,
+                        Username = baseData.Username,
+                        Email = baseData.Email,
+
+                        PasswordHash = PasswordHasher.HashPassword(baseData.Password),
+
+                        PhoneNumber = phone,
+                        Ssn = ssn,
+                        LicenseNum = licenseNum,
+                        ExpirationDate = expiryDate
+                    };
+
+                    context.Customers.Add(newCustomer);
+                    context.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

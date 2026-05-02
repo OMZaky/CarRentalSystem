@@ -365,3 +365,10 @@ FodyWeavers.xsd
 
 # Zaky's Custom Project Secrets
 appsettings.json
+
+App.config
+
+
+# OS files
+.DS_Store
+thumbs.db
