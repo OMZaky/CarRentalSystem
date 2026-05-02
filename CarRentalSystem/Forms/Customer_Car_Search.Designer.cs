@@ -29,7 +29,6 @@ namespace CarRentalSystem.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Customer_Car_Search));
             pnFilters = new Panel();
             btnReset = new Button();
             btnSearch = new Button();
@@ -87,8 +86,9 @@ namespace CarRentalSystem.Forms
             pnFilters.Controls.Add(pnlFilterRightBorder);
             pnFilters.Dock = DockStyle.Left;
             pnFilters.Location = new Point(0, 0);
+            pnFilters.Margin = new Padding(5, 5, 5, 5);
             pnFilters.Name = "pnFilters";
-            pnFilters.Size = new Size(210, 873);
+            pnFilters.Size = new Size(341, 1397);
             pnFilters.TabIndex = 0;
             // 
             // btnReset
@@ -97,9 +97,10 @@ namespace CarRentalSystem.Forms
             btnReset.FlatStyle = FlatStyle.Flat;
             btnReset.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnReset.ForeColor = Color.Gray;
-            btnReset.Location = new Point(19, 784);
+            btnReset.Location = new Point(31, 1254);
+            btnReset.Margin = new Padding(5, 5, 5, 5);
             btnReset.Name = "btnReset";
-            btnReset.Size = new Size(170, 36);
+            btnReset.Size = new Size(276, 58);
             btnReset.TabIndex = 18;
             btnReset.Text = "Reset";
             btnReset.UseVisualStyleBackColor = false;
@@ -111,9 +112,10 @@ namespace CarRentalSystem.Forms
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(17, 720);
+            btnSearch.Location = new Point(28, 1152);
+            btnSearch.Margin = new Padding(5, 5, 5, 5);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(170, 42);
+            btnSearch.Size = new Size(276, 67);
             btnSearch.TabIndex = 17;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = false;
@@ -121,9 +123,10 @@ namespace CarRentalSystem.Forms
             // 
             // dtpReturn
             // 
-            dtpReturn.Location = new Point(19, 645);
+            dtpReturn.Location = new Point(31, 1032);
+            dtpReturn.Margin = new Padding(5, 5, 5, 5);
             dtpReturn.Name = "dtpReturn";
-            dtpReturn.Size = new Size(150, 27);
+            dtpReturn.Size = new Size(241, 39);
             dtpReturn.TabIndex = 16;
             // 
             // label6
@@ -131,17 +134,19 @@ namespace CarRentalSystem.Forms
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
             label6.ForeColor = Color.DarkGray;
-            label6.Location = new Point(19, 622);
+            label6.Location = new Point(31, 995);
+            label6.Margin = new Padding(5, 0, 5, 0);
             label6.Name = "label6";
-            label6.Size = new Size(111, 20);
+            label6.Size = new Size(166, 31);
             label6.TabIndex = 15;
             label6.Text = "RETURN DATE";
             // 
             // dtpPickup
             // 
-            dtpPickup.Location = new Point(18, 542);
+            dtpPickup.Location = new Point(29, 867);
+            dtpPickup.Margin = new Padding(5, 5, 5, 5);
             dtpPickup.Name = "dtpPickup";
-            dtpPickup.Size = new Size(150, 27);
+            dtpPickup.Size = new Size(241, 39);
             dtpPickup.TabIndex = 14;
             // 
             // label5
@@ -149,9 +154,10 @@ namespace CarRentalSystem.Forms
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
             label5.ForeColor = Color.DarkGray;
-            label5.Location = new Point(18, 519);
+            label5.Location = new Point(29, 830);
+            label5.Margin = new Padding(5, 0, 5, 0);
             label5.Name = "label5";
-            label5.Size = new Size(110, 20);
+            label5.Size = new Size(166, 31);
             label5.TabIndex = 13;
             label5.Text = "PICK-UP DATE";
             // 
@@ -160,24 +166,27 @@ namespace CarRentalSystem.Forms
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
             label4.ForeColor = Color.DarkGray;
-            label4.Location = new Point(80, 446);
+            label4.Location = new Point(130, 714);
+            label4.Margin = new Padding(5, 0, 5, 0);
             label4.Name = "label4";
-            label4.Size = new Size(24, 20);
+            label4.Size = new Size(37, 31);
             label4.TabIndex = 12;
             label4.Text = "—";
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(118, 442);
+            textBox3.Location = new Point(192, 707);
+            textBox3.Margin = new Padding(5, 5, 5, 5);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(51, 27);
+            textBox3.Size = new Size(80, 39);
             textBox3.TabIndex = 11;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(18, 442);
+            textBox1.Location = new Point(29, 707);
+            textBox1.Margin = new Padding(5, 5, 5, 5);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(51, 27);
+            textBox1.Size = new Size(80, 39);
             textBox1.TabIndex = 9;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
@@ -186,9 +195,10 @@ namespace CarRentalSystem.Forms
             lblPrice.AutoSize = true;
             lblPrice.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
             lblPrice.ForeColor = Color.DarkGray;
-            lblPrice.Location = new Point(18, 391);
+            lblPrice.Location = new Point(29, 626);
+            lblPrice.Margin = new Padding(5, 0, 5, 0);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(139, 20);
+            lblPrice.Size = new Size(207, 31);
             lblPrice.TabIndex = 8;
             lblPrice.Text = "PRICE / DAY (EGP)";
             // 
@@ -198,9 +208,10 @@ namespace CarRentalSystem.Forms
             comboBox2.Font = new Font("Segoe UI", 10F);
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "All Categories", "Sedan", "SUV", "Luxury" });
-            comboBox2.Location = new Point(18, 291);
+            comboBox2.Location = new Point(29, 466);
+            comboBox2.Margin = new Padding(5, 5, 5, 5);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(151, 31);
+            comboBox2.Size = new Size(243, 45);
             comboBox2.TabIndex = 7;
             // 
             // label3
@@ -208,9 +219,10 @@ namespace CarRentalSystem.Forms
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
             label3.ForeColor = Color.DarkGray;
-            label3.Location = new Point(17, 268);
+            label3.Location = new Point(28, 429);
+            label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
-            label3.Size = new Size(72, 20);
+            label3.Size = new Size(110, 31);
             label3.TabIndex = 6;
             label3.Text = "BRANCH";
             // 
@@ -220,9 +232,10 @@ namespace CarRentalSystem.Forms
             comboBox1.Font = new Font("Segoe UI", 10F);
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "All Categories", "Sedan", "SUV", "Luxury" });
-            comboBox1.Location = new Point(18, 180);
+            comboBox1.Location = new Point(29, 288);
+            comboBox1.Margin = new Padding(5, 5, 5, 5);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 31);
+            comboBox1.Size = new Size(243, 45);
             comboBox1.TabIndex = 5;
             // 
             // label2
@@ -230,9 +243,10 @@ namespace CarRentalSystem.Forms
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
             label2.ForeColor = Color.DarkGray;
-            label2.Location = new Point(18, 157);
+            label2.Location = new Point(29, 251);
+            label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new Size(122, 20);
+            label2.Size = new Size(186, 31);
             label2.TabIndex = 4;
             label2.Text = "TRANSMISSION";
             // 
@@ -242,9 +256,10 @@ namespace CarRentalSystem.Forms
             cmbCategory.Font = new Font("Segoe UI", 10F);
             cmbCategory.FormattingEnabled = true;
             cmbCategory.Items.AddRange(new object[] { "All Categories", "Sedan", "SUV", "Luxury" });
-            cmbCategory.Location = new Point(18, 93);
+            cmbCategory.Location = new Point(29, 149);
+            cmbCategory.Margin = new Padding(5, 5, 5, 5);
             cmbCategory.Name = "cmbCategory";
-            cmbCategory.Size = new Size(151, 31);
+            cmbCategory.Size = new Size(243, 45);
             cmbCategory.TabIndex = 3;
             cmbCategory.SelectedIndexChanged += cmbCategory_SelectedIndexChanged;
             // 
@@ -253,9 +268,10 @@ namespace CarRentalSystem.Forms
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
             label1.ForeColor = Color.DarkGray;
-            label1.Location = new Point(18, 70);
+            label1.Location = new Point(29, 112);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(86, 20);
+            label1.Size = new Size(129, 31);
             label1.TabIndex = 2;
             label1.Text = "CATEGORY";
             label1.Click += label1_Click;
@@ -265,9 +281,10 @@ namespace CarRentalSystem.Forms
             lblFilterTitle.AutoSize = true;
             lblFilterTitle.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblFilterTitle.ForeColor = Color.FromArgb(30, 30, 30);
-            lblFilterTitle.Location = new Point(18, 25);
+            lblFilterTitle.Location = new Point(29, 40);
+            lblFilterTitle.Margin = new Padding(5, 0, 5, 0);
             lblFilterTitle.Name = "lblFilterTitle";
-            lblFilterTitle.Size = new Size(119, 25);
+            lblFilterTitle.Size = new Size(186, 40);
             lblFilterTitle.TabIndex = 1;
             lblFilterTitle.Text = "FILTER CARS";
             lblFilterTitle.Click += lblFilterTitle_Click;
@@ -276,9 +293,10 @@ namespace CarRentalSystem.Forms
             // 
             pnlFilterRightBorder.BackColor = Color.Gainsboro;
             pnlFilterRightBorder.Dock = DockStyle.Right;
-            pnlFilterRightBorder.Location = new Point(209, 0);
+            pnlFilterRightBorder.Location = new Point(339, 0);
+            pnlFilterRightBorder.Margin = new Padding(5, 5, 5, 5);
             pnlFilterRightBorder.Name = "pnlFilterRightBorder";
-            pnlFilterRightBorder.Size = new Size(1, 873);
+            pnlFilterRightBorder.Size = new Size(2, 1397);
             pnlFilterRightBorder.TabIndex = 0;
             // 
             // pnlResults
@@ -294,9 +312,10 @@ namespace CarRentalSystem.Forms
             pnlResults.Controls.Add(lblName);
             pnlResults.Controls.Add(picLogo);
             pnlResults.Dock = DockStyle.Fill;
-            pnlResults.Location = new Point(210, 0);
+            pnlResults.Location = new Point(341, 0);
+            pnlResults.Margin = new Padding(5, 5, 5, 5);
             pnlResults.Name = "pnlResults";
-            pnlResults.Size = new Size(992, 873);
+            pnlResults.Size = new Size(1612, 1397);
             pnlResults.TabIndex = 1;
             pnlResults.Paint += pnlResults_Paint;
             // 
@@ -305,9 +324,10 @@ namespace CarRentalSystem.Forms
             flowCars.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             flowCars.AutoScroll = true;
             flowCars.FlowDirection = FlowDirection.TopDown;
-            flowCars.Location = new Point(30, 145);
+            flowCars.Location = new Point(49, 232);
+            flowCars.Margin = new Padding(5, 5, 5, 5);
             flowCars.Name = "flowCars";
-            flowCars.Size = new Size(930, 680);
+            flowCars.Size = new Size(1511, 1088);
             flowCars.TabIndex = 8;
             flowCars.WrapContents = false;
             flowCars.Paint += flowCars_Paint;
@@ -319,10 +339,12 @@ namespace CarRentalSystem.Forms
             cmbSort.Font = new Font("Segoe UI", 10F);
             cmbSort.FormattingEnabled = true;
             cmbSort.Items.AddRange(new object[] { "Price: Low to High", "", "Price: High to Low", "", "Newest First" });
-            cmbSort.Location = new Point(735, 100);
+            cmbSort.Location = new Point(1194, 160);
+            cmbSort.Margin = new Padding(5, 5, 5, 5);
             cmbSort.Name = "cmbSort";
-            cmbSort.Size = new Size(210, 31);
+            cmbSort.Size = new Size(339, 45);
             cmbSort.TabIndex = 7;
+            cmbSort.Click += cmbSort_SelectedIndexChanged;
             // 
             // lblSort
             // 
@@ -330,9 +352,10 @@ namespace CarRentalSystem.Forms
             lblSort.AutoSize = true;
             lblSort.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSort.ForeColor = Color.DarkGray;
-            lblSort.Location = new Point(690, 105);
+            lblSort.Location = new Point(1121, 168);
+            lblSort.Margin = new Padding(5, 0, 5, 0);
             lblSort.Name = "lblSort";
-            lblSort.Size = new Size(45, 23);
+            lblSort.Size = new Size(73, 38);
             lblSort.TabIndex = 6;
             lblSort.Text = "Sort:";
             // 
@@ -341,9 +364,10 @@ namespace CarRentalSystem.Forms
             lblResultsCount.AutoSize = true;
             lblResultsCount.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblResultsCount.ForeColor = Color.Gray;
-            lblResultsCount.Location = new Point(30, 105);
+            lblResultsCount.Location = new Point(49, 168);
+            lblResultsCount.Margin = new Padding(5, 0, 5, 0);
             lblResultsCount.Name = "lblResultsCount";
-            lblResultsCount.Size = new Size(236, 23);
+            lblResultsCount.Size = new Size(385, 38);
             lblResultsCount.TabIndex = 5;
             lblResultsCount.Text = "6 cars available for your dates";
             // 
@@ -353,9 +377,10 @@ namespace CarRentalSystem.Forms
             lblDateSummary.AutoSize = true;
             lblDateSummary.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDateSummary.ForeColor = Color.DarkGray;
-            lblDateSummary.Location = new Point(770, 53);
+            lblDateSummary.Location = new Point(1251, 85);
+            lblDateSummary.Margin = new Padding(5, 0, 5, 0);
             lblDateSummary.Name = "lblDateSummary";
-            lblDateSummary.Size = new Size(169, 20);
+            lblDateSummary.Size = new Size(275, 32);
             lblDateSummary.TabIndex = 4;
             lblDateSummary.Text = "Apr 30 — May 5 · 5 days";
             // 
@@ -365,9 +390,10 @@ namespace CarRentalSystem.Forms
             lblWelcome.AutoSize = true;
             lblWelcome.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblWelcome.ForeColor = Color.FromArgb(30, 30, 30);
-            lblWelcome.Location = new Point(770, 27);
+            lblWelcome.Location = new Point(1251, 43);
+            lblWelcome.Margin = new Padding(5, 0, 5, 0);
             lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(141, 28);
+            lblWelcome.Size = new Size(224, 45);
             lblWelcome.TabIndex = 3;
             lblWelcome.Text = "Welcome, Os!";
             // 
@@ -376,9 +402,10 @@ namespace CarRentalSystem.Forms
             lblSlogan.AutoSize = true;
             lblSlogan.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSlogan.ForeColor = Color.FromArgb(232, 160, 0);
-            lblSlogan.Location = new Point(87, 52);
+            lblSlogan.Location = new Point(141, 83);
+            lblSlogan.Margin = new Padding(5, 0, 5, 0);
             lblSlogan.Name = "lblSlogan";
-            lblSlogan.Size = new Size(147, 17);
+            lblSlogan.Size = new Size(232, 30);
             lblSlogan.TabIndex = 2;
             lblSlogan.Text = "Rent it, Ride it, Love it";
             // 
@@ -387,32 +414,34 @@ namespace CarRentalSystem.Forms
             lblName.AutoSize = true;
             lblName.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblName.ForeColor = Color.FromArgb(30, 30, 30);
-            lblName.Location = new Point(89, 25);
+            lblName.Location = new Point(145, 40);
+            lblName.Margin = new Padding(5, 0, 5, 0);
             lblName.Name = "lblName";
-            lblName.Size = new Size(117, 31);
+            lblName.Size = new Size(191, 50);
             lblName.TabIndex = 1;
             lblName.Text = "DriveEasy";
             // 
             // picLogo
             // 
-            picLogo.Image = (Image)resources.GetObject("picLogo.Image");
-            picLogo.Location = new Point(35, 12);
+            picLogo.Location = new Point(57, 19);
+            picLogo.Margin = new Padding(5, 5, 5, 5);
             picLogo.Name = "picLogo";
-            picLogo.Size = new Size(51, 58);
+            picLogo.Size = new Size(83, 93);
             picLogo.SizeMode = PictureBoxSizeMode.Zoom;
             picLogo.TabIndex = 0;
             picLogo.TabStop = false;
             // 
-            // Form1
+            // Customer_Car_Search
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1202, 873);
+            ClientSize = new Size(1953, 1397);
             Controls.Add(pnlResults);
             Controls.Add(pnFilters);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(5, 5, 5, 5);
             MaximizeBox = false;
-            Name = "Car Search";
+            Name = "Customer_Car_Search";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Browse Cars — Car Rental System";
             pnFilters.ResumeLayout(false);
