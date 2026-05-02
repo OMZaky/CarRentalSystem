@@ -1,5 +1,5 @@
-using car_rental_system;
-using car_rental_system.Forms;
+using CarRentalSystem;
+using CarRentalSystem.Forms;
 using CarRentalSystem.Core;
 using CarRentalSystem.Data;
 using CarRentalSystem.DTOs;
@@ -84,10 +84,9 @@ namespace CarRentalSystem.Forms
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // Code to navigate to the register page
-            // Register_Page registerPage = new Register_Page();
-            // registerPage.Show();
-            // this.Hide();
+            Register_Page registerPage = new Register_Page();
+            registerPage.Show();
+            this.Hide();
         }
 
         private void ShowError(string errorMessage)

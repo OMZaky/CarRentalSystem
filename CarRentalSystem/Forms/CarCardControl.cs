@@ -3,7 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace car_rental_system.Forms
+namespace CarRentalSystem.Forms
 {
     public partial class CarCardControl : UserControl
     {

@@ -1,4 +1,4 @@
-﻿namespace car_rental_system.Forms;
+﻿namespace CarRentalSystem.Forms;
 
 using System.Collections.Generic;
 

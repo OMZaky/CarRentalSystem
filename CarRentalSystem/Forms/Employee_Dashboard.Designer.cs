@@ -1,6 +1,6 @@
 ﻿using CarRentalSystem.Properties;
 
-namespace car_rental_system
+namespace CarRentalSystem
 {
     partial class Employee_Dashboard
     {

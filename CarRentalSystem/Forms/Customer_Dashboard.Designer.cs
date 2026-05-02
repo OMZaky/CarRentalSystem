@@ -1,5 +1,5 @@
 ﻿
-namespace car_rental_system.Forms
+namespace CarRentalSystem.Forms
 {
     partial class Customer_Dashboard
     {
@@ -38,14 +38,11 @@ namespace car_rental_system.Forms
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
             label10 = new Label();
             button1 = new Button();
             pictureBox4 = new PictureBox();
             pictureBox5 = new PictureBox();
             button2 = new Button();
-            label12 = new Label();
             label13 = new Label();
             label14 = new Label();
             button3 = new Button();
@@ -69,16 +66,16 @@ namespace car_rental_system.Forms
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(3, 0);
-            panel1.Margin = new Padding(4, 4, 4, 4);
+            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
             panel1.Size = new Size(1171, 125);
             panel1.TabIndex = 0;
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = CarRentalSystem.Properties.Resources.Profile_Icon;
+            pictureBox3.Image = Properties.Resources.Profile_Icon;
             pictureBox3.Location = new Point(1058, 26);
-            pictureBox3.Margin = new Padding(4, 4, 4, 4);
+            pictureBox3.Margin = new Padding(4);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(99, 74);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
@@ -124,9 +121,9 @@ namespace car_rental_system.Forms
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = CarRentalSystem.Properties.Resources.Car_View_Car_Left;
+            pictureBox1.Image = Properties.Resources.Car_View_Car_Left;
             pictureBox1.Location = new Point(32, 15);
-            pictureBox1.Margin = new Padding(4, 4, 4, 4);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(126, 81);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -170,32 +167,6 @@ namespace car_rental_system.Forms
             label7.TabIndex = 8;
             label7.Text = "Thursday, April 30 2026";
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.Transparent;
-            label8.Font = new Font("Arial", 10F);
-            label8.ForeColor = Color.FromArgb(179, 187, 204);
-            label8.Location = new Point(300, 194);
-            label8.Margin = new Padding(4, 0, 4, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(30, 32);
-            label8.TabIndex = 9;
-            label8.Text = "●";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.Transparent;
-            label9.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.FromArgb(179, 187, 204);
-            label9.Location = new Point(325, 200);
-            label9.Margin = new Padding(4, 0, 4, 0);
-            label9.Name = "label9";
-            label9.Size = new Size(152, 27);
-            label9.TabIndex = 10;
-            label9.Text = "Cairo Branch";
-            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -216,7 +187,7 @@ namespace car_rental_system.Forms
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.Location = new Point(39, 376);
-            button1.Margin = new Padding(4, 4, 4, 4);
+            button1.Margin = new Padding(4);
             button1.Name = "button1";
             button1.Size = new Size(1124, 83);
             button1.TabIndex = 12;
@@ -227,9 +198,9 @@ namespace car_rental_system.Forms
             // 
             // pictureBox4
             // 
-            pictureBox4.Image = CarRentalSystem.Properties.Resources.orders_Icon;
+            pictureBox4.Image = Properties.Resources.orders_Icon;
             pictureBox4.Location = new Point(48, 381);
-            pictureBox4.Margin = new Padding(4, 4, 4, 4);
+            pictureBox4.Margin = new Padding(4);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(90, 72);
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
@@ -238,9 +209,9 @@ namespace car_rental_system.Forms
             // 
             // pictureBox5
             // 
-            pictureBox5.Image = CarRentalSystem.Properties.Resources.Car_Icon;
+            pictureBox5.Image = Properties.Resources.Car_Icon;
             pictureBox5.Location = new Point(48, 470);
-            pictureBox5.Margin = new Padding(4, 4, 4, 4);
+            pictureBox5.Margin = new Padding(4);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(90, 78);
             pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
@@ -253,7 +224,7 @@ namespace car_rental_system.Forms
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.Location = new Point(39, 467);
-            button2.Margin = new Padding(4, 4, 4, 4);
+            button2.Margin = new Padding(4);
             button2.Name = "button2";
             button2.Size = new Size(1124, 83);
             button2.TabIndex = 14;
@@ -261,19 +232,6 @@ namespace car_rental_system.Forms
             button2.TextAlign = ContentAlignment.TopLeft;
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.BackColor = Color.Transparent;
-            label12.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label12.ForeColor = Color.FromArgb(179, 187, 204);
-            label12.Location = new Point(703, 200);
-            label12.Margin = new Padding(4, 0, 4, 0);
-            label12.Name = "label12";
-            label12.Size = new Size(264, 27);
-            label12.TabIndex = 17;
-            label12.Text = "Thursday, April 30 2026";
             // 
             // label13
             // 
@@ -284,9 +242,9 @@ namespace car_rental_system.Forms
             label13.Location = new Point(165, 421);
             label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
-            label13.Size = new Size(413, 32);
+            label13.Size = new Size(434, 32);
             label13.TabIndex = 18;
-            label13.Text = "Browse and Filter through all vehicles";
+            label13.Text = "View your active and past rental history";
             // 
             // label14
             // 
@@ -297,9 +255,9 @@ namespace car_rental_system.Forms
             label14.Location = new Point(166, 513);
             label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
-            label14.Size = new Size(416, 32);
+            label14.Size = new Size(452, 32);
             label14.TabIndex = 19;
-            label14.Text = "View and manage active rental orders";
+            label14.Text = "Browse our fleet and book your next ride";
             // 
             // button3
             // 
@@ -310,7 +268,7 @@ namespace car_rental_system.Forms
             button3.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.ForeColor = SystemColors.ActiveCaptionText;
             button3.Location = new Point(877, 595);
-            button3.Margin = new Padding(4, 4, 4, 4);
+            button3.Margin = new Padding(4);
             button3.Name = "button3";
             button3.Size = new Size(286, 83);
             button3.TabIndex = 20;
@@ -327,15 +285,15 @@ namespace car_rental_system.Forms
             label4.Location = new Point(165, 330);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(413, 32);
+            label4.Size = new Size(473, 32);
             label4.TabIndex = 23;
-            label4.Text = "Browse and Filter through all vehicles";
+            label4.Text = "Update your personal details and password";
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = CarRentalSystem.Properties.Resources.Profile_Icon_2;
+            pictureBox2.Image = Properties.Resources.Profile_Icon_2;
             pictureBox2.Location = new Point(48, 291);
-            pictureBox2.Margin = new Padding(4, 4, 4, 4);
+            pictureBox2.Margin = new Padding(4);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(90, 72);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -348,7 +306,7 @@ namespace car_rental_system.Forms
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button4.Location = new Point(39, 285);
-            button4.Margin = new Padding(4, 4, 4, 4);
+            button4.Margin = new Padding(4);
             button4.Name = "button4";
             button4.Size = new Size(1124, 83);
             button4.TabIndex = 22;
@@ -357,7 +315,7 @@ namespace car_rental_system.Forms
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
-            // Employee_dash
+            // Customer_Dashboard
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -369,22 +327,19 @@ namespace car_rental_system.Forms
             Controls.Add(button3);
             Controls.Add(label14);
             Controls.Add(label13);
-            Controls.Add(label12);
             Controls.Add(pictureBox5);
             Controls.Add(button2);
             Controls.Add(pictureBox4);
             Controls.Add(button1);
             Controls.Add(label10);
-            Controls.Add(label9);
-            Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             MaximizeBox = false;
-            Name = "Employee_dash";
+            Name = "Customer_Dashboard";
             Text = "Form1";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -408,14 +363,11 @@ namespace car_rental_system.Forms
         private Label label5;
         private Label label6;
         private Label label7;
-        private Label label8;
-        private Label label9;
         private Label label10;
         private Button button1;
         private PictureBox pictureBox4;
         private PictureBox pictureBox5;
         private Button button2;
-        private Label label12;
         private Label label13;
         private Label label14;
         private Button button3;

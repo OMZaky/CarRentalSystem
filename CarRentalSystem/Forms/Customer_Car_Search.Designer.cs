@@ -1,5 +1,5 @@
 ﻿
-namespace car_rental_system.Forms
+namespace CarRentalSystem.Forms
 {
     partial class Customer_Car_Search
     {

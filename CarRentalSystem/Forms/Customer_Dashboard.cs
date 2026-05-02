@@ -1,94 +1,89 @@
-﻿using CarRentalSystem.Forms;
-using CarRentalSystem.Models;
-using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
+﻿using CarRentalSystem.Core;
+using CarRentalSystem.DTOs;
+using CarRentalSystem.Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
-namespace car_rental_system.Forms
+namespace CarRentalSystem.Forms
 {
     public partial class Customer_Dashboard : Form
     {
-        private Customer CurrentUser;
-        public Customer_Dashboard(Customer User)
+        public Customer_Dashboard()
         {
             InitializeComponent();
-            this.CurrentUser = User;
-            loaduserdashboard();
-
+            LoadDashboard();
         }
-        private void loaduserdashboard()
+
+        private void LoadDashboard()
         {
-            label3.Text = $"{CurrentUser.FirstName} {CurrentUser.LastName}";
-            label6.Text = $"{CurrentUser.FirstName} {CurrentUser.LastName}";
-            string currentdate = DateTime.Now.ToString();
-            label7.Text = currentdate;
-            label12.Text = currentdate;
-            
+            var user = UserSession.CurrentUser;
+
+            if (user == null || user.Role != UserRole.Customer)
+            {
+                MessageBox.Show("Invalid session. Please log in again.", "Security Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
+            label3.Text = user.FullName;
+            label6.Text = $"{user.FullName}!";
+
+            string currentDate = DateTime.Now.ToString("dddd, MMMM dd yyyy");
+            label7.Text = currentDate;
+
         }
 
-        private void label1_Click(object sender, EventArgs e)
+
+        // My Account Button
+        private void button4_Click(object sender, EventArgs e)
         {
-
+            var accountForm = new account_information();
+            accountForm.Location = this.Location;
+            accountForm.StartPosition = FormStartPosition.Manual;
+            accountForm.Show();
+            this.Hide();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        // My Orders Button
         private void button1_Click(object sender, EventArgs e)
         {
-
+            // var ordersForm = new Customer_Orders();
+            // ordersForm.Location = this.Location;
+            // ordersForm.StartPosition = FormStartPosition.Manual;
+            // ordersForm.Show();
+            // this.Hide();
+            MessageBox.Show("Opening My Orders...", "Navigation");
         }
 
+        // Search Cars Button
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var searchForm = new Customer_Car_Search();
+            searchForm.Location = this.Location;
+            searchForm.StartPosition = FormStartPosition.Manual;
+            searchForm.Show();
+            this.Hide();
+        }
+
+        // Logout Button
         private void button3_Click_1(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are u sure  u want to log out???????????????", "Log Out", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(result == DialogResult.Yes)
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Log Out", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
             {
+                // CRITICAL: Actually clear the session memory!
+                UserSession.Logout();
+
                 var loginPage = new Login_Page();
                 loginPage.Show();
                 this.Close();
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        { 
-            var frm = new Customer_Car_Search();
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.Show();
-            this.Hide();
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            var frm = new account_information(this.CurrentUser);
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.Show();
-            this.Hide();
-        }
+        private void label1_Click(object sender, EventArgs e) { }
+        private void label3_Click(object sender, EventArgs e) { }
+        private void label4_Click(object sender, EventArgs e) { }
+        private void label10_Click(object sender, EventArgs e) { }
     }
 }

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using CarRentalSystem.Core;  
 using CarRentalSystem.DTOs;
 
-namespace car_rental_system
+namespace CarRentalSystem
 {
     public partial class Employee_Dashboard : Form
     {

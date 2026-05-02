@@ -1,4 +1,4 @@
-﻿namespace car_rental_system.Forms
+﻿namespace CarRentalSystem.Forms
 {
     partial class CarCardControl
     {
