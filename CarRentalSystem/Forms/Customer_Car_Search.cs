@@ -67,7 +67,7 @@ namespace CarRentalSystem.Forms
                 var card = new CarCardControl(carDto, totalDays);
                 card.Margin = new Padding(10);
 
-                // UNCOMMENT THIS LINE: "Hey Card, when your Rent button is clicked, trigger my method!"
+                // "Hey Card, when your Rent button is clicked, trigger my method!"
                 card.RentButtonClicked += Card_RentButtonClicked;
 
                 flowCars.Controls.Add(card);
