@@ -1,7 +1,7 @@
 ﻿
-namespace try_drag_and_drop
+namespace car_rental_system.Forms
 {
-    partial class Form1
+    partial class Customer_Car_Search
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@ namespace try_drag_and_drop
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Customer_Car_Search));
             pnFilters = new Panel();
             btnReset = new Button();
             btnSearch = new Button();
@@ -412,7 +412,7 @@ namespace try_drag_and_drop
             Controls.Add(pnFilters);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            Name = "Form1";
+            Name = "Car Search";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Browse Cars — Car Rental System";
             pnFilters.ResumeLayout(false);

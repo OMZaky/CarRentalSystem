@@ -1,10 +1,10 @@
-﻿namespace try_drag_and_drop;
+﻿namespace car_rental_system.Forms;
 
 using System.Collections.Generic;
 
-public partial class Form1 : Form
+public partial class Customer_Car_Search : Form
 {
-    public Form1()
+    public Customer_Car_Search()
     {
         InitializeComponent();
     }

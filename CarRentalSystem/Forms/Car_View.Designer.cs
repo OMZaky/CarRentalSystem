@@ -37,9 +37,9 @@
             button3 = new Button();
             button1 = new Button();
             label3 = new Label();
-            Model_lbl = new Label();
+            label4 = new Label();
             label5 = new Label();
-            category_lbl = new Label();
+            label7 = new Label();
             label8 = new Label();
             label9 = new Label();
             label10 = new Label();
@@ -167,19 +167,19 @@
             label3.TextAlign = ContentAlignment.TopCenter;
             label3.Click += label3_Click_1;
             // 
-            // Model_lbl
+            // label4
             // 
-            Model_lbl.AutoSize = true;
-            Model_lbl.BackColor = Color.Transparent;
-            Model_lbl.Enabled = false;
-            Model_lbl.Font = new Font("Arial Rounded MT Bold", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Model_lbl.Location = new Point(193, 165);
-            Model_lbl.Name = "Model_lbl";
-            Model_lbl.Size = new Size(191, 32);
-            Model_lbl.TabIndex = 24;
-            Model_lbl.Text = "Model_Name";
-            Model_lbl.TextAlign = ContentAlignment.TopCenter;
-            Model_lbl.Click += label4_Click;
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Enabled = false;
+            label4.Font = new Font("Arial Rounded MT Bold", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(193, 165);
+            label4.Name = "label4";
+            label4.Size = new Size(191, 32);
+            label4.TabIndex = 24;
+            label4.Text = "Model_Name";
+            label4.TextAlign = ContentAlignment.TopCenter;
+            
             // 
             // label5
             // 
@@ -195,19 +195,19 @@
             label5.TextAlign = ContentAlignment.TopCenter;
             label5.Click += label5_Click;
             // 
-            // category_lbl
+            // label7
             // 
-            category_lbl.AutoSize = true;
-            category_lbl.BackColor = Color.Transparent;
-            category_lbl.Enabled = false;
-            category_lbl.Font = new Font("Arial Rounded MT Bold", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            category_lbl.Location = new Point(193, 232);
-            category_lbl.Name = "category_lbl";
-            category_lbl.Size = new Size(169, 32);
-            category_lbl.TabIndex = 26;
-            category_lbl.Text = "Cate_name";
-            category_lbl.TextAlign = ContentAlignment.TopCenter;
-            category_lbl.Click += label7_Click;
+            label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
+            label7.Enabled = false;
+            label7.Font = new Font("Arial Rounded MT Bold", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Location = new Point(193, 232);
+            label7.Name = "label7";
+            label7.Size = new Size(169, 32);
+            label7.TabIndex = 26;
+            label7.Text = "Cate_name";
+            label7.TextAlign = ContentAlignment.TopCenter;
+            
             // 
             // label8
             // 
@@ -355,9 +355,9 @@
             Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(label8);
-            Controls.Add(category_lbl);
+            Controls.Add(label7);
             Controls.Add(label5);
-            Controls.Add(Model_lbl);
+            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(button1);
             Controls.Add(button3);
@@ -365,7 +365,6 @@
             Controls.Add(panel1);
             Name = "Car_View";
             Text = "Car_View";
-            Load += Car_View_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -385,9 +384,9 @@
         private Button button3;
         private Button button1;
         private Label label3;
-        private Label Model_lbl;
+        private Label label4;
         private Label label5;
-        private Label category_lbl;
+        private Label label7;
         private Label label8;
         private Label label9;
         private Label label10;

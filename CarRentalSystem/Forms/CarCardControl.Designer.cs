@@ -1,4 +1,4 @@
-﻿namespace try_drag_and_drop
+﻿namespace car_rental_system.Forms
 {
     partial class CarCardControl
     {

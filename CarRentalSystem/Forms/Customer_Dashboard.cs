@@ -18,7 +18,17 @@ namespace car_rental_system.Forms
         {
             InitializeComponent();
             this.CurrentUser = User;
+            loaduserdashboard();
 
+        }
+        private void loaduserdashboard()
+        {
+            label3.Text = $"{CurrentUser.FirstName} {CurrentUser.LastName}";
+            label6.Text = $"{CurrentUser.FirstName} {CurrentUser.LastName}";
+            string currentdate = DateTime.Now.ToString();
+            label7.Text = currentdate;
+            label12.Text = currentdate;
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -48,11 +58,19 @@ namespace car_rental_system.Forms
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-
+            DialogResult result = MessageBox.Show("Are u sure  u want to log out???????????????", "Log Out", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result == DialogResult.Yes)
+            {
+                var loginPage = new Login_Page();
+                loginPage.Show();
+                this.Close();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Customer_Car_Search carsearch = new Customer_Car_Search();
+            carsearch.ShowDialog();
 
         }
 

@@ -3,7 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace try_drag_and_drop
+namespace car_rental_system.Forms
 {
     public partial class CarCardControl : UserControl
     {
