@@ -159,11 +159,16 @@ namespace CarRentalSystem.Forms
         {
             // Go back to the Customer Dashboard safely
             this.Close();
-            
+
         }
 
         private void Account_Information_Load(object sender, EventArgs e) { }
         private void lblUsernameTitle_Click(object sender, EventArgs e) { }
         private void txtFirstName_TextChanged(object sender, EventArgs e) { }
+
+        private void Account_Information_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

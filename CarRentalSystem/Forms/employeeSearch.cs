@@ -1,4 +1,5 @@
-﻿using CarRentalSystem.DTOs;
+﻿using CarRentalSystem;
+using CarRentalSystem.DTOs;
 using CarRentalSystem.Services;
 using System;
 using System.Collections.Generic;
@@ -207,9 +208,13 @@ namespace car_rental_system
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            var empMgmtForm = new Employee_Dashboard();
+            empMgmtForm.Show();
         }
     }
+
+
 
     // ── Data class ───────────────────────────────────────────────────────────
     public class EmployeeRow

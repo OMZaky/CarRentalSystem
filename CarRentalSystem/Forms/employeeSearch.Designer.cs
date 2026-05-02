@@ -206,7 +206,7 @@
             // 
             cmbRole.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRole.Font = new Font("Segoe UI", 10F);
-            cmbRole.Items.AddRange(new object[] { "All Roles", "Manager", "Employee" });
+            cmbRole.Items.AddRange(new object[] { "All Roles","SystemAdmin","BranchManager","RentalAgent"});
             cmbRole.Location = new Point(419, 202);
             cmbRole.Name = "cmbRole";
             cmbRole.Size = new Size(200, 36);

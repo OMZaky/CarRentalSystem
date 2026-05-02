@@ -88,6 +88,7 @@ namespace CarRentalSystem
             if (UserSession.CurrentUser?.Role == UserRole.SystemAdmin ||
                 UserSession.CurrentUser?.Role == UserRole.BranchManager)
             {
+                this.Hide();
                 var empMgmtForm = new employeeSearch();
                 empMgmtForm.ShowDialog();
             }
@@ -104,6 +105,8 @@ namespace CarRentalSystem
             // It ensures that even if you have a hidden Login form, the .exe stops.
             Application.Exit();
         }
+
+       
 
         private void label1_Click(object sender, EventArgs e) { }
         private void label3_Click(object sender, EventArgs e) { }
