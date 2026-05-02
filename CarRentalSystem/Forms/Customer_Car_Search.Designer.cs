@@ -86,7 +86,7 @@ namespace CarRentalSystem.Forms
             pnFilters.Controls.Add(pnlFilterRightBorder);
             pnFilters.Dock = DockStyle.Left;
             pnFilters.Location = new Point(0, 0);
-            pnFilters.Margin = new Padding(5, 5, 5, 5);
+            pnFilters.Margin = new Padding(5);
             pnFilters.Name = "pnFilters";
             pnFilters.Size = new Size(341, 1397);
             pnFilters.TabIndex = 0;
@@ -98,7 +98,7 @@ namespace CarRentalSystem.Forms
             btnReset.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnReset.ForeColor = Color.Gray;
             btnReset.Location = new Point(31, 1254);
-            btnReset.Margin = new Padding(5, 5, 5, 5);
+            btnReset.Margin = new Padding(5);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(276, 58);
             btnReset.TabIndex = 18;
@@ -113,7 +113,7 @@ namespace CarRentalSystem.Forms
             btnSearch.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.White;
             btnSearch.Location = new Point(28, 1152);
-            btnSearch.Margin = new Padding(5, 5, 5, 5);
+            btnSearch.Margin = new Padding(5);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(276, 67);
             btnSearch.TabIndex = 17;
@@ -124,7 +124,7 @@ namespace CarRentalSystem.Forms
             // dtpReturn
             // 
             dtpReturn.Location = new Point(31, 1032);
-            dtpReturn.Margin = new Padding(5, 5, 5, 5);
+            dtpReturn.Margin = new Padding(5);
             dtpReturn.Name = "dtpReturn";
             dtpReturn.Size = new Size(241, 39);
             dtpReturn.TabIndex = 16;
@@ -144,7 +144,7 @@ namespace CarRentalSystem.Forms
             // dtpPickup
             // 
             dtpPickup.Location = new Point(29, 867);
-            dtpPickup.Margin = new Padding(5, 5, 5, 5);
+            dtpPickup.Margin = new Padding(5);
             dtpPickup.Name = "dtpPickup";
             dtpPickup.Size = new Size(241, 39);
             dtpPickup.TabIndex = 14;
@@ -176,7 +176,7 @@ namespace CarRentalSystem.Forms
             // textBox3
             // 
             textBox3.Location = new Point(192, 707);
-            textBox3.Margin = new Padding(5, 5, 5, 5);
+            textBox3.Margin = new Padding(5);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(80, 39);
             textBox3.TabIndex = 11;
@@ -184,7 +184,7 @@ namespace CarRentalSystem.Forms
             // textBox1
             // 
             textBox1.Location = new Point(29, 707);
-            textBox1.Margin = new Padding(5, 5, 5, 5);
+            textBox1.Margin = new Padding(5);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(80, 39);
             textBox1.TabIndex = 9;
@@ -209,7 +209,7 @@ namespace CarRentalSystem.Forms
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "All Categories", "Sedan", "SUV", "Luxury" });
             comboBox2.Location = new Point(29, 466);
-            comboBox2.Margin = new Padding(5, 5, 5, 5);
+            comboBox2.Margin = new Padding(5);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(243, 45);
             comboBox2.TabIndex = 7;
@@ -233,7 +233,7 @@ namespace CarRentalSystem.Forms
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "All Categories", "Sedan", "SUV", "Luxury" });
             comboBox1.Location = new Point(29, 288);
-            comboBox1.Margin = new Padding(5, 5, 5, 5);
+            comboBox1.Margin = new Padding(5);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(243, 45);
             comboBox1.TabIndex = 5;
@@ -257,7 +257,7 @@ namespace CarRentalSystem.Forms
             cmbCategory.FormattingEnabled = true;
             cmbCategory.Items.AddRange(new object[] { "All Categories", "Sedan", "SUV", "Luxury" });
             cmbCategory.Location = new Point(29, 149);
-            cmbCategory.Margin = new Padding(5, 5, 5, 5);
+            cmbCategory.Margin = new Padding(5);
             cmbCategory.Name = "cmbCategory";
             cmbCategory.Size = new Size(243, 45);
             cmbCategory.TabIndex = 3;
@@ -294,7 +294,7 @@ namespace CarRentalSystem.Forms
             pnlFilterRightBorder.BackColor = Color.Gainsboro;
             pnlFilterRightBorder.Dock = DockStyle.Right;
             pnlFilterRightBorder.Location = new Point(339, 0);
-            pnlFilterRightBorder.Margin = new Padding(5, 5, 5, 5);
+            pnlFilterRightBorder.Margin = new Padding(5);
             pnlFilterRightBorder.Name = "pnlFilterRightBorder";
             pnlFilterRightBorder.Size = new Size(2, 1397);
             pnlFilterRightBorder.TabIndex = 0;
@@ -313,7 +313,7 @@ namespace CarRentalSystem.Forms
             pnlResults.Controls.Add(picLogo);
             pnlResults.Dock = DockStyle.Fill;
             pnlResults.Location = new Point(341, 0);
-            pnlResults.Margin = new Padding(5, 5, 5, 5);
+            pnlResults.Margin = new Padding(5);
             pnlResults.Name = "pnlResults";
             pnlResults.Size = new Size(1612, 1397);
             pnlResults.TabIndex = 1;
@@ -325,7 +325,7 @@ namespace CarRentalSystem.Forms
             flowCars.AutoScroll = true;
             flowCars.FlowDirection = FlowDirection.TopDown;
             flowCars.Location = new Point(49, 232);
-            flowCars.Margin = new Padding(5, 5, 5, 5);
+            flowCars.Margin = new Padding(5);
             flowCars.Name = "flowCars";
             flowCars.Size = new Size(1511, 1088);
             flowCars.TabIndex = 8;
@@ -340,10 +340,11 @@ namespace CarRentalSystem.Forms
             cmbSort.FormattingEnabled = true;
             cmbSort.Items.AddRange(new object[] { "Price: Low to High", "", "Price: High to Low", "", "Newest First" });
             cmbSort.Location = new Point(1194, 160);
-            cmbSort.Margin = new Padding(5, 5, 5, 5);
+            cmbSort.Margin = new Padding(5);
             cmbSort.Name = "cmbSort";
             cmbSort.Size = new Size(339, 45);
             cmbSort.TabIndex = 7;
+            cmbSort.SelectedIndexChanged += cmbSort_SelectedIndexChanged;
             cmbSort.Click += cmbSort_SelectedIndexChanged;
             // 
             // lblSort
@@ -424,7 +425,7 @@ namespace CarRentalSystem.Forms
             // picLogo
             // 
             picLogo.Location = new Point(57, 19);
-            picLogo.Margin = new Padding(5, 5, 5, 5);
+            picLogo.Margin = new Padding(5);
             picLogo.Name = "picLogo";
             picLogo.Size = new Size(83, 93);
             picLogo.SizeMode = PictureBoxSizeMode.Zoom;
@@ -439,7 +440,7 @@ namespace CarRentalSystem.Forms
             Controls.Add(pnlResults);
             Controls.Add(pnFilters);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             MaximizeBox = false;
             Name = "Customer_Car_Search";
             StartPosition = FormStartPosition.CenterScreen;

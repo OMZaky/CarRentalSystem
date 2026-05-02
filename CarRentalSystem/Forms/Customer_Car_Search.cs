@@ -106,34 +106,47 @@ namespace CarRentalSystem.Forms
 
         private void cmbSort_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Only sort if we actually have search results on the screen
             if (_currentSearchResults != null && _currentSearchResults.Any())
             {
+                var sortedCars = ApplySorting(_currentSearchResults).ToList();
+                _currentSearchResults = sortedCars;
+
                 int days = (dtpReturn.Value.Date - dtpPickup.Value.Date).Days;
 
-                // Re-sort the existing data
-                var sortedCars = ApplySorting(_currentSearchResults).ToList();
+                // 1. FREEZE THE ENTIRE PANEL
+                flowCars.SuspendLayout();
 
-                // Update the screen
-                _currentSearchResults = sortedCars;
-                PopulateResults(_currentSearchResults, days);
+                for (int i = 0; i < sortedCars.Count; i++)
+                {
+                    var card = (CarCardControl)flowCars.Controls[i];
+
+                    // 2. FREEZE THE INDIVIDUAL CARD
+                    card.SuspendLayout();
+                    card.UpdateData(sortedCars[i], days);
+                    card.ResumeLayout();
+                }
+
+                // 3. UNFREEZE (Calculates the math exactly ONCE)
+                flowCars.ResumeLayout();
             }
         }
 
         private void PopulateResults(System.Collections.Generic.List<DTOs.CarSearchDTO> cars, int totalDays)
         {
-            // CRITICAL FOR PERFORMANCE: Stops the UI from freezing/flickering while loading 50 cards
             flowCars.SuspendLayout();
-            flowCars.Controls.Clear();
+
+            // THE FIX: Physically destroy the old cards in RAM
+            foreach (Control c in flowCars.Controls)
+            {
+                c.Dispose();
+            }
+            flowCars.Controls.Clear(); // Now it is safe to clear
 
             foreach (var carDto in cars)
             {
                 var card = new CarCardControl(carDto, totalDays);
                 card.Margin = new Padding(10);
-
-                // "Hey Card, when your Rent button is clicked, trigger my method!"
                 card.RentButtonClicked += Card_RentButtonClicked;
-
                 flowCars.Controls.Add(card);
             }
 
