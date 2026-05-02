@@ -11,7 +11,7 @@ namespace CarRentalSystem.Forms
         private DateTime _dateTo;
         private decimal _totalPrice; // Added to easily pass the cost to the payment screen
 
-        public Car_View(int vehicleId, string model, string category, decimal dailyPrice, DateTime from, DateTime to)
+        public Car_View(int vehicleId, string model, string category, decimal dailyPrice, DateTime from, DateTime to,string PlateNum)
         {
             InitializeComponent();
 
@@ -20,10 +20,10 @@ namespace CarRentalSystem.Forms
             _dateFrom = from;
             _dateTo = to;
 
-            LoadCarDetails(model, category, dailyPrice);
+            LoadCarDetails(model, category, dailyPrice,PlateNum);
         }
 
-        private void LoadCarDetails(string model, string category, decimal dailyPrice)
+        private void LoadCarDetails(string model, string category, decimal dailyPrice,string PlateNum)
         {
             int totalDays = (_dateTo - _dateFrom).Days;
             _totalPrice = dailyPrice * totalDays; // Store the calculated total
@@ -34,7 +34,7 @@ namespace CarRentalSystem.Forms
             label6.Text = $"Car_ID:{_vehicleId}";
             label4.Text = model;
             label7.Text = category;
-
+            label9.Text = PlateNum;
             label14.Text = _dateFrom.ToString("MMM dd, yyyy");
             label16.Text = _dateTo.ToString("MMM dd, yyyy");
 

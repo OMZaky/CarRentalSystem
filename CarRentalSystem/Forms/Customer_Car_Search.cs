@@ -18,6 +18,7 @@ namespace CarRentalSystem.Forms
             InitializeComponent();
             _vehicleService = new VehicleService();
             SetupDashboard();
+            flowCars.SizeChanged += flowCars_SizeChanged;
         }
 
         private void SetupDashboard()
@@ -33,6 +34,15 @@ namespace CarRentalSystem.Forms
 
             lblResultsCount.Text = "Enter your dates and hit search.";
             lblDateSummary.Text = "";
+            comboBox2.Items.Clear();
+            comboBox2.Items.AddRange(new object[] { "All Branches", "Cairo International Airport", "Alexandria", "New Cairo HQ" });
+            comboBox2.SelectedIndex = 0;
+            label2.Text = "LEVEL";
+            label2.Visible = true;
+            comboBox1.Visible = true;
+            comboBox1.Items.Clear();
+            comboBox1.Items.AddRange(new object[] { "All Levels", "Economy", "Standard", "Premium", "VIP" });
+            comboBox1.SelectedIndex = 0;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -47,24 +57,21 @@ namespace CarRentalSystem.Forms
 
             lblDateSummary.Text = $"{dtpPickup.Value:MMM dd} — {dtpReturn.Value:MMM dd} · {days} days";
 
-            // Fetch the baseline available cars from the Service
             var allCars = _vehicleService.SearchAvailableCars();
-
-            // Start building our Filter Chain (In-Memory)
             var filteredCars = allCars.AsEnumerable();
 
-            // -- CATEGORY FILTER --
+            // -- CATEGORY FILTER (FIXED: Case Insensitive & Trimmed) --
             if (cmbCategory.SelectedIndex > 0 && cmbCategory.SelectedItem != null)
             {
-                string selectedCategory = cmbCategory.SelectedItem.ToString();
-                filteredCars = filteredCars.Where(c => c.Category == selectedCategory);
+                string selectedCategory = cmbCategory.SelectedItem.ToString().Trim();
+                filteredCars = filteredCars.Where(c => c.Category.Equals(selectedCategory, StringComparison.OrdinalIgnoreCase));
             }
 
-            // -- BRANCH FILTER --
+            // -- BRANCH FILTER (FIXED: Case Insensitive & Trimmed) --
             if (comboBox2.SelectedIndex > 0 && comboBox2.SelectedItem != null)
             {
-                string selectedBranch = comboBox2.SelectedItem.ToString();
-                filteredCars = filteredCars.Where(c => c.BranchName == selectedBranch);
+                string selectedBranch = comboBox2.SelectedItem.ToString().Trim();
+                filteredCars = filteredCars.Where(c => c.BranchName.Equals(selectedBranch, StringComparison.OrdinalIgnoreCase));
             }
 
             // -- MIN PRICE FILTER --
@@ -79,10 +86,7 @@ namespace CarRentalSystem.Forms
                 filteredCars = filteredCars.Where(c => c.DailyPrice <= maxPrice);
             }
 
-            // Apply Default Sorting (if they clicked search while a sort is active)
             filteredCars = ApplySorting(filteredCars);
-
-            // Save to our class-level variable and Render
             _currentSearchResults = filteredCars.ToList();
 
             lblResultsCount.Text = $"{_currentSearchResults.Count} cars available for your dates";
@@ -160,18 +164,19 @@ namespace CarRentalSystem.Forms
 
             if (selectedCar != null)
             {
-                this.Hide();
+                
                 using (var viewForm = new Car_View(
                     selectedCar.Id,
                     selectedCar.Model,
                     selectedCar.Category,
                     selectedCar.DailyPrice,
                     dtpPickup.Value,
-                    dtpReturn.Value))
+                    dtpReturn.Value,
+                    selectedCar.PlateNum))
                 {
                     viewForm.ShowDialog();
                 }
-                this.Show();
+                
             }
             else
             {
@@ -198,5 +203,15 @@ namespace CarRentalSystem.Forms
         private void pnlResults_Paint(object sender, PaintEventArgs e) { }
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e) { }
         private void flowCars_Paint(object sender, PaintEventArgs e) { }
+        // ADD THIS METHOD TO FIX THE RED SQUIGGLY
+        private void flowCars_SizeChanged(object sender, EventArgs e)
+        {
+            flowCars.SuspendLayout();
+            foreach (Control card in flowCars.Controls)
+            {
+                card.Width = flowCars.ClientSize.Width - 25; 
+            }
+            flowCars.ResumeLayout();
+        }
     }
 }
