@@ -17,7 +17,7 @@ namespace car_rental_system
             label4.Text = emp.Role.ToString();
             label6.Text = $"{emp.FirstName} {emp.LastName}!";
             label7.Text = DateTime.Now.ToString();
-            label9.Text = emp.Branch.ToString();
+            label9.Text = emp.Branch.City;
 
         }
 
