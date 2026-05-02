@@ -9,6 +9,16 @@ namespace car_rental_system
         {
             InitializeComponent();
             this.emp = user;
+            loadempdashboard();
+        }
+        private void loadempdashboard()
+        {
+            label3.Text = $"{emp.FirstName} {emp.LastName}";
+            label4.Text = emp.Role.ToString();
+            label6.Text = $"{emp.FirstName} {emp.LastName}!";
+            label7.Text = DateTime.Now.ToString();
+            label9.Text = emp.Branch.ToString();
+
         }
 
         private void label1_Click(object sender, EventArgs e)
