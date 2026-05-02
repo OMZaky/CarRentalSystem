@@ -31,7 +31,9 @@ namespace CarRentalSystem.Services
                     ExpirationDate = customer.ExpirationDate,
                     TotalRentals = customer.Rentals?.Count ?? 0,
                     ActiveReservations = customer.Reservations?.Count ?? 0,
-                    CurrentlyRenting = customer.Rentals?.Count(r => r.PlannedReturn == null || r.PlannedReturn > System.DateTime.Now) ?? 0
+
+                    // If the actual return date is null, they still have the car!
+                    CurrentlyRenting = customer.Rentals?.Count(r => r.ActualReturnDate == null) ?? 0
                 };
             }
         }
