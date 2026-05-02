@@ -1,6 +1,7 @@
 ﻿using CarRentalSystem.Core;
 using CarRentalSystem.Data;
 using CarRentalSystem.Models;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,8 +39,8 @@ namespace CarRentalSystem.Forms
             }
 
             // Verify current password 
-            string hashedCurrent = PasswordHasher.HashPassword(currPassword);
-            if (hashedCurrent != current_customer.PasswordHash)
+            
+            if (!PasswordHasher.VerifyPassword(currPassword, current_customer.PasswordHash))
             {
                 lblError.Text = "Current password is incorrect.";
                 lblError.Visible = true;
