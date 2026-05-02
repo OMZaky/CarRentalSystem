@@ -83,6 +83,7 @@ namespace CarRentalSystem.Forms
 
             if (selectedCar != null)
             {
+                this.Hide();
                 using (var viewForm = new Car_View(
                     selectedCar.Id,
                     selectedCar.Model,
@@ -93,6 +94,7 @@ namespace CarRentalSystem.Forms
                 {
                     viewForm.ShowDialog();
                 }
+                this.Show();
             }
             else
             {

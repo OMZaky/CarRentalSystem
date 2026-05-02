@@ -158,10 +158,7 @@ namespace CarRentalSystem.Forms
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             // Go back to the Customer Dashboard safely
-            using (var dashboard = new Customer_Dashboard())
-            {
-                dashboard.ShowDialog();
-            }
+            this.Close();
             
         }
 

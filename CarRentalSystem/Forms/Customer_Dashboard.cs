@@ -37,10 +37,12 @@ namespace CarRentalSystem.Forms
         // My Account Button
         private void button4_Click(object sender, EventArgs e)
         {
+            this.Hide();
             using (var accountForm = new Account_Information())
             {
-                accountForm.Show();
+                accountForm.ShowDialog();
             }
+            this.Show();
             
         }
 
@@ -49,7 +51,7 @@ namespace CarRentalSystem.Forms
         {
             // using(var ordersForm = new Customer_Orders())
             //{
-            //  ordersForm.Show();
+            //  ordersForm.ShowDialog();
             //}
             
             MessageBox.Show("Opening My Orders...", "Navigation");
@@ -58,11 +60,12 @@ namespace CarRentalSystem.Forms
         // Search Cars Button
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Hide();
             using (var searchForm = new Customer_Car_Search())
             {
-                searchForm.Show();
+                searchForm.ShowDialog();
             }
-            
+            this.Show();
         }
 
         // Logout Button
@@ -75,9 +78,7 @@ namespace CarRentalSystem.Forms
                 // CRITICAL: Actually clear the session memory!
                 UserSession.Logout();
 
-                var loginPage = new Login_Page();
-                loginPage.Show();
-                this.Close();
+                Application.Restart();
             }
         }
 
