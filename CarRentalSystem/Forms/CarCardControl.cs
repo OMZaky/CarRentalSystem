@@ -31,25 +31,66 @@ namespace CarRentalSystem.Forms
             LoadImageSafely(car.ImagePath);
         }
 
+        private static Dictionary<string, Bitmap> _imageCache = new Dictionary<string, Bitmap>();
+
         private void LoadImageSafely(string imagePath)
         {
-            // 2. Activated Placeholder Logic!
-            // If the DB string is empty OR the file doesn't exist locally, use the default picture
-            if (string.IsNullOrWhiteSpace(imagePath) || !File.Exists(Path.Combine(Application.StartupPath, imagePath)))
+            // 1. FAST CACHE CHECK FOR PLACEHOLDER
+            if (string.IsNullOrWhiteSpace(imagePath))
             {
-                // NOTE: Ensure your team adds an image named "PlaceholderCar" to Properties.Resources!
-                picCar.Image = Properties.Resources.PlaceholderCar;
+                if (!_imageCache.ContainsKey("PLACEHOLDER"))
+                    _imageCache["PLACEHOLDER"] = Properties.Resources.PlaceholderCar; // Load once!
+
+                picCar.Image = _imageCache["PLACEHOLDER"];
                 picCar.SizeMode = PictureBoxSizeMode.Zoom;
                 return;
             }
 
-            // 3. Safe Loading via FileStream (Prevents WinForms from locking the file)
-            string fullPath = Path.Combine(Application.StartupPath, imagePath);
-            using (var stream = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
+            string fullPath = System.IO.Path.Combine(Application.StartupPath, imagePath);
+
+            // 2. CHECK RAM FIRST (Bypasses the slow hard-drive check completely!)
+            if (_imageCache.ContainsKey(fullPath))
             {
-                picCar.Image = Image.FromStream(stream);
+                picCar.Image = _imageCache[fullPath];
+                picCar.SizeMode = PictureBoxSizeMode.Zoom;
+                return;
+            }
+
+            // 3. ONLY CHECK HARD DRIVE IF IT IS NOT IN RAM YET
+            if (!System.IO.File.Exists(fullPath))
+            {
+                if (!_imageCache.ContainsKey("PLACEHOLDER"))
+                    _imageCache["PLACEHOLDER"] = Properties.Resources.PlaceholderCar;
+
+                picCar.Image = _imageCache["PLACEHOLDER"];
+                picCar.SizeMode = PictureBoxSizeMode.Zoom;
+                return;
+            }
+
+            // 4. LOAD AND CACHE THE REAL IMAGE
+            using (var stream = new System.IO.FileStream(fullPath, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+            using (var tempImage = Image.FromStream(stream))
+            {
+                var optimizedBitmap = new Bitmap(tempImage);
+                _imageCache[fullPath] = optimizedBitmap;
+                picCar.Image = optimizedBitmap;
             }
             picCar.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        public void UpdateData(CarSearchDTO car, int totalDays)
+        {
+            VehicleId = car.Id;
+
+            lblName.Text = $"{car.Model} {car.Year}";
+            lblType.Text = car.Category;
+            lblBranch.Text = "Branch: " + car.BranchName;
+            lblPrice.Text = $"{car.DailyPrice:N0} EGP/day";
+            lblTotal.Text = $"{(car.DailyPrice * totalDays):N0} EGP total";
+
+            // Because we added the static Dictionary cache earlier, 
+            // swapping the image here takes 0.001 seconds!
+            LoadImageSafely(car.ImagePath);
         }
 
         private void btnRentNow_Click(object sender, EventArgs e)
