@@ -158,13 +158,13 @@ namespace CarRentalSystem.Forms
         }
 
         private void Card_RentButtonClicked(object sender, int clickedVehicleId)
-        {
+        {   
             // Find the specific car data from our saved search results
+
             var selectedCar = _currentSearchResults.FirstOrDefault(c => c.Id == clickedVehicleId);
 
             if (selectedCar != null)
             {
-                
                 using (var viewForm = new Car_View(
                     selectedCar.Id,
                     selectedCar.Model,
@@ -174,9 +174,11 @@ namespace CarRentalSystem.Forms
                     dtpReturn.Value,
                     selectedCar.PlateNum))
                 {
-                    viewForm.ShowDialog();
+                    if (viewForm.ShowDialog() == DialogResult.OK)
+                    {
+                        btnSearch_Click(null, EventArgs.Empty); 
+                    }
                 }
-                
             }
             else
             {
