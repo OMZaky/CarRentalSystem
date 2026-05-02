@@ -2,6 +2,7 @@ using car_rental_system;
 using car_rental_system.Forms;
 using CarRentalSystem.Core;
 using CarRentalSystem.Data;
+using CarRentalSystem.DTOs;
 using CarRentalSystem.Models;
 using CarRentalSystem.Services;
 using System;
@@ -36,37 +37,39 @@ namespace CarRentalSystem.Forms
                 return;
             }
 
-
-            // 1. Create an instance of your new service
+            // 1. Ask the service to handle the complex database login
             var authService = new AuthService();
-
-            // 2. Ask the service to handle the complex database login
-            IUser user = authService.Login(inputUsername, inputPassword);
+            UserDTO user = authService.Login(inputUsername, inputPassword);
 
             if (user != null)
             {
-                // Success! Save the session and route the user
-                UserSession.CurrentUser = user;
+                // 2. Success! Save the session centrally
+                UserSession.Login(user);
 
-                if (user is Customer customer)
+                // 3. Role-Based Routing (No parameters passed!)
+                Form nextForm;
+
+                switch (UserSession.CurrentUser.Role)
                 {
-                    var frm = new Customer_Dashboard(customer); 
-                    frm.Location = this.Location;
-                    frm.StartPosition = FormStartPosition.Manual;
-                    frm.Show();
-                }
-                else if (user is Employee employee)
-                {
-                    var frm = new employeeDashboard(employee);
-                    frm.Location = this.Location;
-                    frm.StartPosition = FormStartPosition.Manual;
-                    frm.Show();
+                    case UserRole.SystemAdmin:
+                    case UserRole.BranchManager:
+                    case UserRole.RentalAgent:
+                        nextForm = new Employee_Dashboard();
+                        break;
+
+                    case UserRole.Customer:
+                        nextForm = new Customer_Dashboard();
+                        break;
+
+                    default:
+                        ShowError("Unknown user role detected.");
+                        return;
                 }
 
-                this.Hide();
-
-                //var dashboard = new Main_Dashboard();
-                //dashboard.Show();
+                // 4. Swap the windows securely
+                nextForm.Location = this.Location;
+                nextForm.StartPosition = FormStartPosition.Manual;
+                nextForm.Show();
 
                 txtUsername.Clear();
                 txtPassword.Clear();
@@ -74,7 +77,7 @@ namespace CarRentalSystem.Forms
             }
             else
             {
-                // Failure! The service returned null.
+                // Failure!
                 ShowError("Invalid username, password, or connection error.");
             }
         }

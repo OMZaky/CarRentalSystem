@@ -2,7 +2,7 @@
 
 namespace car_rental_system
 {
-    partial class employeeDashboard
+    partial class Employee_Dashboard
     {
         /// <summary>
         ///  Required designer variable.
@@ -354,7 +354,7 @@ namespace car_rental_system
             label15.TabIndex = 20;
             label15.Text = "View and manage Sub-Employees";
             // 
-            // employeeDashboard
+            // Employee_Dashboard
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -380,7 +380,7 @@ namespace car_rental_system
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            Name = "employeeDashboard";
+            Name = "Employee_Dashboard";
             Text = "Form1";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

@@ -49,10 +49,6 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DTOs\" />
-  </ItemGroup>
-
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="if not exist &quot;$(ProjectDir)appsettings.json&quot; echo Warning: appsettings.json is missing. Please change &quot;appsettings.template.json&quot; to &quot;appsettings.json&quot; and add credentials." />
   </Target>

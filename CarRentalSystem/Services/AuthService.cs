@@ -3,6 +3,7 @@ using System.Linq;
 using CarRentalSystem.Data;
 using CarRentalSystem.Models;
 using CarRentalSystem.Core;
+using CarRentalSystem.DTOs; // Added to access UserDTO
 using Microsoft.EntityFrameworkCore;
 
 namespace CarRentalSystem.Services
@@ -11,37 +12,51 @@ namespace CarRentalSystem.Services
     {
         /// <summary>
         /// Validates a user's credentials against the Azure database.
-        /// Returns the Employee object if successful, or null if it fails.
+        /// Returns a unified UserDTO if successful, or null if it fails.
         /// </summary>
-        public IUser Login(string username, string password)
+        public UserDTO Login(string username, string password)
         {
             try
             {
                 using (var context = new AppDbContext())
                 {
-                    // 1. Find the user by Username
-                    var user = context.Employees
-                                      .Include(emp => emp.Branch)
-                                      .FirstOrDefault(emp => emp.Username == username);
+                    var employee = context.Employees
+                                          .Include(emp => emp.Branch)
+                                          .FirstOrDefault(emp => emp.Username == username);
 
-                    // 2. Verify the password hash
-                    if (user != null && PasswordHasher.VerifyPassword(password, user.PasswordHash))
+                    if (employee != null && PasswordHasher.VerifyPassword(password, employee.PasswordHash))
                     {
-                        return user; // Success!
+                        return new UserDTO
+                        {
+                            Id = employee.Id,
+                            Username = employee.Username,
+                            FullName = $"{employee.FirstName} {employee.LastName}",
+                            // Because the names match exactly, you can just cast it:
+                            Role = (UserRole)employee.Role,
+                            BranchCity = employee.Branch?.City ?? "Main"
+                        };
                     }
 
-                    var alt_user = context.Customers.FirstOrDefault(c => c.Username == username);
-                    if (alt_user != null && PasswordHasher.VerifyPassword(password, alt_user.PasswordHash))
+                    var customer = context.Customers
+                                          .FirstOrDefault(c => c.Username == username);
+
+                    if (customer != null && PasswordHasher.VerifyPassword(password, customer.PasswordHash))
                     {
-                        return alt_user; 
+                        return new UserDTO
+                        {
+                            Id = customer.Id,
+                            Username = customer.Username,
+                            FullName = $"{customer.FirstName} {customer.LastName}",
+                            Role = UserRole.Customer,
+                            BranchCity = null
+                        };
                     }
 
-                    return null; // Invalid password
+                    return null;
                 }
             }
             catch (Exception)
             {
-                // In a real app, you might log the exact error here before returning null
                 return null;
             }
         }
