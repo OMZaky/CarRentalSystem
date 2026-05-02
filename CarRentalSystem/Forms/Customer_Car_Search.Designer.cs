@@ -441,7 +441,7 @@ namespace CarRentalSystem.Forms
             Controls.Add(pnFilters);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(5);
-            MaximizeBox = false;
+            MaximizeBox = true;
             Name = "Customer_Car_Search";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Browse Cars — Car Rental System";

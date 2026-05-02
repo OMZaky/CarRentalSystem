@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using CarRentalSystem.Core;
-
+using CarRentalSystem.Services;
 namespace CarRentalSystem.Forms
 {
     public partial class Car_View : Form
@@ -9,9 +9,10 @@ namespace CarRentalSystem.Forms
         private int _vehicleId;
         private DateTime _dateFrom;
         private DateTime _dateTo;
+        private ReservationService reservationService;
         private decimal _totalPrice; // Added to easily pass the cost to the payment screen
 
-        public Car_View(int vehicleId, string model, string category, decimal dailyPrice, DateTime from, DateTime to)
+        public Car_View(int vehicleId, string model, string category, decimal dailyPrice, DateTime from, DateTime to,string PlateNum)
         {
             InitializeComponent();
 
@@ -19,11 +20,12 @@ namespace CarRentalSystem.Forms
             _vehicleId = vehicleId;
             _dateFrom = from;
             _dateTo = to;
+            reservationService = new ReservationService();
 
-            LoadCarDetails(model, category, dailyPrice);
+            LoadCarDetails(model, category, dailyPrice,PlateNum);
         }
 
-        private void LoadCarDetails(string model, string category, decimal dailyPrice)
+        private void LoadCarDetails(string model, string category, decimal dailyPrice,string PlateNum)
         {
             int totalDays = (_dateTo - _dateFrom).Days;
             _totalPrice = dailyPrice * totalDays; // Store the calculated total
@@ -31,39 +33,36 @@ namespace CarRentalSystem.Forms
 
             decimal depositAmount = _totalPrice * 0.25m;
 
-            label6.Text = _vehicleId.ToString();
+            label6.Text = $"Car_ID:{_vehicleId}";
             label4.Text = model;
             label7.Text = category;
-
+            label9.Text = PlateNum;
             label14.Text = _dateFrom.ToString("MMM dd, yyyy");
             label16.Text = _dateTo.ToString("MMM dd, yyyy");
 
-            label13.Text = $"Total: {_totalPrice:N0} EGP\nDue Now: {depositAmount:N0} EGP";
+            label17.Text = $"{_totalPrice:N0} EGP";
+            label19.Text = $"{depositAmount:F2} EGP";
         }
 
         // --- PROCEED TO PAYMENT BUTTON ---
         private void button3_Click(object sender, EventArgs e)
         {
-            // Security Check
+            // 1. Security Check
             if (UserSession.CurrentUser == null)
             {
                 MessageBox.Show("Your session has expired. Please log in again.", "Security Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            decimal depositAmount = _totalPrice * 0.25m;
-
-            // Open the new Payment Form as a dialog popup
-            using (var paymentForm = new Reservation_Payment(_vehicleId, depositAmount, _dateFrom, _dateTo))
-            {
-                // Wait for the payment form to close. 
-                // If it was successful, automatically close this Car_View screen too!
-                if (paymentForm.ShowDialog() == DialogResult.OK)
-                {
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-            }
+            reservationService.CreateReservation(
+                UserSession.CurrentUser.Id, 
+                _vehicleId, 
+                _dateFrom, 
+                _dateTo
+            );
+                MessageBox.Show("Reservation completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close(); 
+            
         }
 
         // --- BACK BUTTON ---

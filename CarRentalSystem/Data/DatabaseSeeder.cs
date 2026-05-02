@@ -15,7 +15,7 @@ namespace CarRentalSystem.Data
 
             Console.WriteLine("Seeding business-level database with secure hashes...");
 
-            // 1. Seed Branches
+            // 1. Seed Branches 
             var branches = new List<Branch>
             {
                 new Branch { Name = "Cairo International Airport", City = "Cairo", StreetName = "Terminal 3 Arrivals", PhoneNumber = "01011112222", OperatingHours = "24/7" },

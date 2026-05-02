@@ -1,7 +1,9 @@
-using System;
-using System.Windows.Forms;
+using car_rental_system;
 using CarRentalSystem.Core;  
 using CarRentalSystem.DTOs;
+using CarRentalSystem.Forms;
+using System;
+using System.Windows.Forms;
 
 namespace CarRentalSystem
 {
@@ -65,12 +67,12 @@ namespace CarRentalSystem
         // Car Search Button
         private void button1_Click(object sender, EventArgs e)
         {
-            //we need here to do make a check, if manager or admin, make him go to sepearte form where he can CRUD cars
-
-
-            // var carSearchForm = new CarSearchForm();
-            // carSearchForm.ShowDialog();
-            MessageBox.Show("Opening Car Search module...", "Navigation");
+            this.Hide();
+            using (var carSearchForm = new employeeCarSearch())
+            {
+                carSearchForm.ShowDialog();
+            }
+            this.Show();
         }
 
         // Orders/Rentals Button
@@ -87,9 +89,14 @@ namespace CarRentalSystem
             if (UserSession.CurrentUser?.Role == UserRole.SystemAdmin ||
                 UserSession.CurrentUser?.Role == UserRole.BranchManager)
             {
-                // var empMgmtForm = new EmployeeManagementForm();
-                // empMgmtForm.ShowDialog();
-                MessageBox.Show("Opening Employee Management module...", "Navigation");
+               
+                this.Hide();
+                using (var empMgmtForm = new employeeSearch())
+                {
+                    empMgmtForm.ShowDialog();
+                }
+                this.Show();
+                
             }
             else
             {
@@ -104,6 +111,8 @@ namespace CarRentalSystem
             // It ensures that even if you have a hidden Login form, the .exe stops.
             Application.Exit();
         }
+
+       
 
         private void label1_Click(object sender, EventArgs e) { }
         private void label3_Click(object sender, EventArgs e) { }
