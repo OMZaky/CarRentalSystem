@@ -151,7 +151,6 @@ namespace CarRentalSystem.Forms
             using (var changePasswordForm = new Change_Password())
             {
                 changePasswordForm.ShowDialog(); // Use Dialog so they can't click away!
-
             }
         }
 

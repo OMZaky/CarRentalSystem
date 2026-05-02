@@ -209,8 +209,7 @@ namespace car_rental_system
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            var empMgmtForm = new Employee_Dashboard();
-            empMgmtForm.Show();
+            
         }
     }
 
