@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarRentalSystem.Models
 {
-    public class Employee
+    public class Employee : IUser
     {
         [Key]
         public int Id { get; set; }

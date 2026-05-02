@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CarRentalSystem.Forms;
+using CarRentalSystem.Models;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +13,12 @@ namespace car_rental_system.Forms
 {
     public partial class Customer_Dashboard : Form
     {
-        public Customer_Dashboard()
+        private Customer CurrentUser;
+        public Customer_Dashboard(Customer User)
         {
             InitializeComponent();
+            this.CurrentUser = User;
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -57,7 +63,11 @@ namespace car_rental_system.Forms
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            var frm = new account_information(this.CurrentUser);
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.Show();
+            this.Hide();
         }
     }
 }

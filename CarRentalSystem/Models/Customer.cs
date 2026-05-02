@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CarRentalSystem.Models
 {
-    public class Customer
+    public class Customer : IUser
     {
         [Key]
         public int Id { get; set; }

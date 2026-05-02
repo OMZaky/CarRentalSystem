@@ -174,5 +174,10 @@ namespace CarRentalSystem.Forms
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

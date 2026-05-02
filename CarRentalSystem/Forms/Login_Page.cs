@@ -1,3 +1,5 @@
+using car_rental_system;
+using car_rental_system.Forms;
 using CarRentalSystem.Core;
 using CarRentalSystem.Data;
 using CarRentalSystem.Models;
@@ -39,12 +41,29 @@ namespace CarRentalSystem.Forms
             var authService = new AuthService();
 
             // 2. Ask the service to handle the complex database login
-            var user = authService.Login(inputUsername, inputPassword);
+            IUser user = authService.Login(inputUsername, inputPassword);
 
             if (user != null)
             {
                 // Success! Save the session and route the user
                 UserSession.CurrentUser = user;
+
+                if (user is Customer customer)
+                {
+                    var frm = new Customer_Dashboard(customer); 
+                    frm.Location = this.Location;
+                    frm.StartPosition = FormStartPosition.Manual;
+                    frm.Show();
+                }
+                else if (user is Employee employee)
+                {
+                    var frm = new employeeDashboard(employee);
+                    frm.Location = this.Location;
+                    frm.StartPosition = FormStartPosition.Manual;
+                    frm.Show();
+                }
+
+                this.Hide();
 
                 //var dashboard = new Main_Dashboard();
                 //dashboard.Show();
@@ -72,6 +91,20 @@ namespace CarRentalSystem.Forms
         {
             errorLabel.ForeColor = Color.Red;
             errorLabel.Text = errorMessage;
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RegisterLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var frm = new Register_Page();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.Show();
+            this.Hide();
         }
     }
 }

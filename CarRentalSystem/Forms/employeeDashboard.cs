@@ -1,10 +1,14 @@
+using CarRentalSystem.Models;
+
 namespace car_rental_system
 {
     public partial class employeeDashboard : Form
     {
-        public employeeDashboard()
+        private Employee emp;
+        public employeeDashboard(Employee user)
         {
             InitializeComponent();
+            this.emp = user;
         }
 
         private void label1_Click(object sender, EventArgs e)

@@ -12,7 +12,7 @@ namespace CarRentalSystem.Services
         /// Validates a user's credentials against the Azure database.
         /// Returns the Employee object if successful, or null if it fails.
         /// </summary>
-        public Employee? Login(string username, string password)
+        public IUser Login(string username, string password)
         {
             try
             {
@@ -26,6 +26,12 @@ namespace CarRentalSystem.Services
                     if (user != null && PasswordHasher.VerifyPassword(password, user.PasswordHash))
                     {
                         return user; // Success!
+                    }
+
+                    var alt_user = context.Customers.FirstOrDefault(c => c.Username == username);
+                    if (alt_user != null && PasswordHasher.VerifyPassword(password, alt_user.PasswordHash))
+                    {
+                        return alt_user; 
                     }
 
                     return null; // Invalid password

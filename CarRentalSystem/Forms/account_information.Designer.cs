@@ -244,6 +244,7 @@
             txtFirstName.Size = new Size(366, 34);
             txtFirstName.TabIndex = 2;
             txtFirstName.Text = "Omar";
+            txtFirstName.TextChanged += txtFirstName_TextChanged;
             // 
             // lblLastNameTitle
             // 
