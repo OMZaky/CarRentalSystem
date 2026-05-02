@@ -37,32 +37,32 @@ namespace CarRentalSystem.Forms
         // My Account Button
         private void button4_Click(object sender, EventArgs e)
         {
-            var accountForm = new Account_Information();
-            accountForm.Location = this.Location;
-            accountForm.StartPosition = FormStartPosition.Manual;
-            accountForm.Show();
-            this.Hide();
+            using (var accountForm = new Account_Information())
+            {
+                accountForm.Show();
+            }
+            
         }
 
         // My Orders Button
         private void button1_Click(object sender, EventArgs e)
         {
-            // var ordersForm = new Customer_Orders();
-            // ordersForm.Location = this.Location;
-            // ordersForm.StartPosition = FormStartPosition.Manual;
-            // ordersForm.Show();
-            // this.Hide();
+            // using(var ordersForm = new Customer_Orders())
+            //{
+            //  ordersForm.Show();
+            //}
+            
             MessageBox.Show("Opening My Orders...", "Navigation");
         }
 
         // Search Cars Button
         private void button2_Click(object sender, EventArgs e)
         {
-            var searchForm = new Customer_Car_Search();
-            searchForm.Location = this.Location;
-            searchForm.StartPosition = FormStartPosition.Manual;
-            searchForm.Show();
-            this.Hide();
+            using (var searchForm = new Customer_Car_Search())
+            {
+                searchForm.Show();
+            }
+            
         }
 
         // Logout Button
@@ -81,6 +81,13 @@ namespace CarRentalSystem.Forms
             }
         }
 
+        // This runs whenever the 'X' in the title bar is clicked
+        private void Customer_Dashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // This is the "Master Kill Switch"
+            // It ensures that even if you have a hidden Login form, the .exe stops.
+            Application.Exit();
+        }
         private void label1_Click(object sender, EventArgs e) { }
         private void label3_Click(object sender, EventArgs e) { }
         private void label4_Click(object sender, EventArgs e) { }

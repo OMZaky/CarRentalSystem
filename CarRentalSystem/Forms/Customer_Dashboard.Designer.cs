@@ -341,6 +341,7 @@ namespace CarRentalSystem.Forms
             MaximizeBox = false;
             Name = "Customer_Dashboard";
             Text = "Form1";
+            FormClosed += Customer_Dashboard_FormClosed;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();

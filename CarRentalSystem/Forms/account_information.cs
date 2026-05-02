@@ -148,18 +148,21 @@ namespace CarRentalSystem.Forms
 
         private void btnEditPassword_Click(object sender, EventArgs e)
         {
-            //var changePasswordForm = new Change_Password();
-            //changePasswordForm.ShowDialog(); // Use Dialog so they can't click away!
+            using (var changePasswordForm = new Change_Password())
+            {
+                changePasswordForm.ShowDialog(); // Use Dialog so they can't click away!
+
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             // Go back to the Customer Dashboard safely
-            var dashboard = new Customer_Dashboard();
-            dashboard.Location = this.Location;
-            dashboard.StartPosition = FormStartPosition.Manual;
-            dashboard.Show();
-            this.Hide();
+            using (var dashboard = new Customer_Dashboard())
+            {
+                dashboard.ShowDialog();
+            }
+            
         }
 
         private void Account_Information_Load(object sender, EventArgs e) { }

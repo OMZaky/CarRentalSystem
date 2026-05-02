@@ -42,7 +42,6 @@ namespace CarRentalSystem
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            label9 = new Label();
             label10 = new Label();
             button1 = new Button();
             pictureBox4 = new PictureBox();
@@ -55,6 +54,7 @@ namespace CarRentalSystem
             label13 = new Label();
             label14 = new Label();
             label15 = new Label();
+            label9 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -76,7 +76,7 @@ namespace CarRentalSystem
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(3, 0);
-            panel1.Margin = new Padding(4, 4, 4, 4);
+            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
             panel1.Size = new Size(1171, 125);
             panel1.TabIndex = 0;
@@ -85,7 +85,7 @@ namespace CarRentalSystem
             // 
             pictureBox3.Image = Resources.icons8_worker_100;
             pictureBox3.Location = new Point(1058, 26);
-            pictureBox3.Margin = new Padding(4, 4, 4, 4);
+            pictureBox3.Margin = new Padding(4);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(99, 74);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
@@ -96,7 +96,7 @@ namespace CarRentalSystem
             // 
             pictureBox2.Image = Resources.icons8_rhombus_100;
             pictureBox2.Location = new Point(837, 72);
-            pictureBox2.Margin = new Padding(4, 4, 4, 4);
+            pictureBox2.Margin = new Padding(4);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(25, 28);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -157,7 +157,7 @@ namespace CarRentalSystem
             // 
             pictureBox1.Image = Resources.Car_Icon;
             pictureBox1.Location = new Point(32, 15);
-            pictureBox1.Margin = new Padding(4, 4, 4, 4);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(126, 81);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -206,26 +206,13 @@ namespace CarRentalSystem
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Arial", 10F);
-            label8.ForeColor = Color.FromArgb(179, 187, 204);
-            label8.Location = new Point(286, 196);
+            label8.ForeColor = Color.FromArgb(0, 192, 0);
+            label8.Location = new Point(306, 194);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(30, 32);
             label8.TabIndex = 9;
             label8.Text = "●";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.Transparent;
-            label9.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.FromArgb(179, 187, 204);
-            label9.Location = new Point(322, 198);
-            label9.Margin = new Padding(4, 0, 4, 0);
-            label9.Name = "label9";
-            label9.Size = new Size(152, 27);
-            label9.TabIndex = 10;
-            label9.Text = "Cairo Branch";
             // 
             // label10
             // 
@@ -246,7 +233,7 @@ namespace CarRentalSystem
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.Location = new Point(35, 317);
-            button1.Margin = new Padding(4, 4, 4, 4);
+            button1.Margin = new Padding(4);
             button1.Name = "button1";
             button1.Size = new Size(1124, 83);
             button1.TabIndex = 12;
@@ -259,7 +246,7 @@ namespace CarRentalSystem
             // 
             pictureBox4.Image = Resources.icons8_car_search2;
             pictureBox4.Location = new Point(44, 323);
-            pictureBox4.Margin = new Padding(4, 4, 4, 4);
+            pictureBox4.Margin = new Padding(4);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(90, 72);
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
@@ -270,7 +257,7 @@ namespace CarRentalSystem
             // 
             pictureBox5.Image = Resources.icons8_calendar_48;
             pictureBox5.Location = new Point(44, 411);
-            pictureBox5.Margin = new Padding(4, 4, 4, 4);
+            pictureBox5.Margin = new Padding(4);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(90, 78);
             pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
@@ -283,7 +270,7 @@ namespace CarRentalSystem
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.Location = new Point(35, 408);
-            button2.Margin = new Padding(4, 4, 4, 4);
+            button2.Margin = new Padding(4);
             button2.Name = "button2";
             button2.Size = new Size(1124, 83);
             button2.TabIndex = 14;
@@ -308,7 +295,7 @@ namespace CarRentalSystem
             // 
             pictureBox6.Image = Resources.icons8_rhombus_100;
             pictureBox6.Location = new Point(490, 515);
-            pictureBox6.Margin = new Padding(4, 4, 4, 4);
+            pictureBox6.Margin = new Padding(4);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(25, 28);
             pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
@@ -319,7 +306,7 @@ namespace CarRentalSystem
             // 
             pictureBox7.Image = Resources.icons8_business_group_80;
             pictureBox7.Location = new Point(43, 554);
-            pictureBox7.Margin = new Padding(4, 4, 4, 4);
+            pictureBox7.Margin = new Padding(4);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(90, 79);
             pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
@@ -332,7 +319,7 @@ namespace CarRentalSystem
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.Location = new Point(35, 550);
-            button3.Margin = new Padding(4, 4, 4, 4);
+            button3.Margin = new Padding(4);
             button3.Name = "button3";
             button3.Size = new Size(1124, 90);
             button3.TabIndex = 16;
@@ -380,6 +367,19 @@ namespace CarRentalSystem
             label15.TabIndex = 20;
             label15.Text = "View and manage Sub-Employees";
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = Color.Transparent;
+            label9.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.FromArgb(179, 187, 204);
+            label9.Location = new Point(329, 200);
+            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(152, 27);
+            label9.TabIndex = 10;
+            label9.Text = "Cairo Branch";
+            // 
             // Employee_Dashboard
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -405,10 +405,11 @@ namespace CarRentalSystem
             Controls.Add(label5);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             MaximizeBox = false;
             Name = "Employee_Dashboard";
             Text = "Form1";
+            FormClosed += Employee_Dashboard_FormClosed;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -436,7 +437,6 @@ namespace CarRentalSystem
         private Label label6;
         private Label label7;
         private Label label8;
-        private Label label9;
         private Label label10;
         private Button button1;
         private PictureBox pictureBox4;
@@ -449,5 +449,6 @@ namespace CarRentalSystem
         private Label label13;
         private Label label14;
         private Label label15;
+        private Label label9;
     }
 }

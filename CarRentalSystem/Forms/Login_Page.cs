@@ -69,6 +69,7 @@ namespace CarRentalSystem.Forms
                 // 4. Swap the windows securely
                 nextForm.Location = this.Location;
                 nextForm.StartPosition = FormStartPosition.Manual;
+                nextForm.FormClosed += (s, args) => this.Close();
                 nextForm.Show();
 
                 txtUsername.Clear();

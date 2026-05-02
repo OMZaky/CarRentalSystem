@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using CarRentalSystem.Core;
+using CarRentalSystem.DTOs;       // Added to recognize CarSearchDTO
 using CarRentalSystem.Services;
 
 namespace CarRentalSystem.Forms
@@ -9,6 +12,7 @@ namespace CarRentalSystem.Forms
     {
         private VehicleService _vehicleService;
 
+        private List<CarSearchDTO> _currentSearchResults;
         public Customer_Car_Search()
         {
             InitializeComponent();
@@ -45,13 +49,11 @@ namespace CarRentalSystem.Forms
             lblDateSummary.Text = $"{dtpPickup.Value:MMM dd} — {dtpReturn.Value:MMM dd} · {days} days";
 
             // Call the Service Layer
-            var availableCars = _vehicleService.SearchAvailableCars();
-
+            _currentSearchResults = _vehicleService.SearchAvailableCars();
             // Update Count Label
-            lblResultsCount.Text = $"{availableCars.Count} cars available for your dates";
-
+            lblResultsCount.Text = $"{_currentSearchResults.Count} cars available for your dates";
             // Render Results safely
-            PopulateResults(availableCars, days);
+            PopulateResults(_currentSearchResults, days);
         }
 
         private void PopulateResults(System.Collections.Generic.List<DTOs.CarSearchDTO> cars, int totalDays)
@@ -76,12 +78,26 @@ namespace CarRentalSystem.Forms
 
         private void Card_RentButtonClicked(object sender, int clickedVehicleId)
         {
-            MessageBox.Show($"Preparing checkout for Vehicle ID: {clickedVehicleId}!", "Rent Now", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Find the specific car data from our saved search results
+            var selectedCar = _currentSearchResults.FirstOrDefault(c => c.Id == clickedVehicleId);
 
-            // LATER, Someone WILL DO THIS:
-            // int days = (dtpReturn.Value.Date - dtpPickup.Value.Date).Days;
-            // var checkoutForm = new Customer_Checkout(clickedVehicleId, days, dtpPickup.Value, dtpReturn.Value);
-            // checkoutForm.ShowDialog();
+            if (selectedCar != null)
+            {
+                using (var viewForm = new Car_View(
+                    selectedCar.Id,
+                    selectedCar.Model,
+                    selectedCar.Category,
+                    selectedCar.DailyPrice,
+                    dtpPickup.Value,
+                    dtpReturn.Value))
+                {
+                    viewForm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error: Could not locate car details.", "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void lblFilterTitle_Click(object sender, EventArgs e) { }

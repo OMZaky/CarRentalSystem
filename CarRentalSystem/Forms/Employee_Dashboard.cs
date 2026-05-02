@@ -65,6 +65,9 @@ namespace CarRentalSystem
         // Car Search Button
         private void button1_Click(object sender, EventArgs e)
         {
+            //we need here to do make a check, if manager or admin, make him go to sepearte form where he can CRUD cars
+
+
             // var carSearchForm = new CarSearchForm();
             // carSearchForm.ShowDialog();
             MessageBox.Show("Opening Car Search module...", "Navigation");
@@ -81,7 +84,8 @@ namespace CarRentalSystem
         // Employee Management Button
         private void button3_Click(object sender, EventArgs e)
         {
-            if (UserSession.CurrentUser?.Role == UserRole.SystemAdmin)
+            if (UserSession.CurrentUser?.Role == UserRole.SystemAdmin ||
+                UserSession.CurrentUser?.Role == UserRole.BranchManager)
             {
                 // var empMgmtForm = new EmployeeManagementForm();
                 // empMgmtForm.ShowDialog();
@@ -93,7 +97,14 @@ namespace CarRentalSystem
             }
         }
 
-        
+        // This runs whenever the 'X' in the title bar is clicked
+        private void Employee_Dashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // This is the "Master Kill Switch"
+            // It ensures that even if you have a hidden Login form, the .exe stops.
+            Application.Exit();
+        }
+
         private void label1_Click(object sender, EventArgs e) { }
         private void label3_Click(object sender, EventArgs e) { }
         private void label4_Click(object sender, EventArgs e) { }

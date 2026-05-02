@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using CarRentalSystem.Core;       // For UserSession
-using CarRentalSystem.Services;   // For ReservationService
+using CarRentalSystem.Core;
 
 namespace CarRentalSystem.Forms
 {
@@ -10,13 +9,12 @@ namespace CarRentalSystem.Forms
         private int _vehicleId;
         private DateTime _dateFrom;
         private DateTime _dateTo;
-        private ReservationService _reservationService;
+        private decimal _totalPrice; // Added to easily pass the cost to the payment screen
 
         public Car_View(int vehicleId, string model, string category, decimal dailyPrice, DateTime from, DateTime to)
         {
             InitializeComponent();
 
-            _reservationService = new ReservationService();
 
             _vehicleId = vehicleId;
             _dateFrom = from;
@@ -28,7 +26,10 @@ namespace CarRentalSystem.Forms
         private void LoadCarDetails(string model, string category, decimal dailyPrice)
         {
             int totalDays = (_dateTo - _dateFrom).Days;
-            decimal totalPrice = dailyPrice * totalDays;
+            _totalPrice = dailyPrice * totalDays; // Store the calculated total
+
+
+            decimal depositAmount = _totalPrice * 0.25m;
 
             label6.Text = _vehicleId.ToString();
             label4.Text = model;
@@ -37,38 +38,31 @@ namespace CarRentalSystem.Forms
             label14.Text = _dateFrom.ToString("MMM dd, yyyy");
             label16.Text = _dateTo.ToString("MMM dd, yyyy");
 
-            label13.Text = $"{totalPrice:N0} EGP";
+            label13.Text = $"Total: {_totalPrice:N0} EGP\nDue Now: {depositAmount:N0} EGP";
         }
 
-        // --- RESERVE BUTTON ---
+        // --- PROCEED TO PAYMENT BUTTON ---
         private void button3_Click(object sender, EventArgs e)
         {
+            // Security Check
             if (UserSession.CurrentUser == null)
             {
                 MessageBox.Show("Your session has expired. Please log in again.", "Security Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // 2. Disable button to prevent double-booking if the user clicks twice quickly
-            button3.Enabled = false;
-            button3.Text = "Processing...";
+            decimal depositAmount = _totalPrice * 0.25m;
 
-            // 3. Talk to the Service Layer
-            int currentUserId = UserSession.CurrentUser.Id;
-            bool success = _reservationService.CreateReservation(currentUserId, _vehicleId, _dateFrom, _dateTo);
-
-            if (success)
+            // Open the new Payment Form as a dialog popup
+            using (var paymentForm = new Reservation_Payment(_vehicleId, depositAmount, _dateFrom, _dateTo))
             {
-                MessageBox.Show("Your reservation was successful! You can view it in 'My Orders'.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("A system error occurred while processing your reservation. Please try again.", "Booking Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                // Re-enable the button so they can try again
-                button3.Enabled = true;
-                button3.Text = "Reserve";
+                // Wait for the payment form to close. 
+                // If it was successful, automatically close this Car_View screen too!
+                if (paymentForm.ShowDialog() == DialogResult.OK)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
         }
 

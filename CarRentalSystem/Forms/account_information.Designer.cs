@@ -125,7 +125,7 @@
             // 
             pictureBox1.Image = Properties.Resources.Car_View_Car_Left;
             pictureBox1.Location = new Point(32, 15);
-            pictureBox1.Margin = new Padding(4, 4, 4, 4);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(126, 81);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -140,7 +140,7 @@
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(4, 22);
-            panel1.Margin = new Padding(4, 4, 4, 4);
+            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
             panel1.Size = new Size(1290, 125);
             panel1.TabIndex = 24;
@@ -149,18 +149,19 @@
             // 
             pictureBox2.Image = Properties.Resources.icons8_home_50;
             pictureBox2.Location = new Point(1188, 15);
-            pictureBox2.Margin = new Padding(4, 4, 4, 4);
+            pictureBox2.Margin = new Padding(4);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(64, 81);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 6;
             pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
             // 
             // pictureBox5
             // 
             pictureBox5.Image = Properties.Resources.icons8_circle_50;
             pictureBox5.Location = new Point(18, 13);
-            pictureBox5.Margin = new Padding(4, 4, 4, 4);
+            pictureBox5.Margin = new Padding(4);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(98, 96);
             pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
@@ -215,7 +216,7 @@
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label5);
             panel2.Location = new Point(4, 155);
-            panel2.Margin = new Padding(4, 4, 4, 4);
+            panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
             panel2.Size = new Size(1289, 127);
             panel2.TabIndex = 29;
@@ -252,7 +253,7 @@
             txtFirstName.Font = new Font("Segoe UI", 10F);
             txtFirstName.ForeColor = Color.FromArgb(34, 34, 34);
             txtFirstName.Location = new Point(31, 104);
-            txtFirstName.Margin = new Padding(4, 4, 4, 4);
+            txtFirstName.Margin = new Padding(4);
             txtFirstName.Name = "txtFirstName";
             txtFirstName.ReadOnly = true;
             txtFirstName.Size = new Size(475, 43);
@@ -279,7 +280,7 @@
             txtLastName.Font = new Font("Segoe UI", 10F);
             txtLastName.ForeColor = Color.FromArgb(34, 34, 34);
             txtLastName.Location = new Point(630, 104);
-            txtLastName.Margin = new Padding(4, 4, 4, 4);
+            txtLastName.Margin = new Padding(4);
             txtLastName.Name = "txtLastName";
             txtLastName.ReadOnly = true;
             txtLastName.Size = new Size(521, 43);
@@ -305,7 +306,7 @@
             txtEmail.Font = new Font("Segoe UI", 10F);
             txtEmail.ForeColor = Color.FromArgb(34, 34, 34);
             txtEmail.Location = new Point(31, 219);
-            txtEmail.Margin = new Padding(4, 4, 4, 4);
+            txtEmail.Margin = new Padding(4);
             txtEmail.Name = "txtEmail";
             txtEmail.ReadOnly = true;
             txtEmail.Size = new Size(475, 43);
@@ -331,7 +332,7 @@
             txtPhone.Font = new Font("Segoe UI", 10F);
             txtPhone.ForeColor = Color.FromArgb(34, 34, 34);
             txtPhone.Location = new Point(630, 219);
-            txtPhone.Margin = new Padding(4, 4, 4, 4);
+            txtPhone.Margin = new Padding(4);
             txtPhone.Name = "txtPhone";
             txtPhone.ReadOnly = true;
             txtPhone.Size = new Size(521, 43);
@@ -357,7 +358,7 @@
             txtSsn.Font = new Font("Courier New", 10F);
             txtSsn.ForeColor = Color.FromArgb(34, 34, 34);
             txtSsn.Location = new Point(31, 330);
-            txtSsn.Margin = new Padding(4, 4, 4, 4);
+            txtSsn.Margin = new Padding(4);
             txtSsn.Name = "txtSsn";
             txtSsn.ReadOnly = true;
             txtSsn.Size = new Size(475, 38);
@@ -383,7 +384,7 @@
             txtUsername.Font = new Font("Courier New", 10F);
             txtUsername.ForeColor = Color.FromArgb(34, 34, 34);
             txtUsername.Location = new Point(630, 330);
-            txtUsername.Margin = new Padding(4, 4, 4, 4);
+            txtUsername.Margin = new Padding(4);
             txtUsername.Name = "txtUsername";
             txtUsername.ReadOnly = true;
             txtUsername.Size = new Size(337, 38);
@@ -398,7 +399,7 @@
             btnEditDetails.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnEditDetails.ForeColor = Color.White;
             btnEditDetails.Location = new Point(1054, 315);
-            btnEditDetails.Margin = new Padding(4, 4, 4, 4);
+            btnEditDetails.Margin = new Padding(4);
             btnEditDetails.Name = "btnEditDetails";
             btnEditDetails.Size = new Size(196, 59);
             btnEditDetails.TabIndex = 13;
@@ -414,7 +415,7 @@
             btnEditPassword.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnEditPassword.ForeColor = Color.Gray;
             btnEditPassword.Location = new Point(23, 1213);
-            btnEditPassword.Margin = new Padding(4, 4, 4, 4);
+            btnEditPassword.Margin = new Padding(4);
             btnEditPassword.Name = "btnEditPassword";
             btnEditPassword.Size = new Size(287, 56);
             btnEditPassword.TabIndex = 14;
@@ -431,7 +432,7 @@
             panel3.Controls.Add(lblExpiryTitle);
             panel3.Controls.Add(lblExpiry);
             panel3.Location = new Point(16, 758);
-            panel3.Margin = new Padding(4, 4, 4, 4);
+            panel3.Margin = new Padding(4);
             panel3.Name = "panel3";
             panel3.Size = new Size(1277, 144);
             panel3.TabIndex = 31;
@@ -455,7 +456,7 @@
             txtLicenseNum.Font = new Font("Courier New", 10F);
             txtLicenseNum.ForeColor = Color.FromArgb(34, 34, 34);
             txtLicenseNum.Location = new Point(18, 58);
-            txtLicenseNum.Margin = new Padding(4, 4, 4, 4);
+            txtLicenseNum.Margin = new Padding(4);
             txtLicenseNum.Name = "txtLicenseNum";
             txtLicenseNum.ReadOnly = true;
             txtLicenseNum.Size = new Size(431, 38);
@@ -509,7 +510,7 @@
             panel4.Controls.Add(panelStatReservations);
             panel4.Controls.Add(panelStatActive);
             panel4.Location = new Point(16, 955);
-            panel4.Margin = new Padding(4, 4, 4, 4);
+            panel4.Margin = new Padding(4);
             panel4.Name = "panel4";
             panel4.Size = new Size(1277, 227);
             panel4.TabIndex = 32;
@@ -521,7 +522,7 @@
             panelStatRentals.Controls.Add(lblStatRentalsNum);
             panelStatRentals.Controls.Add(lblStatRentalsText);
             panelStatRentals.Location = new Point(18, 44);
-            panelStatRentals.Margin = new Padding(4, 4, 4, 4);
+            panelStatRentals.Margin = new Padding(4);
             panelStatRentals.Name = "panelStatRentals";
             panelStatRentals.Size = new Size(358, 143);
             panelStatRentals.TabIndex = 1;
@@ -557,7 +558,7 @@
             panelStatReservations.Controls.Add(lblStatReservationsNum);
             panelStatReservations.Controls.Add(lblStatReservationsText);
             panelStatReservations.Location = new Point(425, 44);
-            panelStatReservations.Margin = new Padding(4, 4, 4, 4);
+            panelStatReservations.Margin = new Padding(4);
             panelStatReservations.Name = "panelStatReservations";
             panelStatReservations.Size = new Size(366, 143);
             panelStatReservations.TabIndex = 2;
@@ -593,7 +594,7 @@
             panelStatActive.Controls.Add(lblStatActiveNum);
             panelStatActive.Controls.Add(lblStatActiveText);
             panelStatActive.Location = new Point(845, 44);
-            panelStatActive.Margin = new Padding(4, 4, 4, 4);
+            panelStatActive.Margin = new Padding(4);
             panelStatActive.Name = "panelStatActive";
             panelStatActive.Size = new Size(379, 143);
             panelStatActive.TabIndex = 3;
@@ -653,7 +654,7 @@
             panel5.Controls.Add(txtUsername);
             panel5.Controls.Add(btnEditDetails);
             panel5.Location = new Point(4, 305);
-            panel5.Margin = new Padding(4, 4, 4, 4);
+            panel5.Margin = new Padding(4);
             panel5.Name = "panel5";
             panel5.Size = new Size(1289, 390);
             panel5.TabIndex = 30;
@@ -684,7 +685,7 @@
             Controls.Add(panel3);
             Controls.Add(panel4);
             Controls.Add(btnEditPassword);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "Account_Information";
             Text = "My Account — Car Rental System";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
