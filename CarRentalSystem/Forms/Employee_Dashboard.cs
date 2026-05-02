@@ -1,7 +1,8 @@
-using System;
-using System.Windows.Forms;
+using car_rental_system;
 using CarRentalSystem.Core;  
 using CarRentalSystem.DTOs;
+using System;
+using System.Windows.Forms;
 
 namespace CarRentalSystem
 {
@@ -87,9 +88,8 @@ namespace CarRentalSystem
             if (UserSession.CurrentUser?.Role == UserRole.SystemAdmin ||
                 UserSession.CurrentUser?.Role == UserRole.BranchManager)
             {
-                // var empMgmtForm = new EmployeeManagementForm();
-                // empMgmtForm.ShowDialog();
-                MessageBox.Show("Opening Employee Management module...", "Navigation");
+                var empMgmtForm = new employeeSearch();
+                empMgmtForm.ShowDialog();
             }
             else
             {
