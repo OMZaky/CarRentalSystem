@@ -15,7 +15,6 @@ namespace CarRentalSystem.Forms
     public partial class Create_vehicle : Form
     {
         private readonly int? _vehicleId;
-        private bool _isEditing = true;
 
         public Create_vehicle()
         {
@@ -37,10 +36,9 @@ namespace CarRentalSystem.Forms
             Text = "Create Vehicle";
             label4.Text = "Create Vehicle";
             btnEditDetails.Text = "Create";
-            _isEditing = true;
 
             LoadComboData();
-            SetFieldsReadOnly(false);
+            SetFieldsReadOnly(false);       // everything editable
             ClearFields();
 
             btnEditDetails.Click += btnEditDetails_Click;
@@ -50,21 +48,29 @@ namespace CarRentalSystem.Forms
         {
             Text = "Manage Vehicle";
             label4.Text = "Manage Vehicle";
-            btnEditDetails.Text = "Edit Details";
-            _isEditing = true;
+            btnEditDetails.Text = "Save Changes";
 
             LoadComboData();
-            SetFieldsReadOnly(true);
+
+            // Model & Year are read-only; the rest are editable
+            txtFirstName.ReadOnly = true;
+            txtSsn.ReadOnly = true;
+            txtEmail.ReadOnly = false;   // PlateNo editable
+            textBox1.ReadOnly = false;   // Color editable
+            comboBox1.Enabled = true;    // Branch editable
+            cmbCategory.Enabled = true;    // Category editable
+            comboBox2.Enabled = true;    // Status editable
+            dtpPickup.Enabled = false;   // Purchase date locked
+
             LoadVehicleDetails();
 
             btnEditDetails.Click += btnEditDetails_Click;
         }
 
-        // ── Load combo data from DB / enum ───────────────────────────
+        // ── Load combo data ──────────────────────────────────────────
 
         private void LoadComboData()
         {
-            // Status — pulled directly from enum so it's always in sync
             comboBox2.Items.Clear();
             foreach (VehicleStatus status in Enum.GetValues(typeof(VehicleStatus)))
                 comboBox2.Items.Add(status);
@@ -73,7 +79,6 @@ namespace CarRentalSystem.Forms
             {
                 using (var context = new AppDbContext())
                 {
-                    // Branch
                     comboBox1.Items.Clear();
                     var branches = context.Branches.AsNoTracking().ToList();
                     foreach (var b in branches)
@@ -81,7 +86,6 @@ namespace CarRentalSystem.Forms
                     comboBox1.DisplayMember = "City";
                     comboBox1.ValueMember = "Id";
 
-                    // Category
                     cmbCategory.Items.Clear();
                     var categories = context.VehicleCategories.AsNoTracking().ToList();
                     foreach (var c in categories)
@@ -125,21 +129,14 @@ namespace CarRentalSystem.Forms
                     textBox1.Text = vehicle.Color;
                     dtpPickup.Value = vehicle.PurchaseDate != default ? vehicle.PurchaseDate : DateTime.Today;
 
-                    // Select matching Branch
                     for (int i = 0; i < comboBox1.Items.Count; i++)
-                    {
                         if (comboBox1.Items[i] is Branch b && b.Id == vehicle.BranchId)
                         { comboBox1.SelectedIndex = i; break; }
-                    }
 
-                    // Select matching Category
                     for (int i = 0; i < cmbCategory.Items.Count; i++)
-                    {
                         if (cmbCategory.Items[i] is VehicleCategory c && c.Id == vehicle.CategoryId)
                         { cmbCategory.SelectedIndex = i; break; }
-                    }
 
-                    // Select matching Status
                     comboBox2.SelectedItem = vehicle.Status;
                 }
             }
@@ -154,24 +151,12 @@ namespace CarRentalSystem.Forms
 
         private void btnEditDetails_Click(object sender, EventArgs e)
         {
+            if (!ValidateFields()) return;
+
             if (_vehicleId.HasValue)
-            {
-                // Manage mode: first click = enable editing, second click = save
-                if (!_isEditing)
-                {
-                    _isEditing = true;  
-                   return;
-                }
-                btnEditDetails.Text = "Save Changes";
-                if (!ValidateFields()) return;
                 UpdateVehicle();
-            }
             else
-            {
-                // Create mode
-                if (!ValidateFields()) return;
                 CreateVehicle();
-            }
         }
 
         // ── Create ───────────────────────────────────────────────────
@@ -224,11 +209,9 @@ namespace CarRentalSystem.Forms
                         return;
                     }
 
-                    vehicle.Model = txtFirstName.Text.Trim();
-                    vehicle.Year = int.Parse(txtSsn.Text.Trim());
+                    // Only update the editable fields
                     vehicle.PlateNum = txtEmail.Text.Trim();
                     vehicle.Color = textBox1.Text.Trim();
-                    vehicle.PurchaseDate = dtpPickup.Value.Date;
                     vehicle.Status = (VehicleStatus)comboBox2.SelectedItem;
                     vehicle.BranchId = ((Branch)comboBox1.SelectedItem).Id;
                     vehicle.CategoryId = ((VehicleCategory)cmbCategory.SelectedItem).Id;
@@ -237,11 +220,7 @@ namespace CarRentalSystem.Forms
                 }
 
                 MessageBox.Show("Vehicle updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Return to read-only view
-                _isEditing = true;
-                SetFieldsReadOnly(true);
-                btnEditDetails.Text = "Save Changes";
+                Close();
             }
             catch (Exception ex)
             {
@@ -253,11 +232,15 @@ namespace CarRentalSystem.Forms
 
         private bool ValidateFields()
         {
-            if (string.IsNullOrWhiteSpace(txtFirstName.Text))
-            { MessageBox.Show("Model is required.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning); return false; }
+            // Model & Year only validated on create (locked on manage)
+            if (!_vehicleId.HasValue)
+            {
+                if (string.IsNullOrWhiteSpace(txtFirstName.Text))
+                { MessageBox.Show("Model is required.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning); return false; }
 
-            if (!int.TryParse(txtSsn.Text.Trim(), out int year) || year < 1900 || year > DateTime.Now.Year + 1)
-            { MessageBox.Show("Please enter a valid year.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning); return false; }
+                if (!int.TryParse(txtSsn.Text.Trim(), out int year) || year < 1900 || year > DateTime.Now.Year + 1)
+                { MessageBox.Show("Please enter a valid year.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning); return false; }
+            }
 
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             { MessageBox.Show("Plate number is required.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning); return false; }
@@ -276,6 +259,8 @@ namespace CarRentalSystem.Forms
 
             return true;
         }
+
+        // ── Helpers ──────────────────────────────────────────────────
 
         private void SetFieldsReadOnly(bool readOnly)
         {
@@ -308,8 +293,11 @@ namespace CarRentalSystem.Forms
             lblUsernameTitle.Text = "Status";
         }
 
+        // ── Designer event stubs ─────────────────────────────────────
+
         private void txtFirstName_TextChanged(object sender, EventArgs e) { }
         private void label3_Click(object sender, EventArgs e) { }
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void pictureBox1_Click(object sender, EventArgs e) { this.Close(); }
     }
 }

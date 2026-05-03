@@ -29,10 +29,20 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            pictureBox1 = new PictureBox();
             label2 = new Label();
             label1 = new Label();
             pictureBox2 = new PictureBox();
             panel5 = new Panel();
+            label3 = new Label();
+            textBox1 = new TextBox();
+            dtpPickup = new DateTimePicker();
+            txtSsn = new TextBox();
+            lblSsnTitle = new Label();
+            label5 = new Label();
+            comboBox2 = new ComboBox();
+            comboBox1 = new ComboBox();
+            cmbCategory = new ComboBox();
             lblPersonalSection = new Label();
             lblFirstNameTitle = new Label();
             txtFirstName = new TextBox();
@@ -40,23 +50,13 @@
             lblEmailTitle = new Label();
             txtEmail = new TextBox();
             lblPhoneTitle = new Label();
-            lblSsnTitle = new Label();
-            txtSsn = new TextBox();
             lblUsernameTitle = new Label();
             btnEditDetails = new Button();
-            pictureBox1 = new PictureBox();
             label4 = new Label();
-            cmbCategory = new ComboBox();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            dtpPickup = new DateTimePicker();
-            label5 = new Label();
-            label3 = new Label();
-            textBox1 = new TextBox();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -70,6 +70,17 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1003, 98);
             panel1.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.icons8_home_50;
+            pictureBox1.Location = new Point(875, 15);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(49, 63);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // label2
             // 
@@ -128,6 +139,111 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(934, 429);
             panel5.TabIndex = 31;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            label3.ForeColor = Color.FromArgb(187, 187, 187);
+            label3.Location = new Point(298, 312);
+            label3.Name = "label3";
+            label3.Size = new Size(51, 21);
+            label3.TabIndex = 37;
+            label3.Text = "Color";
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.FromArgb(250, 250, 250);
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Font = new Font("Courier New", 10F);
+            textBox1.ForeColor = Color.FromArgb(34, 34, 34);
+            textBox1.Location = new Point(298, 342);
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            textBox1.Size = new Size(366, 30);
+            textBox1.TabIndex = 38;
+            textBox1.Text = "29901011234567";
+            // 
+            // dtpPickup
+            // 
+            dtpPickup.Location = new Point(24, 345);
+            dtpPickup.Margin = new Padding(4);
+            dtpPickup.Name = "dtpPickup";
+            dtpPickup.Size = new Size(209, 31);
+            dtpPickup.TabIndex = 36;
+            // 
+            // txtSsn
+            // 
+            txtSsn.BackColor = Color.FromArgb(250, 250, 250);
+            txtSsn.BorderStyle = BorderStyle.FixedSingle;
+            txtSsn.Font = new Font("Courier New", 10F);
+            txtSsn.ForeColor = Color.FromArgb(34, 34, 34);
+            txtSsn.Location = new Point(24, 171);
+            txtSsn.Name = "txtSsn";
+            txtSsn.ReadOnly = true;
+            txtSsn.Size = new Size(366, 30);
+            txtSsn.TabIndex = 10;
+            txtSsn.Text = "29901011234567";
+            // 
+            // lblSsnTitle
+            // 
+            lblSsnTitle.AutoSize = true;
+            lblSsnTitle.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            lblSsnTitle.ForeColor = Color.FromArgb(187, 187, 187);
+            lblSsnTitle.Location = new Point(24, 141);
+            lblSsnTitle.Name = "lblSsnTitle";
+            lblSsnTitle.Size = new Size(43, 21);
+            lblSsnTitle.TabIndex = 9;
+            lblSsnTitle.Text = "Year";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
+            label5.ForeColor = Color.DarkGray;
+            label5.Location = new Point(24, 308);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(123, 23);
+            label5.TabIndex = 35;
+            label5.Text = "Purchase Date";
+            // 
+            // comboBox2
+            // 
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.Font = new Font("Segoe UI", 10F);
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "All Levels", "Economy", "Standard", "Premium", "VIP" });
+            comboBox2.Location = new Point(485, 253);
+            comboBox2.Margin = new Padding(4);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(179, 36);
+            comboBox2.TabIndex = 34;
+            // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.Font = new Font("Segoe UI", 10F);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "All Branches", "Cairo International Airport", "Alexandria", "New Cairo HQ" });
+            comboBox1.Location = new Point(485, 171);
+            comboBox1.Margin = new Padding(4);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(401, 36);
+            comboBox1.TabIndex = 33;
+            // 
+            // cmbCategory
+            // 
+            cmbCategory.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbCategory.Font = new Font("Segoe UI", 10F);
+            cmbCategory.FormattingEnabled = true;
+            cmbCategory.Items.AddRange(new object[] { "All Categories", "Sedan", "SUV", "Luxury" });
+            cmbCategory.Location = new Point(485, 79);
+            cmbCategory.Margin = new Padding(4);
+            cmbCategory.Name = "cmbCategory";
+            cmbCategory.Size = new Size(401, 36);
+            cmbCategory.TabIndex = 32;
+            cmbCategory.SelectedIndexChanged += cmbCategory_SelectedIndexChanged;
             // 
             // lblPersonalSection
             // 
@@ -211,30 +327,6 @@
             lblPhoneTitle.TabIndex = 7;
             lblPhoneTitle.Text = "Branch";
             // 
-            // lblSsnTitle
-            // 
-            lblSsnTitle.AutoSize = true;
-            lblSsnTitle.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
-            lblSsnTitle.ForeColor = Color.FromArgb(187, 187, 187);
-            lblSsnTitle.Location = new Point(24, 141);
-            lblSsnTitle.Name = "lblSsnTitle";
-            lblSsnTitle.Size = new Size(43, 21);
-            lblSsnTitle.TabIndex = 9;
-            lblSsnTitle.Text = "Year";
-            // 
-            // txtSsn
-            // 
-            txtSsn.BackColor = Color.FromArgb(250, 250, 250);
-            txtSsn.BorderStyle = BorderStyle.FixedSingle;
-            txtSsn.Font = new Font("Courier New", 10F);
-            txtSsn.ForeColor = Color.FromArgb(34, 34, 34);
-            txtSsn.Location = new Point(24, 171);
-            txtSsn.Name = "txtSsn";
-            txtSsn.ReadOnly = true;
-            txtSsn.Size = new Size(366, 30);
-            txtSsn.TabIndex = 10;
-            txtSsn.Text = "29901011234567";
-            // 
             // lblUsernameTitle
             // 
             lblUsernameTitle.AutoSize = true;
@@ -260,16 +352,6 @@
             btnEditDetails.Text = "Variable";
             btnEditDetails.UseVisualStyleBackColor = false;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.icons8_home_50;
-            pictureBox1.Location = new Point(875, 15);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(49, 63);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 7;
-            pictureBox1.TabStop = false;
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -279,87 +361,6 @@
             label4.Size = new Size(304, 70);
             label4.TabIndex = 8;
             label4.Text = "Variable lbl";
-            // 
-            // cmbCategory
-            // 
-            cmbCategory.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbCategory.Font = new Font("Segoe UI", 10F);
-            cmbCategory.FormattingEnabled = true;
-            cmbCategory.Items.AddRange(new object[] { "All Categories", "Sedan", "SUV", "Luxury" });
-            cmbCategory.Location = new Point(485, 79);
-            cmbCategory.Margin = new Padding(4);
-            cmbCategory.Name = "cmbCategory";
-            cmbCategory.Size = new Size(401, 36);
-            cmbCategory.TabIndex = 32;
-            cmbCategory.SelectedIndexChanged += cmbCategory_SelectedIndexChanged;
-            // 
-            // comboBox1
-            // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.Font = new Font("Segoe UI", 10F);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "All Branches", "Cairo International Airport", "Alexandria", "New Cairo HQ"  });
-            comboBox1.Location = new Point(485, 171);
-            comboBox1.Margin = new Padding(4);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(401, 36);
-            comboBox1.TabIndex = 33;
-            // 
-            // comboBox2
-            // 
-            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox2.Font = new Font("Segoe UI", 10F);
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "All Levels", "Economy", "Standard", "Premium", "VIP"});
-            comboBox2.Location = new Point(485, 253);
-            comboBox2.Margin = new Padding(4);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(179, 36);
-            comboBox2.TabIndex = 34;
-            // 
-            // dtpPickup
-            // 
-            dtpPickup.Location = new Point(24, 345);
-            dtpPickup.Margin = new Padding(4);
-            dtpPickup.Name = "dtpPickup";
-            dtpPickup.Size = new Size(209, 31);
-            dtpPickup.TabIndex = 36;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
-            label5.ForeColor = Color.DarkGray;
-            label5.Location = new Point(24, 308);
-            label5.Margin = new Padding(4, 0, 4, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(123, 23);
-            label5.TabIndex = 35;
-            label5.Text = "Purchase Date";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
-            label3.ForeColor = Color.FromArgb(187, 187, 187);
-            label3.Location = new Point(298, 312);
-            label3.Name = "label3";
-            label3.Size = new Size(51, 21);
-            label3.TabIndex = 37;
-            label3.Text = "Color";
-            // 
-            // textBox1
-            // 
-            textBox1.BackColor = Color.FromArgb(250, 250, 250);
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Courier New", 10F);
-            textBox1.ForeColor = Color.FromArgb(34, 34, 34);
-            textBox1.Location = new Point(298, 342);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(366, 30);
-            textBox1.TabIndex = 38;
-            textBox1.Text = "29901011234567";
             // 
             // Create_vehicle
             // 
@@ -373,10 +374,10 @@
             Text = "Create_vehicle";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
