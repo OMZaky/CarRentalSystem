@@ -57,7 +57,8 @@ namespace CarRentalSystem.Forms
 
         private void LoadVehicleDetails()
         {
-            if (!_vehicleId.HasValue) return;
+            if (!_vehicleId.HasValue)
+                return;
 
             try
             {
@@ -76,21 +77,44 @@ namespace CarRentalSystem.Forms
                         return;
                     }
 
-                    // TextBoxes
+
                     txtFirstName.Text = vehicle.Model;
                     txtSsn.Text = vehicle.Year.ToString();
                     txtEmail.Text = vehicle.PlateNum;
                     textBox1.Text = vehicle.Color;
 
-                    // DatePicker (Added to match your Vehicle.PurchaseDate model)
-                    dtpPickup.Value = vehicle.PurchaseDate;
+                    // Populate and select Branch
+                    comboBox1.Items.Clear();
+                    if (vehicle.Branch != null)
+                    {
+                        comboBox1.Items.Add(vehicle.Branch.City);
+                        comboBox1.SelectedIndex = 0;
+                    }
 
-                    // Dropdowns (ComboBoxes)
-                    // THE FIX: Use .VehicleType instead of .Name to match VehicleCategory.cs
-                    cmbCategory.Text = vehicle.Category != null ? vehicle.Category.VehicleType : "";
+                    // Populate and select Status
+                    comboBox2.Items.Clear();
+                    comboBox2.Items.Add(vehicle.Status.ToString());
+                    comboBox2.SelectedIndex = 0;
 
-                    comboBox1.Text = vehicle.Branch != null ? vehicle.Branch.City : "";
-                    comboBox2.Text = vehicle.Status.ToString();
+                    // Populate and select Category
+                    cmbCategory.Items.Clear();
+                    if (vehicle.Category != null)
+                    {
+                        cmbCategory.Items.Add(vehicle.Category.Level);
+                        cmbCategory.SelectedIndex = 0;
+                    }
+
+                    // Purchase date
+                    if (vehicle.PurchaseDate != default)
+                        dtpPickup.Value = vehicle.PurchaseDate;
+
+                    // Fix label text to match what is actually displayed
+                    lblFirstNameTitle.Text = "Model";
+                    lblSsnTitle.Text = "Year";
+                    lblEmailTitle.Text = "Plate Number";
+                    lblPhoneTitle.Text = "Branch";
+                    lblLastNameTitle.Text = "Category";
+                    lblUsernameTitle.Text = "Status";
                 }
             }
             catch (Exception ex)
@@ -99,16 +123,16 @@ namespace CarRentalSystem.Forms
                 Close();
             }
         }
+
         private void SetFieldsReadOnly(bool readOnly)
         {
             txtFirstName.ReadOnly = readOnly;
             txtSsn.ReadOnly = readOnly;
             txtEmail.ReadOnly = readOnly;
             textBox1.ReadOnly = readOnly;
-
-            cmbCategory.Enabled = !readOnly;
             comboBox1.Enabled = !readOnly;
             comboBox2.Enabled = !readOnly;
+            cmbCategory.Enabled = !readOnly;
             dtpPickup.Enabled = !readOnly;
         }
 
@@ -118,12 +142,17 @@ namespace CarRentalSystem.Forms
             txtSsn.Clear();
             txtEmail.Clear();
             textBox1.Clear();
-
-            cmbCategory.SelectedIndex = -1;
             comboBox1.SelectedIndex = -1;
             comboBox2.SelectedIndex = -1;
+            cmbCategory.SelectedIndex = -1;
+            dtpPickup.Value = DateTime.Today;
 
-            dtpPickup.Value = DateTime.Now;
+            lblFirstNameTitle.Text = "Model";
+            lblSsnTitle.Text = "Year";
+            lblEmailTitle.Text = "Plate Number";
+            lblPhoneTitle.Text = "Branch";
+            lblLastNameTitle.Text = "Category";
+            lblUsernameTitle.Text = "Status";
         }
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
