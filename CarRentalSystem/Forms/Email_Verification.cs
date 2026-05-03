@@ -17,8 +17,28 @@ namespace CarRentalSystem.Forms
             InitializeComponent();
             _userData = userData;
 
+            btnContinue.Click += btnVerify_Click;
+            ResendBtn.Click += btnResend_Click;
+            BackBtn.Click += BackBtn_Click;
+            txtCode.KeyDown += txtCode_KeyDown;
+
             // Automatically send the email as soon as this form opens!
             SendVerificationEmail();
+        }
+
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void txtCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                btnContinue.PerformClick();
+            }
         }
 
         private void SendVerificationEmail()

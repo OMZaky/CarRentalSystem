@@ -16,6 +16,9 @@ namespace CarRentalSystem.Forms
             _userData = userData;
             _customerService = new CustomerService();
 
+            btnRegister.Click += btnRegister_Click;
+            btnCancel.Click += btnCancel_Click;
+
             // Wire up the "Enter" key trick for smooth UX
             txtPhoneNumber.KeyDown += SubmitOnEnter_KeyDown;
             txtSSN.KeyDown += SubmitOnEnter_KeyDown;
@@ -47,9 +50,6 @@ namespace CarRentalSystem.Forms
             if (success)
             {
                 MessageBox.Show("Registration Complete! Welcome to DriveEasy.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                var dashboard = new Customer_Dashboard();
-                dashboard.Show();
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
