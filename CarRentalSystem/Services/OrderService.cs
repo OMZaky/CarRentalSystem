@@ -41,7 +41,6 @@ namespace CarRentalSystem.Services
                     .AsNoTracking()
                     .Include(r => r.Vehicle).ThenInclude(v => v.Category)
                     .Include(r => r.Branch)
-                    // THE FIX: Added this missing line so it only fetches THIS customer's rentals!
                     .Where(r => r.CustomerId == customerId)
                     .Select(r => new OrderDTO
                     {
