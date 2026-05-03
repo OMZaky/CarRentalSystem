@@ -22,10 +22,19 @@ namespace CarRentalSystem.Services
                         Duration = totalDays,
                         Status = ReservationStatus.Reserved
                     };
+
                     var vechilee = context.Vehicles.FirstOrDefault(v => v.Id == vehicleId);
-                    
-                    vechilee.Status = VehicleStatus.Rented; 
-                
+
+                    if (vechilee != null)
+                    {
+                        vechilee.Status = VehicleStatus.Rented;
+                    }
+                    else
+                    {
+                        // If the car doesn't exist, fail safely!
+                        return false;
+                    }
+
                     context.Reservations.Add(newReservation);
                     context.SaveChanges();
                     return true;

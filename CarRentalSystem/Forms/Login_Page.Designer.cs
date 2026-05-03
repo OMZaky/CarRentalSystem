@@ -56,7 +56,7 @@
             pictureBox1.Image = Properties.Resources.Login_Logo;
             pictureBox1.Location = new Point(40, 128);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(550, 250);
+            pictureBox1.Size = new Size(627, 303);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
