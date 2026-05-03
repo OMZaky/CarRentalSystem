@@ -43,7 +43,8 @@ namespace CarRentalSystem.Forms
 
         private void btnManage_Click(object sender, EventArgs e)
         {
-            if (dgvCars.CurrentRow?.DataBoundItem is EmployeeCarSearchResult selectedCar)
+            if (dgvCars.SelectedRows.Count > 0 &&
+                dgvCars.SelectedRows[0].DataBoundItem is EmployeeCarSearchResult selectedCar)
             {
                 using (var manageForm = new Create_vehicle(selectedCar.Id))
                 {
@@ -86,6 +87,9 @@ namespace CarRentalSystem.Forms
                 Size = new Size(895, 200),
                 TabIndex = 11
             };
+
+            dgvCars.CellMouseDown += dgvCars_CellMouseDown;
+            dgvCars.MouseDown += dgvCars_MouseDown;
 
             dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.Id), HeaderText = "ID", Width = 55 });
             dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.PlateNumber), HeaderText = "Plate", Width = 95 });
@@ -209,7 +213,7 @@ namespace CarRentalSystem.Forms
                         .ToList();
 
                     dgvCars.DataSource = cars;
-                    dgvCars.ClearSelection();
+                    ClearCarSelection();
                     lblAvailableCars.Text = $"{cars.Count} Cars Found";
                 }
             }
@@ -287,6 +291,35 @@ namespace CarRentalSystem.Forms
                 .Select(r => r.VehicleId);
 
             return rentedIds.Concat(reservedIds).Distinct().ToArray();
+        }
+
+        private void dgvCars_CellMouseDown(object? sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+
+            if (dgvCars.Rows[e.RowIndex].Selected)
+            {
+                BeginInvoke(new Action(ClearCarSelection));
+            }
+        }
+
+        private void dgvCars_MouseDown(object? sender, MouseEventArgs e)
+        {
+            var hit = dgvCars.HitTest(e.X, e.Y);
+
+            if (hit.RowIndex < 0)
+            {
+                ClearCarSelection();
+            }
+        }
+
+        private void ClearCarSelection()
+        {
+            dgvCars.ClearSelection();
+            dgvCars.CurrentCell = null;
         }
 
         private class EmployeeCarSearchResult

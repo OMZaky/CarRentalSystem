@@ -174,7 +174,8 @@ namespace CarRentalSystem.Forms
                     PurchaseDate = dtpPickup.Value.Date,
                     Status = (VehicleStatus)comboBox2.SelectedItem,
                     BranchId = ((Branch)comboBox1.SelectedItem).Id,
-                    CategoryId = ((VehicleCategory)cmbCategory.SelectedItem).Id
+                    CategoryId = ((VehicleCategory)cmbCategory.SelectedItem).Id,
+                    ImagePath = ""
                 };
 
                 using (var context = new AppDbContext())
