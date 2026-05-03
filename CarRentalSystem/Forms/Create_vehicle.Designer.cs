@@ -298,7 +298,7 @@
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.Font = new Font("Segoe UI", 10F);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "All Categories", "Sedan", "SUV", "Luxury" });
+            comboBox1.Items.AddRange(new object[] { "All Branches", "Cairo International Airport", "Alexandria", "New Cairo HQ"  });
             comboBox1.Location = new Point(485, 171);
             comboBox1.Margin = new Padding(4);
             comboBox1.Name = "comboBox1";
@@ -310,7 +310,7 @@
             comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.Font = new Font("Segoe UI", 10F);
             comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "All Categories", "Sedan", "SUV", "Luxury" });
+            comboBox2.Items.AddRange(new object[] { "All Levels", "Economy", "Standard", "Premium", "VIP"});
             comboBox2.Location = new Point(485, 253);
             comboBox2.Margin = new Padding(4);
             comboBox2.Name = "comboBox2";
