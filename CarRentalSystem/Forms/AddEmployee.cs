@@ -22,19 +22,23 @@ namespace CarRentalSystem.Forms
             this.StartPosition = FormStartPosition.CenterScreen;
 
             this.Load += AddEmployee_Load;
-            btnAdd.Click += btnAdd_Click;
         }
+           
+        
 
         private void AddEmployee_Load(object sender, EventArgs e)
         {
             // 1. Auto-fill the Role Dropdown from your EmployeeRole Enum
-            comboBoxRole.DataSource = Enum.GetValues(typeof(EmployeeRole));
+            comboBoxRole.DataSource = Enum.GetNames(typeof(EmployeeRole));
 
             // 2. Auto-fill the Branch Dropdown directly from the Database!
             var branches = _empService.GetBranches();
             comboBoxBranch.DataSource = branches;
-            comboBoxBranch.DisplayMember = "City";
+            comboBoxBranch.DisplayMember = "Name";
             comboBoxBranch.ValueMember = "Id";
+
+            if (comboBoxRole.Items.Count > 0) comboBoxRole.SelectedIndex = 0;
+            if (comboBoxBranch.Items.Count > 0) comboBoxBranch.SelectedIndex = 0;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -63,10 +67,10 @@ namespace CarRentalSystem.Forms
                     HireDate = DateTime.Today,
                     Email = txtEmail.Text.Trim(),
                     Salary = salary,
-                    Role = (EmployeeRole)comboBoxRole.SelectedItem,
+                    Role = (EmployeeRole)Enum.Parse(typeof(EmployeeRole), comboBoxRole.SelectedItem.ToString()),
                     Username = txtUsername.Text.Trim(),
                     PasswordHash = PasswordHasher.HashPassword(txtPassword.Text),
-                    BranchId = (int)comboBoxBranch.SelectedValue
+                    BranchId = Convert.ToInt32(comboBoxBranch.SelectedValue)
                 };
 
                 var savedEmp = _empService.AddNewEmployee(newEmp);
@@ -78,7 +82,7 @@ namespace CarRentalSystem.Forms
                     Email = savedEmp.Email,
                     HireDate = savedEmp.HireDate,
                     Role = savedEmp.Role,
-                    Branch = savedEmp.Branch.City
+                    Branch = comboBoxBranch.Text
                 };
 
                 this.DialogResult = DialogResult.OK;

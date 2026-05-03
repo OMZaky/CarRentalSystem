@@ -17,7 +17,7 @@ namespace CarRentalSystem.Services
                     .Select(emp => new employeeDTO
                     {
                         Id = emp.Id,
-                        FullName = $"{emp.FirstName} {emp.LastName}",
+                        FullName = emp.FirstName + " " + emp.LastName,
                         Branch = emp.Branch != null ? emp.Branch.City : "Main Branch",
                         Role = emp.Role,
                         Email = emp.Email,
@@ -43,9 +43,20 @@ namespace CarRentalSystem.Services
                 context.Employees.Add(emp);
                 context.SaveChanges();
 
-                context.Entry(emp).Reference(e => e.Branch).Load();
-
                 return emp;
+            }
+        }
+
+        public void DeleteEmployee(int id)
+        {
+            using (var context = new AppDbContext())
+            {
+                var emp = context.Employees.Find(id);
+                if (emp != null)
+                {
+                    context.Employees.Remove(emp);
+                    context.SaveChanges();
+                }
             }
         }
 

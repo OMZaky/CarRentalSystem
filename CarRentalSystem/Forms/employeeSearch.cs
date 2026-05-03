@@ -246,7 +246,7 @@ namespace car_rental_system
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // 1. Check if the user actually selected a row
+            // Check if the user actually selected a row
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 var selectedRow = dataGridView1.SelectedRows[0];
@@ -258,19 +258,23 @@ namespace car_rental_system
                 int empId = Convert.ToInt32(idValue);
                 string empName = selectedRow.Cells["colName"].Value.ToString() ?? "this employee";
 
-                // 2. Confirmation Dialog
+                // Confirmation Dialog
                 var result = MessageBox.Show($"Are you sure you want to delete {empName}?",
                                              "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
-                    // 3. Remove from the master list
+
+                    var service = new EmpSearchService();
+                    service.DeleteEmployee(empId);
+
+                    // Remove from the master list
                     var employee = _allEmployees.FirstOrDefault(x => x.Id == empId);
                     if (employee != null)
                     {
                         _allEmployees.Remove(employee);
 
-                        // 4. Update the UI
+                        // Update the UI
                         ApplyFilter();
                         MessageBox.Show("Employee removed successfully.");
                     }
