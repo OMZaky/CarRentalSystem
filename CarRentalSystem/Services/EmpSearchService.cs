@@ -1,5 +1,6 @@
 ﻿using CarRentalSystem.Data;
 using CarRentalSystem.DTOs;
+using CarRentalSystem.Models;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -7,7 +8,7 @@ namespace CarRentalSystem.Services
 {
     internal class EmpSearchService
     {
-    public List<employeeDTO> SearchEmployees()
+        public List<employeeDTO> SearchEmployees()
         {
             using (var context = new AppDbContext())
             {
@@ -24,6 +25,27 @@ namespace CarRentalSystem.Services
 
                     })
                     .ToList();
+            }
+        }
+
+        public List<Branch> GetBranches()
+        {
+            using (var context = new AppDbContext())
+            {
+                return context.Branches.ToList();
+            }
+        }
+
+        public Employee AddNewEmployee(Employee emp)
+        {
+            using (var context = new AppDbContext())
+            {
+                context.Employees.Add(emp);
+                context.SaveChanges();
+
+                context.Entry(emp).Reference(e => e.Branch).Load();
+
+                return emp;
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using CarRentalSystem;
 using CarRentalSystem.Core;
 using CarRentalSystem.DTOs;
+using CarRentalSystem.Forms;
 using CarRentalSystem.Services;
 using System;
 using System.Collections.Generic;
@@ -241,6 +242,63 @@ namespace car_rental_system
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // 1. Check if the user actually selected a row
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                var selectedRow = dataGridView1.SelectedRows[0];
+                var idValue = selectedRow.Cells["colID"].Value;
+
+                // Skip if it's an empty skeleton row or header
+                if (idValue == null || string.IsNullOrWhiteSpace(idValue.ToString())) return;
+
+                int empId = Convert.ToInt32(idValue);
+                string empName = selectedRow.Cells["colName"].Value.ToString() ?? "this employee";
+
+                // 2. Confirmation Dialog
+                var result = MessageBox.Show($"Are you sure you want to delete {empName}?",
+                                             "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    // 3. Remove from the master list
+                    var employee = _allEmployees.FirstOrDefault(x => x.Id == empId);
+                    if (employee != null)
+                    {
+                        _allEmployees.Remove(employee);
+
+                        // 4. Update the UI
+                        ApplyFilter();
+                        MessageBox.Show("Employee removed successfully.");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a full row from the list first.");
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            // 1. Open the data collection form
+            using (var addForm = new AddEmployee()) // Assuming you named it this
+            {
+                if (addForm.ShowDialog() == DialogResult.OK)
+                {
+                    // 2. Retrieve the new object created by the sub-form
+                    var newEmp = addForm.NewEmployeeData;
+
+                    // 3. Add to our master list
+                    _allEmployees.Add(newEmp);
+
+                    // 4. Refresh the grid to show the new person
+                    ApplyFilter();
+                }
+            }
         }
     }
 

@@ -42,6 +42,8 @@
             lblPage = new Label();
             btnNext = new Button();
             backbtn = new Button();
+            btnDelete = new Button();
+            btnAdd = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -202,7 +204,7 @@
             txtSearch.Location = new Point(31, 260);
             txtSearch.Margin = new Padding(4);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(389, 43);
+            txtSearch.Size = new Size(349, 43);
             txtSearch.TabIndex = 5;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
@@ -211,7 +213,7 @@
             lblRoleLabel.AutoSize = true;
             lblRoleLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblRoleLabel.ForeColor = Color.FromArgb(60, 60, 60);
-            lblRoleLabel.Location = new Point(545, 230);
+            lblRoleLabel.Location = new Point(417, 230);
             lblRoleLabel.Margin = new Padding(4, 0, 4, 0);
             lblRoleLabel.Name = "lblRoleLabel";
             lblRoleLabel.Size = new Size(64, 32);
@@ -223,7 +225,7 @@
             cmbRole.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRole.Font = new Font("Segoe UI", 10F);
             cmbRole.Items.AddRange(new object[] { "All Roles", "SystemAdmin", "BranchManager", "RentalAgent" });
-            cmbRole.Location = new Point(545, 259);
+            cmbRole.Location = new Point(417, 259);
             cmbRole.Margin = new Padding(4);
             cmbRole.Name = "cmbRole";
             cmbRole.Size = new Size(259, 45);
@@ -402,12 +404,48 @@
             backbtn.UseVisualStyleBackColor = false;
             backbtn.Click += button1_Click;
             // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = Color.Red;
+            btnDelete.Cursor = Cursors.Hand;
+            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(179, 187, 204);
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnDelete.ForeColor = Color.White;
+            btnDelete.Location = new Point(861, 257);
+            btnDelete.Margin = new Padding(4);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(117, 51);
+            btnDelete.TabIndex = 15;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // btnAdd
+            // 
+            btnAdd.BackColor = Color.LimeGreen;
+            btnAdd.Cursor = Cursors.Hand;
+            btnAdd.FlatAppearance.BorderColor = Color.FromArgb(179, 187, 204);
+            btnAdd.FlatStyle = FlatStyle.Flat;
+            btnAdd.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnAdd.ForeColor = Color.White;
+            btnAdd.Location = new Point(722, 257);
+            btnAdd.Margin = new Padding(4);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(117, 51);
+            btnAdd.TabIndex = 16;
+            btnAdd.Text = "Add";
+            btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
+            // 
             // employeeSearch
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1248, 909);
+            Controls.Add(btnAdd);
+            Controls.Add(btnDelete);
             Controls.Add(backbtn);
             Controls.Add(panel1);
             Controls.Add(pictureBox4);
@@ -468,5 +506,7 @@
         private DataGridViewTextBoxColumn colRole;
         private DataGridViewTextBoxColumn colBranch;
         private Button backbtn;
+        private Button btnDelete;
+        private Button btnAdd;
     }
 }
