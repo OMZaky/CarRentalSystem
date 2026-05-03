@@ -77,7 +77,7 @@
             label1.Font = new Font("Bahnschrift Light", 13.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(802, 92);
             label1.Name = "label1";
-            label1.Size = new Size(145, 34);
+            label1.Size = new Size(190, 45);
             label1.TabIndex = 3;
             label1.Text = "Welcome! ";
             // 
@@ -87,7 +87,7 @@
             label2.Font = new Font("Bahnschrift Light", 13.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.Location = new Point(804, 137);
             label2.Name = "label2";
-            label2.Size = new Size(297, 34);
+            label2.Size = new Size(390, 45);
             label2.TabIndex = 4;
             label2.Text = "Sign into your account";
             // 
@@ -174,7 +174,7 @@
             label5.ForeColor = Color.FromArgb(255, 142, 2);
             label5.Location = new Point(275, 411);
             label5.Name = "label5";
-            label5.Size = new Size(136, 54);
+            label5.Size = new Size(178, 71);
             label5.TabIndex = 8;
             label5.Text = "No Car?";
             // 
@@ -185,7 +185,7 @@
             label6.ForeColor = Color.FromArgb(255, 142, 2);
             label6.Location = new Point(137, 553);
             label6.Name = "label6";
-            label6.Size = new Size(348, 54);
+            label6.Size = new Size(453, 71);
             label6.TabIndex = 9;
             label6.Text = "Rent it, Ride it, Love it";
             // 
@@ -196,7 +196,7 @@
             label7.ForeColor = Color.FromArgb(255, 142, 2);
             label7.Location = new Point(236, 482);
             label7.Name = "label7";
-            label7.Size = new Size(193, 54);
+            label7.Size = new Size(252, 71);
             label7.TabIndex = 10;
             label7.Text = "No Problem";
             // 
@@ -208,7 +208,7 @@
             RegisterLabel.LinkColor = Color.FromArgb(255, 142, 2);
             RegisterLabel.Location = new Point(1345, 618);
             RegisterLabel.Name = "RegisterLabel";
-            RegisterLabel.Size = new Size(114, 24);
+            RegisterLabel.Size = new Size(149, 33);
             RegisterLabel.TabIndex = 12;
             RegisterLabel.TabStop = true;
             RegisterLabel.Text = "Click Here";
@@ -220,7 +220,7 @@
             label8.ForeColor = SystemColors.ControlDarkDark;
             label8.Location = new Point(825, 618);
             label8.Name = "label8";
-            label8.Size = new Size(101, 24);
+            label8.Size = new Size(135, 33);
             label8.TabIndex = 13;
             label8.Text = "Register?";
             label8.Click += label8_Click;
@@ -231,13 +231,14 @@
             errorLabel.ForeColor = Color.Red;
             errorLabel.Location = new Point(809, 433);
             errorLabel.Name = "errorLabel";
-            errorLabel.Size = new Size(360, 24);
+            errorLabel.Size = new Size(463, 33);
             errorLabel.TabIndex = 14;
             errorLabel.Text = "Username or Password not correct";
             // 
             // Login_Page
             // 
-            AutoScaleDimensions = new SizeF(12F, 23F);
+            AcceptButton = btnLogin;
+            AutoScaleDimensions = new SizeF(16F, 33F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1574, 829);

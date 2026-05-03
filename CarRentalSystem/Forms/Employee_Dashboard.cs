@@ -78,9 +78,12 @@ namespace CarRentalSystem
         // Orders/Rentals Button
         private void button2_Click(object sender, EventArgs e)
         {
-            // var ordersForm = new OrdersForm();
-            // ordersForm.ShowDialog();
-            MessageBox.Show("Opening Orders and Rentals module...", "Navigation");
+            this.Hide();
+            using (var page = new Order_View()) 
+            {
+                page.ShowDialog();
+            }
+            this.Show();
         }
 
         // Employee Management Button

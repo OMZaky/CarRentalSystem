@@ -49,12 +49,11 @@ namespace CarRentalSystem.Forms
         // My Orders Button
         private void button1_Click(object sender, EventArgs e)
         {
-            // using(var ordersForm = new Customer_Orders())
-            //{
-            //  ordersForm.ShowDialog();
-            //}
+             using(var ordersForm = new Order_View())
+            {
+              ordersForm.ShowDialog();
+            }
             
-            MessageBox.Show("Opening My Orders...", "Navigation");
         }
 
         // Search Cars Button
