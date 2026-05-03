@@ -12,6 +12,12 @@ namespace CarRentalSystem
         public Employee_Dashboard()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+
             LoadDashboard();
         }
 

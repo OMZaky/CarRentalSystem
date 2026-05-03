@@ -15,6 +15,12 @@ namespace CarRentalSystem.Forms
         public Register_Page()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+
             _customerService = new CustomerService();
 
             btnRegister.Click += btnRegister_Click;

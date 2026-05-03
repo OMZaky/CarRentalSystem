@@ -15,6 +15,12 @@ namespace CarRentalSystem.Forms
         public Order_View()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+
             _orderService = new OrderService();
 
             // Ensures the panel scrolls if there are many orders

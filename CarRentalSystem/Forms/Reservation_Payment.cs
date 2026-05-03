@@ -17,6 +17,12 @@ namespace CarRentalSystem.Forms
         public Reservation_Payment(int vehicleId, decimal totalAmount, DateTime from, DateTime to)
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+
             _reservationService = new ReservationService();
 
             _vehicleId = vehicleId;

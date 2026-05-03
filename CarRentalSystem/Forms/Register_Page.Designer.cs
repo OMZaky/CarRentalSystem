@@ -224,6 +224,7 @@
             BackBtn.SizeMode = PictureBoxSizeMode.Zoom;
             BackBtn.TabIndex = 9;
             BackBtn.TabStop = false;
+            BackBtn.Click += BackBtn_Click;
             // 
             // UsernameErrorLabel
             // 

@@ -14,6 +14,11 @@ namespace CarRentalSystem.Forms
         public Change_Password()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             _customerService = new CustomerService();
             _authService = new AuthService();
         }

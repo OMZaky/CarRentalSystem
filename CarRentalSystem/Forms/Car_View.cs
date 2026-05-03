@@ -16,6 +16,10 @@ namespace CarRentalSystem.Forms
         {
             InitializeComponent();
 
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
 
             _vehicleId = vehicleId;
             _dateFrom = from;

@@ -16,6 +16,11 @@ namespace CarRentalSystem.Forms
         public Customer_Car_Search()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             _vehicleService = new VehicleService();
             SetupDashboard();
             flowCars.SizeChanged += flowCars_SizeChanged;

@@ -17,6 +17,10 @@ namespace CarRentalSystem.Forms
         public Login_Page()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -85,9 +89,7 @@ namespace CarRentalSystem.Forms
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Register_Page registerPage = new Register_Page();
-            registerPage.Show();
-            this.Hide();
+         
         }
 
         private void ShowError(string errorMessage)
@@ -103,11 +105,13 @@ namespace CarRentalSystem.Forms
 
         private void RegisterLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var frm = new Register_Page();
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.Show();
             this.Hide();
+
+            using (var registerPage = new Register_Page())
+            {
+                registerPage.ShowDialog();
+            }
+            this.Show();
         }
     }
 }

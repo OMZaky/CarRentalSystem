@@ -1,4 +1,5 @@
 ﻿using CarRentalSystem;
+using CarRentalSystem.Core;
 using CarRentalSystem.DTOs;
 using CarRentalSystem.Services;
 using System;
@@ -23,23 +24,35 @@ namespace car_rental_system
         private int _skeletonFrame = 0;
         private bool _loading = false;
 
-        
+
         private List<employeeDTO> _allEmployees;
         public employeeSearch()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+
             SetupSkeletonTimer();
             this.Load += (s, e) => ShowSkeletonThenLoad();
             var EmpSession = new EmpSearchService();
             _allEmployees = EmpSession.SearchEmployees();
 
         }
-        
+
         // ════════════════════════════════════════════════════════════════════
         //  SKELETON
         // ════════════════════════════════════════════════════════════════════
         private void SetupSkeletonTimer()
         {
+
+            var user = UserSession.CurrentUser;
+
+            label3.Text = user.FullName;
+
+
             _skeletonTimer = new Timer { Interval = 350 };
             _skeletonTimer.Tick += (s, e) =>
             {
@@ -78,7 +91,7 @@ namespace car_rental_system
         {
             string search = txtSearch.Text.Trim().ToLower();
             string role = cmbRole.SelectedIndex > 0 ? cmbRole.SelectedItem.ToString() : null;
-            
+
             _filtered = _allEmployees
                 .Where(e =>
                     (string.IsNullOrEmpty(search) ||
@@ -110,7 +123,7 @@ namespace car_rental_system
             int start = (_currentPage - 1) * PageSize + (showing > 0 ? 1 : 0);
             int end = (_currentPage - 1) * PageSize + showing;
 
-            lblStatus.Text = total == 0 ? "No employees found." : $"Showing {start}–{end} of {total} employees";
+            lblStatus.Text = total == 0 ? "No employees found." : $"    Showing {start}–{end} of {total} employees";
             lblPage.Text = $"Page {_currentPage} of {Math.Max(1, TotalPages)}";
             btnPrev.Enabled = _currentPage > 1;
             btnNext.Enabled = _currentPage < TotalPages;
@@ -209,7 +222,17 @@ namespace car_rental_system
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 

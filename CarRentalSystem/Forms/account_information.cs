@@ -17,6 +17,11 @@ namespace CarRentalSystem.Forms
         public Account_Information()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             _customerService = new CustomerService();
             LoadProfileData();
         }

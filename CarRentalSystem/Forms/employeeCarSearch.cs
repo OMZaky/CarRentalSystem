@@ -15,6 +15,12 @@ namespace CarRentalSystem.Forms
         public employeeCarSearch()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+
             SetupForm();
             LoadFilterOptions();
             SearchCars();

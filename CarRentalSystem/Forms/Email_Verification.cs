@@ -15,6 +15,12 @@ namespace CarRentalSystem.Forms
         public Email_Verification(RegistrationDTO userData)
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+
             _userData = userData;
 
             btnContinue.Click += btnVerify_Click;

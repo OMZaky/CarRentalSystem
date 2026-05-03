@@ -13,6 +13,12 @@ namespace CarRentalSystem.Forms
         public Final_Registration(RegistrationDTO userData)
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+
             _userData = userData;
             _customerService = new CustomerService();
 

@@ -11,6 +11,12 @@ namespace CarRentalSystem.Forms
         public Customer_Dashboard()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+
             LoadDashboard();
         }
 

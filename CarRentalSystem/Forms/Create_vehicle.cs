@@ -19,6 +19,11 @@ namespace CarRentalSystem.Forms
         public Create_vehicle()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             SetupCreateMode();
         }
 
