@@ -57,10 +57,12 @@ namespace CarRentalSystem.Forms
             lblWelcome = new Label();
             lblSlogan = new Label();
             lblName = new Label();
-            picLogo = new PictureBox();
+            pictureBox1 = new PictureBox();
+            BackBtn = new PictureBox();
             pnFilters.SuspendLayout();
             pnlResults.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)BackBtn).BeginInit();
             SuspendLayout();
             // 
             // pnFilters
@@ -302,6 +304,8 @@ namespace CarRentalSystem.Forms
             // pnlResults
             // 
             pnlResults.BackColor = Color.White;
+            pnlResults.Controls.Add(BackBtn);
+            pnlResults.Controls.Add(pictureBox1);
             pnlResults.Controls.Add(flowCars);
             pnlResults.Controls.Add(cmbSort);
             pnlResults.Controls.Add(lblSort);
@@ -310,7 +314,6 @@ namespace CarRentalSystem.Forms
             pnlResults.Controls.Add(lblWelcome);
             pnlResults.Controls.Add(lblSlogan);
             pnlResults.Controls.Add(lblName);
-            pnlResults.Controls.Add(picLogo);
             pnlResults.Dock = DockStyle.Fill;
             pnlResults.Location = new Point(341, 0);
             pnlResults.Margin = new Padding(5);
@@ -403,7 +406,7 @@ namespace CarRentalSystem.Forms
             lblSlogan.AutoSize = true;
             lblSlogan.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSlogan.ForeColor = Color.FromArgb(232, 160, 0);
-            lblSlogan.Location = new Point(141, 83);
+            lblSlogan.Location = new Point(283, 86);
             lblSlogan.Margin = new Padding(5, 0, 5, 0);
             lblSlogan.Name = "lblSlogan";
             lblSlogan.Size = new Size(232, 30);
@@ -415,22 +418,35 @@ namespace CarRentalSystem.Forms
             lblName.AutoSize = true;
             lblName.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblName.ForeColor = Color.FromArgb(30, 30, 30);
-            lblName.Location = new Point(145, 40);
+            lblName.Location = new Point(277, 43);
             lblName.Margin = new Padding(5, 0, 5, 0);
             lblName.Name = "lblName";
             lblName.Size = new Size(191, 50);
             lblName.TabIndex = 1;
             lblName.Text = "DriveEasy";
             // 
-            // picLogo
+            // pictureBox1
             // 
-            picLogo.Location = new Point(57, 19);
-            picLogo.Margin = new Padding(5);
-            picLogo.Name = "picLogo";
-            picLogo.Size = new Size(83, 93);
-            picLogo.SizeMode = PictureBoxSizeMode.Zoom;
-            picLogo.TabIndex = 0;
-            picLogo.TabStop = false;
+            pictureBox1.ErrorImage = Properties.Resources.Car_View_Car_Left;
+            pictureBox1.Image = Properties.Resources.Car_View_Car_Left;
+            pictureBox1.Location = new Point(153, 43);
+            pictureBox1.Margin = new Padding(4);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(126, 81);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
+            // 
+            // BackBtn
+            // 
+            BackBtn.Image = Properties.Resources.Back_Button;
+            BackBtn.Location = new Point(29, 40);
+            BackBtn.Name = "BackBtn";
+            BackBtn.Size = new Size(104, 84);
+            BackBtn.SizeMode = PictureBoxSizeMode.Zoom;
+            BackBtn.TabIndex = 10;
+            BackBtn.TabStop = false;
+            BackBtn.Click += BackBtn_Click;
             // 
             // Customer_Car_Search
             // 
@@ -441,7 +457,6 @@ namespace CarRentalSystem.Forms
             Controls.Add(pnFilters);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(5);
-            MaximizeBox = true;
             Name = "Customer_Car_Search";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Browse Cars — Car Rental System";
@@ -449,7 +464,8 @@ namespace CarRentalSystem.Forms
             pnFilters.PerformLayout();
             pnlResults.ResumeLayout(false);
             pnlResults.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)BackBtn).EndInit();
             ResumeLayout(false);
         }
 
@@ -475,7 +491,6 @@ namespace CarRentalSystem.Forms
         private Label label6;
         private Button btnReset;
         private Panel pnlResults;
-        private PictureBox picLogo;
         private Label lblName;
         private Label lblWelcome;
         private Label lblSlogan;
@@ -484,5 +499,7 @@ namespace CarRentalSystem.Forms
         private Label lblResultsCount;
         private Label lblDateSummary;
         private FlowLayoutPanel flowCars;
+        private PictureBox pictureBox1;
+        private PictureBox BackBtn;
     }
 }

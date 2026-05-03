@@ -32,9 +32,9 @@ namespace CarRentalSystem.Services
                         BaseCost = r.Vehicle.Category.DailyRate * r.Duration,
                         ExtraFees = 0,
                         PaymentStatus = "Pending",
-                        DisplayStatus = DateTime.Now >= r.ReservationDate
-                            ? "Reservation: " + r.Status.ToString() + " (Ready for Pickup)"
-                            : "Reservation: " + r.Status.ToString()
+                        DisplayStatus = (r.Status == ReservationStatus.Reserved && DateTime.Now.Date >= r.ReservationDate.Date)
+                                ? "Reservation: Active (Ready for Pickup)"
+                                : "Reservation: " + r.Status.ToString()
                     }).ToList();
 
                 var rentals = context.Rentals
@@ -85,8 +85,8 @@ namespace CarRentalSystem.Services
                         BaseCost = r.Vehicle.Category.DailyRate * r.Duration,
                         ExtraFees = 0,
                         PaymentStatus = "Pending",
-                        DisplayStatus = DateTime.Now >= r.ReservationDate
-                            ? "Reservation: " + r.Status.ToString() + " (Ready for Pickup)"
+                        DisplayStatus = (r.Status == ReservationStatus.Reserved && DateTime.Now.Date >= r.ReservationDate.Date)
+                            ? "Reservation: Active (Ready for Pickup)"
                             : "Reservation: " + r.Status.ToString()
                     }).ToList();
 

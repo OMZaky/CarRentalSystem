@@ -84,27 +84,30 @@ namespace CarRentalSystem.Forms
                 BackgroundColor = Color.White,
                 BorderStyle = BorderStyle.FixedSingle,
                 ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize,
-                Location = new Point(31, 369),
+                Location = new Point(37, 600),
+                Size = new Size(1468, 300),
                 MultiSelect = false,
                 Name = "dgvCars",
                 ReadOnly = true,
                 RowHeadersVisible = false,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
-                Size = new Size(895, 200),
                 TabIndex = 11
             };
 
             dgvCars.CellMouseDown += dgvCars_CellMouseDown;
             dgvCars.MouseDown += dgvCars_MouseDown;
 
-            dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.Id), HeaderText = "ID", Width = 55 });
-            dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.PlateNumber), HeaderText = "Plate", Width = 95 });
+            dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.Id), HeaderText = "ID", Width = 60 });
+            dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.PlateNumber), HeaderText = "Plate", Width = 120 });
+
             dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.Model), HeaderText = "Model", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
-            dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.Year), HeaderText = "Year", Width = 70 });
-            dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.Category), HeaderText = "Category", Width = 110 });
-            dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.Branch), HeaderText = "Branch", Width = 120 });
-            dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.Status), HeaderText = "Status", Width = 95 });
-            dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.DailyPrice), HeaderText = "EGP/Day", Width = 90, DefaultCellStyle = new DataGridViewCellStyle { Format = "N2" } });
+
+            dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.Year), HeaderText = "Year", Width = 80 });
+            dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.Category), HeaderText = "Category", Width = 140 });
+
+            dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.Branch), HeaderText = "Branch", Width = 200 });
+            dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.Status), HeaderText = "Status", Width = 120 });
+            dgvCars.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(EmployeeCarSearchResult.DailyPrice), HeaderText = "EGP/Day", Width = 120, DefaultCellStyle = new DataGridViewCellStyle { Format = "N2" } });
 
             panelMain.Controls.Add(dgvCars);
         }
@@ -328,7 +331,7 @@ namespace CarRentalSystem.Forms
             dgvCars.CurrentCell = null;
         }
 
-        private class EmployeeCarSearchResult
+        public class EmployeeCarSearchResult
         {
             public int Id { get; set; }
             public string PlateNumber { get; set; } = string.Empty;
@@ -343,6 +346,11 @@ namespace CarRentalSystem.Forms
         private void panelFilters_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -13,7 +13,9 @@ namespace CarRentalSystem.Services
             {
                 using (var context = new AppDbContext())
                 {
-                    int totalDays = (toDate - fromDate).Days;
+                    int totalDays = (toDate.Date - fromDate.Date).Days;
+                    if (totalDays <= 0) totalDays = 1;
+
 
                     var newReservation = new Reserves
                     {

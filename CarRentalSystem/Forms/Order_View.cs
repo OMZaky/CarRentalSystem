@@ -32,6 +32,10 @@ namespace CarRentalSystem.Forms
 
         private void LoadOrdersBasedOnRole()
         {
+
+       
+
+
             CarsViewPanel.SuspendLayout();
 
             // Clear existing cards
@@ -52,16 +56,16 @@ namespace CarRentalSystem.Forms
             // Fetch data based on the logged-in user's role
             if (UserSession.CurrentUser.Role == UserRole.Customer)
             {
-                CustomerNameLabel.Text = UserSession.CurrentUser.FullName;
+                label5.Text = UserSession.CurrentUser.FullName;
                 label4.Text = "My Orders";
                 ordersToDisplay = _orderService.GetCustomerOrders(UserSession.CurrentUser.Id);
             }
             else // Employee, BranchManager, SystemAdmin
             {
-                CustomerNameLabel.Text = UserSession.CurrentUser.FullName;
+                label5.Text = UserSession.CurrentUser.FullName;
+                label3.Text = UserSession.CurrentUser.Role.ToString();
                 label4.Text = "Recent Global Orders";
 
-                // THE FIX: Actually calling the completed method!
                 ordersToDisplay = _orderService.GetAllGlobalOrders();
             }
 
@@ -104,6 +108,11 @@ namespace CarRentalSystem.Forms
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BackBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }

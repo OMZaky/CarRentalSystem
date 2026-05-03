@@ -147,12 +147,11 @@ namespace CarRentalSystem.Forms
         {
             flowCars.SuspendLayout();
 
-            // THE FIX: Physically destroy the old cards in RAM
-            foreach (Control c in flowCars.Controls)
+            while (flowCars.Controls.Count > 0)
             {
-                c.Dispose();
+                flowCars.Controls[0].Dispose();
             }
-            flowCars.Controls.Clear(); // Now it is safe to clear
+            flowCars.Controls.Clear();
 
             foreach (var carDto in cars)
             {
@@ -166,7 +165,7 @@ namespace CarRentalSystem.Forms
         }
 
         private void Card_RentButtonClicked(object sender, int clickedVehicleId)
-        {   
+        {
             // Find the specific car data from our saved search results
 
             var selectedCar = _currentSearchResults.FirstOrDefault(c => c.Id == clickedVehicleId);
@@ -184,7 +183,7 @@ namespace CarRentalSystem.Forms
                 {
                     if (viewForm.ShowDialog() == DialogResult.OK)
                     {
-                        btnSearch_Click(null, EventArgs.Empty); 
+                        btnSearch_Click(null, EventArgs.Empty);
                     }
                 }
             }
@@ -219,9 +218,14 @@ namespace CarRentalSystem.Forms
             flowCars.SuspendLayout();
             foreach (Control card in flowCars.Controls)
             {
-                card.Width = flowCars.ClientSize.Width - 25; 
+                card.Width = flowCars.ClientSize.Width - 25;
             }
             flowCars.ResumeLayout();
+        }
+
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

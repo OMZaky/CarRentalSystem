@@ -50,8 +50,16 @@ namespace car_rental_system
 
             var user = UserSession.CurrentUser;
 
-            label3.Text = user.FullName;
-
+            if (user != null)
+            {
+                label3.Text = user.FullName;
+                label4.Text = user.Role.ToString();
+            }
+            else
+            {
+                label3.Text = "Guest User";
+                label4.Text = "Unknown Role";
+            }
 
             _skeletonTimer = new Timer { Interval = 350 };
             _skeletonTimer.Tick += (s, e) =>

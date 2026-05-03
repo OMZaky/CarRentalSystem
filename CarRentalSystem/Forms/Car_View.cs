@@ -31,7 +31,8 @@ namespace CarRentalSystem.Forms
 
         private void LoadCarDetails(string model, string category, decimal dailyPrice,string PlateNum)
         {
-            int totalDays = (_dateTo - _dateFrom).Days;
+            int totalDays = (_dateTo.Date - _dateFrom.Date).Days;
+            if (totalDays <= 0) totalDays = 1; // Failsafe so it never multiplies by 0
             _totalPrice = dailyPrice * totalDays; // Store the calculated total
 
 

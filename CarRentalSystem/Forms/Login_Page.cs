@@ -70,15 +70,12 @@ namespace CarRentalSystem.Forms
                         return;
                 }
 
-                // 4. Swap the windows securely
-                nextForm.Location = this.Location;
-                nextForm.StartPosition = FormStartPosition.Manual;
-                nextForm.FormClosed += (s, args) => this.Close();
+                this.Hide();
+
                 nextForm.Show();
 
                 txtUsername.Clear();
                 txtPassword.Clear();
-                this.Hide();
             }
             else
             {
