@@ -57,7 +57,10 @@ namespace CarRentalSystem.Forms
 
             lblDateSummary.Text = $"{dtpPickup.Value:MMM dd} — {dtpReturn.Value:MMM dd} · {days} days";
 
-            var allCars = _vehicleService.SearchAvailableCars();
+            DateTime fromDate = dtpPickup.Value.Date;
+            DateTime toDate = dtpReturn.Value.Date;
+
+            var allCars = _vehicleService.SearchAvailableCars(fromDate, toDate);
             var filteredCars = allCars.AsEnumerable();
 
             // -- CATEGORY FILTER (FIXED: Case Insensitive & Trimmed) --

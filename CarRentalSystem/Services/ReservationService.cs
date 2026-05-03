@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using CarRentalSystem.Data;
 using CarRentalSystem.Models;
 
@@ -23,18 +24,7 @@ namespace CarRentalSystem.Services
                         Status = ReservationStatus.Reserved
                     };
 
-                    var vechilee = context.Vehicles.FirstOrDefault(v => v.Id == vehicleId);
-
-                    if (vechilee != null)
-                    {
-                        vechilee.Status = VehicleStatus.Rented;
-                    }
-                    else
-                    {
-                        // If the car doesn't exist, fail safely!
-                        return false;
-                    }
-
+                    
                     context.Reservations.Add(newReservation);
                     context.SaveChanges();
                     return true;
@@ -42,7 +32,6 @@ namespace CarRentalSystem.Services
             }
             catch (Exception)
             {
-                // TODO: Log the database error
                 return false;
             }
         }
