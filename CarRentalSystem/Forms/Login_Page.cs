@@ -41,16 +41,13 @@ namespace CarRentalSystem.Forms
                 return;
             }
 
-            // 1. Ask the service to handle the complex database login
             var authService = new AuthService();
             UserDTO user = authService.Login(inputUsername, inputPassword);
 
             if (user != null)
             {
-                // 2. Success! Save the session centrally
                 UserSession.Login(user);
 
-                // 3. Role-Based Routing (No parameters passed!)
                 Form nextForm;
 
                 switch (UserSession.CurrentUser.Role)

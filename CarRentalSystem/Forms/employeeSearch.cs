@@ -15,12 +15,12 @@ namespace car_rental_system
 {
     public partial class employeeSearch : Form
     {
-        // ── Pagination state ─────────────────────────────────────────────────
+        // Pagination state 
         private const int PageSize = 10;
         private int _currentPage = 1;
         private List<employeeDTO> _filtered = new List<employeeDTO>();
 
-        // ── Skeleton timer ───────────────────────────────────────────────────
+        // Skeleton timer 
         private Timer _skeletonTimer = null!;
         private int _skeletonFrame = 0;
         private bool _loading = false;
@@ -43,9 +43,7 @@ namespace car_rental_system
 
         }
 
-        // ════════════════════════════════════════════════════════════════════
         //  SKELETON
-        // ════════════════════════════════════════════════════════════════════
         private void SetupSkeletonTimer()
         {
 
@@ -93,9 +91,7 @@ namespace car_rental_system
             delay.Start();
         }
 
-        // ════════════════════════════════════════════════════════════════════
         //  FILTER + BIND
-        // ════════════════════════════════════════════════════════════════════
         private void ApplyFilter()
         {
             string search = txtSearch.Text.Trim().ToLower();
@@ -140,9 +136,7 @@ namespace car_rental_system
 
         private int TotalPages => Math.Max(1, (int)Math.Ceiling((double)_filtered.Count / PageSize));
 
-        // ════════════════════════════════════════════════════════════════════
         //  EVENT HANDLERS
-        // ════════════════════════════════════════════════════════════════════
         private void txtSearch_TextChanged(object sender, EventArgs e) { _currentPage = 1; ApplyFilter(); }
         private void cmbRole_SelectedIndexChanged(object sender, EventArgs e) { _currentPage = 1; ApplyFilter(); }
 
@@ -157,9 +151,7 @@ namespace car_rental_system
         private void btnPrev_Click(object sender, EventArgs e) { if (_currentPage > 1) { _currentPage--; BindPage(); } }
         private void btnNext_Click(object sender, EventArgs e) { if (_currentPage < TotalPages) { _currentPage++; BindPage(); } }
 
-        // ════════════════════════════════════════════════════════════════════
         //  CUSTOM CELL PAINTING — skeleton shimmer + role badge
-        // ════════════════════════════════════════════════════════════════════
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.RowIndex < 0) return;

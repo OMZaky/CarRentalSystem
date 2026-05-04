@@ -35,11 +35,10 @@ namespace CarRentalSystem.Forms
 
         private void LoadImageSafely(string imagePath)
         {
-            // 1. FAST CACHE CHECK FOR PLACEHOLDER
             if (string.IsNullOrWhiteSpace(imagePath))
             {
                 if (!_imageCache.ContainsKey("PLACEHOLDER"))
-                    _imageCache["PLACEHOLDER"] = Properties.Resources.PlaceholderCar; // Load once!
+                    _imageCache["PLACEHOLDER"] = Properties.Resources.PlaceholderCar; 
 
                 picCar.Image = _imageCache["PLACEHOLDER"];
                 picCar.SizeMode = PictureBoxSizeMode.Zoom;
@@ -48,7 +47,6 @@ namespace CarRentalSystem.Forms
 
             string fullPath = System.IO.Path.Combine(Application.StartupPath, imagePath);
 
-            // 2. CHECK RAM FIRST (Bypasses the slow hard-drive check completely!)
             if (_imageCache.ContainsKey(fullPath))
             {
                 picCar.Image = _imageCache[fullPath];
@@ -56,7 +54,6 @@ namespace CarRentalSystem.Forms
                 return;
             }
 
-            // 3. ONLY CHECK HARD DRIVE IF IT IS NOT IN RAM YET
             if (!System.IO.File.Exists(fullPath))
             {
                 if (!_imageCache.ContainsKey("PLACEHOLDER"))
@@ -67,7 +64,6 @@ namespace CarRentalSystem.Forms
                 return;
             }
 
-            // 4. LOAD AND CACHE THE REAL IMAGE
             using (var stream = new System.IO.FileStream(fullPath, System.IO.FileMode.Open, System.IO.FileAccess.Read))
             using (var tempImage = Image.FromStream(stream))
             {
@@ -88,16 +84,11 @@ namespace CarRentalSystem.Forms
             lblPrice.Text = $"{car.DailyPrice:N0} EGP/day";
             lblTotal.Text = $"{(car.DailyPrice * totalDays):N0} EGP total";
 
-            // Because we added the static Dictionary cache earlier, 
-            // swapping the image here takes 0.001 seconds!
             LoadImageSafely(car.ImagePath);
         }
 
         private void btnRentNow_Click(object sender, EventArgs e)
         {
-            // 3. YELL TO THE PARENT!
-            // The ? checks if the parent is actually listening. 
-            // If they are, it passes the specific VehicleId up to them.
             RentButtonClicked?.Invoke(this, VehicleId);
         }
     }

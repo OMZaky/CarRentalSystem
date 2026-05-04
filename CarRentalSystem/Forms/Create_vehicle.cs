@@ -34,7 +34,7 @@ namespace CarRentalSystem.Forms
             SetupManageMode();
         }
 
-        // ── Setup ────────────────────────────────────────────────────
+        // Setup 
 
         private void SetupCreateMode()
         {
@@ -72,7 +72,7 @@ namespace CarRentalSystem.Forms
             btnEditDetails.Click += btnEditDetails_Click;
         }
 
-        // ── Load combo data ──────────────────────────────────────────
+        //  Load combo data 
 
         private void LoadComboData()
         {
@@ -105,8 +105,7 @@ namespace CarRentalSystem.Forms
             }
         }
 
-        // ── Load existing vehicle ────────────────────────────────────
-
+        
         private void LoadVehicleDetails()
         {
             if (!_vehicleId.HasValue) return;
@@ -152,8 +151,6 @@ namespace CarRentalSystem.Forms
             }
         }
 
-        // ── Button handler ───────────────────────────────────────────
-
         private void btnEditDetails_Click(object sender, EventArgs e)
         {
             if (!ValidateFields()) return;
@@ -163,8 +160,6 @@ namespace CarRentalSystem.Forms
             else
                 CreateVehicle();
         }
-
-        // ── Create ───────────────────────────────────────────────────
 
         private void CreateVehicle()
         {
@@ -197,8 +192,6 @@ namespace CarRentalSystem.Forms
                 MessageBox.Show($"Could not create vehicle.\n\n{ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        // ── Update ───────────────────────────────────────────────────
 
         private void UpdateVehicle()
         {
@@ -234,8 +227,6 @@ namespace CarRentalSystem.Forms
             }
         }
 
-        // ── Validation ───────────────────────────────────────────────
-
         private bool ValidateFields()
         {
             // Model & Year only validated on create (locked on manage)
@@ -265,8 +256,6 @@ namespace CarRentalSystem.Forms
 
             return true;
         }
-
-        // ── Helpers ──────────────────────────────────────────────────
 
         private void SetFieldsReadOnly(bool readOnly)
         {
@@ -298,8 +287,6 @@ namespace CarRentalSystem.Forms
             lblLastNameTitle.Text = "Category";
             lblUsernameTitle.Text = "Status";
         }
-
-        // ── Designer event stubs ─────────────────────────────────────
 
         private void txtFirstName_TextChanged(object sender, EventArgs e) { }
         private void label3_Click(object sender, EventArgs e) { }

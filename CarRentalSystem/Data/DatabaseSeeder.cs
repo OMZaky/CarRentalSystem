@@ -10,7 +10,6 @@ namespace CarRentalSystem.Data
     {
         public static void SeedData(AppDbContext context)
         {
-            // If we already have Branches, the database is already seeded. Exit immediately.
             if (context.Branches.Any()) return;
 
             Console.WriteLine("Seeding business-level database with secure hashes...");
@@ -36,7 +35,7 @@ namespace CarRentalSystem.Data
             context.VehicleCategories.AddRange(categories);
             context.SaveChanges();
 
-            // 3. Seed Employees (SECURE HASHING APPLIED)
+            // 3. Seed Employees 
             var employees = new List<Employee>
             {
                 new Employee { FirstName = "Zaky", LastName = "Admin", Ssn = "29912345678901", Email = "zaky@tripzyrentals.com", Role = EmployeeRole.SystemAdmin, Salary = 15000m, HireDate = DateTime.Now.AddYears(-2), Username = "admin_zaky", PasswordHash = PasswordHasher.HashPassword("AdminPass123!"), BranchId = branches[1].Id },
@@ -64,7 +63,7 @@ namespace CarRentalSystem.Data
             context.Vehicles.AddRange(vehicles);
             context.SaveChanges();
 
-            // 5. Seed Customers (SECURE HASHING APPLIED)
+            // 5. Seed Customers 
             var customers = new List<Customer>
             {
                 new Customer { FirstName = "Karim", LastName = "Hassan", Email = "karim.h@gmail.com", PhoneNumber = "01099998888", Ssn = "29501011234567", LicenseNum = "LIC-1001", ExpirationDate = DateTime.Now.AddYears(3), Username = "karim_h", PasswordHash = PasswordHasher.HashPassword("CustPass123!") },
