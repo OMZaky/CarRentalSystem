@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             panelMain = new Panel();
+            BackBtn = new PictureBox();
             lblSubtitle = new Label();
             lblTitle = new Label();
-            btnManage = new Button();
+            btnAddEdit = new Button();
             panelFilters = new Panel();
             dtpToDate = new DateTimePicker();
             dtpFromDate = new DateTimePicker();
@@ -53,19 +54,20 @@
             lblAvailableCars = new Label();
             btnReset = new Button();
             btnSearch = new Button();
-            BackBtn = new PictureBox();
+            btnDelete = new Button();
             panelMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)BackBtn).BeginInit();
             panelFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)BackBtn).BeginInit();
             SuspendLayout();
             // 
             // panelMain
             // 
+            panelMain.Controls.Add(btnDelete);
             panelMain.Controls.Add(BackBtn);
             panelMain.Controls.Add(lblSubtitle);
             panelMain.Controls.Add(lblTitle);
-            panelMain.Controls.Add(btnManage);
+            panelMain.Controls.Add(btnAddEdit);
             panelMain.Controls.Add(panelFilters);
             panelMain.Controls.Add(pictureBox1);
             panelMain.Controls.Add(lblAvailableCars);
@@ -78,6 +80,17 @@
             panelMain.Padding = new Padding(65, 48, 65, 48);
             panelMain.Size = new Size(1596, 965);
             panelMain.TabIndex = 0;
+            // 
+            // BackBtn
+            // 
+            BackBtn.Image = Properties.Resources.Back_Button;
+            BackBtn.Location = new Point(50, 12);
+            BackBtn.Name = "BackBtn";
+            BackBtn.Size = new Size(104, 84);
+            BackBtn.SizeMode = PictureBoxSizeMode.Zoom;
+            BackBtn.TabIndex = 11;
+            BackBtn.TabStop = false;
+            BackBtn.Click += BackBtn_Click;
             // 
             // lblSubtitle
             // 
@@ -103,19 +116,19 @@
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Search for a Car";
             // 
-            // btnManage
+            // btnAddEdit
             // 
-            btnManage.BackColor = Color.White;
-            btnManage.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnManage.ForeColor = Color.Black;
-            btnManage.Location = new Point(1097, 456);
-            btnManage.Margin = new Padding(5);
-            btnManage.Name = "btnManage";
-            btnManage.Size = new Size(408, 74);
-            btnManage.TabIndex = 10;
-            btnManage.Text = "Manage";
-            btnManage.UseVisualStyleBackColor = false;
-            btnManage.Click += btnManage_Click;
+            btnAddEdit.BackColor = Color.FromArgb(0, 192, 0);
+            btnAddEdit.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAddEdit.ForeColor = Color.Transparent;
+            btnAddEdit.Location = new Point(1249, 458);
+            btnAddEdit.Margin = new Padding(5);
+            btnAddEdit.Name = "btnAddEdit";
+            btnAddEdit.Size = new Size(255, 74);
+            btnAddEdit.TabIndex = 10;
+            btnAddEdit.Text = "Add/Edit";
+            btnAddEdit.UseVisualStyleBackColor = false;
+            btnAddEdit.Click += btnManage_Click;
             // 
             // panelFilters
             // 
@@ -360,10 +373,10 @@
             btnReset.BackColor = Color.White;
             btnReset.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnReset.ForeColor = Color.Black;
-            btnReset.Location = new Point(590, 458);
+            btnReset.Location = new Point(678, 458);
             btnReset.Margin = new Padding(5);
             btnReset.Name = "btnReset";
-            btnReset.Size = new Size(408, 74);
+            btnReset.Size = new Size(282, 74);
             btnReset.TabIndex = 4;
             btnReset.Text = "Reset Filters";
             btnReset.UseVisualStyleBackColor = false;
@@ -383,16 +396,19 @@
             btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
             // 
-            // BackBtn
+            // btnDelete
             // 
-            BackBtn.Image = Properties.Resources.Back_Button;
-            BackBtn.Location = new Point(50, 12);
-            BackBtn.Name = "BackBtn";
-            BackBtn.Size = new Size(104, 84);
-            BackBtn.SizeMode = PictureBoxSizeMode.Zoom;
-            BackBtn.TabIndex = 11;
-            BackBtn.TabStop = false;
-            BackBtn.Click += BackBtn_Click;
+            btnDelete.BackColor = Color.Red;
+            btnDelete.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDelete.ForeColor = Color.White;
+            btnDelete.Location = new Point(970, 458);
+            btnDelete.Margin = new Padding(5);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(269, 74);
+            btnDelete.TabIndex = 12;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // employeeCarSearch
             // 
@@ -408,10 +424,10 @@
             Text = "employeeCarSearch";
             panelMain.ResumeLayout(false);
             panelMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)BackBtn).EndInit();
             panelFilters.ResumeLayout(false);
             panelFilters.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)BackBtn).EndInit();
             ResumeLayout(false);
         }
 
@@ -441,7 +457,8 @@
         private Button btnSearch;
         private DateTimePicker dtpToDate;
         private PictureBox pictureBox1;
-        private Button btnManage;
+        private Button btnAddEdit;
         private PictureBox BackBtn;
+        private Button btnDelete;
     }
 }

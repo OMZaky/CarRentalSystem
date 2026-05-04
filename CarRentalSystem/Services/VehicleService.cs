@@ -53,5 +53,18 @@ namespace CarRentalSystem.Services
                     .ToList();
             }
         }
+
+        public void DeleteVehicle(int vehicleId)
+        {
+            using (var context = new AppDbContext())
+            {
+                var vehicle = context.Vehicles.Find(vehicleId);
+                if (vehicle != null)
+                {
+                    context.Vehicles.Remove(vehicle);
+                    context.SaveChanges();
+                }
+            }
+        }
     }
 }

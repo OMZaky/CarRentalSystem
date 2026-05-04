@@ -241,7 +241,6 @@ namespace car_rental_system
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.Close();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

@@ -1,10 +1,11 @@
+using CarRentalSystem.Data;
+using CarRentalSystem.Services;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using CarRentalSystem.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace CarRentalSystem.Forms
 {
@@ -352,5 +353,53 @@ namespace CarRentalSystem.Forms
         {
             this.Close();
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvCars.SelectedRows.Count > 0)
+            {
+                var result = MessageBox.Show($"Are you sure you want to permanently delete the selected vehicle(s)?",
+                                             "Confirm Deletion",
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    var rowsToDelete = dgvCars.SelectedRows.Cast<DataGridViewRow>().ToList();
+                    bool errorOccurred = false;
+
+                    foreach (var row in rowsToDelete)
+                    {
+                        // THE FIX: Match the exact custom class your grid is using (EmployeeCarSearchResult)
+                        if (row.DataBoundItem is EmployeeCarSearchResult selectedCar)
+                        {
+                            try
+                            {
+                                var service = new CarRentalSystem.Services.VehicleService();
+                                service.DeleteVehicle(selectedCar.Id);
+                            }
+                            catch (Exception)
+                            {
+                                errorOccurred = true;
+                                MessageBox.Show($"Could not delete {selectedCar.Model} because it has existing Rentals, Reservations, or Inspections attached to it.",
+                                                "Deletion Blocked", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+
+                    if (!errorOccurred)
+                    {
+                        MessageBox.Show("Vehicle(s) removed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    SearchCars();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a full row from the list first.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }
